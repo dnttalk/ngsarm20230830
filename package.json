@@ -1,0 +1,47 @@
+{
+  "name": "NGA_workstation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "dist": "electron-builder",
+    "build": "pkg -t win ./package.json"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.1",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
+    "debug": "~2.6.3",
+    "ejs": "^3.1.9",
+    "express": "~4.15.2",
+    "morgan": "^1.10.0",
+    "node-key-sender": "^1.0.11",
+    "puppeteer": "^21.1.0",
+    "rcedit": "^3.1.0",
+    "simple-keyboard": "latest",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "electron": "^26.1.0",
+    "electron-builder": "^24.6.3",
+    "nodemon": "^3.0.1",
+    "pkg": "^5.8.1",
+    "resedit": "^2.0.0"
+  },
+  "main": "./bin/www",
+  "bin": {
+    "NGA_workstation": "bin/www"
+  },
+  "pkg": {
+    "assets": [
+      "views/**/*",
+      "public/**/*"
+    ],
+    "outputPath": "dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

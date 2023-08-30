@@ -1,0 +1,202 @@
+body,
+.modal-body {
+    background-image: url("/assets/img/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.modal-body p {
+    font-size: 40px;
+}
+
+.modalFirstRow {
+    margin-top: 40vh;
+}
+
+.chooseBtn:active {
+    color: rgb(0, 176, 240) !important;
+}
+
+.chooseBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 38px;
+    --color: #000000;
+    --background-color: #d8d8d8;
+    --border-color: darken(#d8d8d8, 7.5%);
+    color: rgb(0, 176, 240);
+    font-family: inherit;
+    background-color: var(--background-color);
+    padding: $btn-padding;
+    border: solid 1px var(--border-color);
+    outline: none;
+    position: relative;
+    border-radius: $btn-border-radius;
+    user-select: none;
+    box-shadow:
+        0 0.2rem 0.4rem rgba(0, 0, 0, 0.4),
+        0 -0.3rem 0.6rem rgba(0, 0, 0, 0.2) inset;
+    transition: box-shadow $btn-transition-time ease-out;
+
+    &:after {
+        content: "";
+        background-color: #ffffff;
+        width: 75%;
+        height: 12.5%;
+        position: absolute;
+        top: 0.15rem;
+        left: 12.5%;
+        border-radius: 50%;
+        filter: blur(0.15rem);
+        transition: opacity $btn-transition-time ease-out;
+    }
+
+    &:active {
+        box-shadow:
+            0 0 0 rgba(0, 0, 0, 0.4),
+            0 0.4rem 1rem rgba(0, 0, 0, 0.3) inset;
+
+        &:after {
+            opacity: 0;
+        }
+    }
+}
+
+.fbtn {
+    height: 100%;
+    width: 100%;
+    font-size: 23px;
+    color: rgb(255, 255, 255);
+    font-weight: blod;
+    white-space: nowrap;
+    background: linear-gradient(to bottom, #00aaff, #0077cc);
+}
+
+#btn-login {
+    background-color: rgb(255, 102, 255) !important;
+    border-color: rgb(218, 227, 243);
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 170px;
+    height: 55px;
+}
+
+
+#btn-history {
+    background-color: rgb(157, 195, 230) !important;
+    border-color: rgb(65, 113, 156);
+}
+
+#btn-calibration {
+    background-color: rgb(157, 195, 230) !important;
+    border-color: rgb(65, 113, 156);
+}
+
+.siderbar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#loginModal {
+    margin-top: -28%;
+}
+
+.row {
+    --bs-gutter-x: 0;
+}
+
+.row a {
+    width: 100%;
+    height: 100%;
+}
+
+.firstpage-layout .row {
+    margin: 6vh 34px;
+    height: 18vh;
+}
+
+.firstpage-layout {
+    height: 94vh;
+}
+
+.siderbar a {
+    margin: 2vh 0;
+}
+
+#existBtn {
+    width: 170px;
+    background: linear-gradient(to bottom, #a7624e, #cc0000);
+}
+
+.leftContainer1 {
+    height: 66vh !important;
+}
+
+.btn:hover {
+    color: white;
+    background-color: var(--bs-btn-hover-bg);
+    border-color: var(--bs-btn-hover-border-color);
+}
+
+.fsbtn {
+    width: 170px;
+    height: 170px;
+    font-size: 23px;
+    color: rgb(255, 255, 255);
+    font-weight: blod;
+    white-space: nowrap;
+    background: linear-gradient(to bottom, #00aaff, #0077cc);
+}
+
+.chooseContainer {
+    margin-top: 20vh;
+}
+
+.exitContainer {
+    margin-top: 30vh;
+}
+
+#existModalBtn {
+    width: 170px;
+    background: linear-gradient(to bottom, #a7624e, #cc0000);
+}
+
+.simple-keyboard {
+    max-width: 850px;
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    .form-control {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+}
+
+.alert-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.alert-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

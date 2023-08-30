@@ -1,0 +1,277 @@
+body {
+    width: 99vw;
+}
+
+.nextPage {
+    background-color: rgb(51, 204, 51);
+    width: 100px;
+    margin-left: 0.6em;
+    margin-top: -3em;
+}
+
+.prevPage {
+    background-color: rgb(51, 204, 51);
+    width: 100px;
+    margin-left: -2.5em;
+    margin-top: -3em;
+}
+
+#startBtn {
+    background-color: rgb(0, 0, 204) !important;
+    color: white;
+}
+
+
+.col {
+    margin: 2px;
+    display: flex;
+}
+
+.checkSOP {
+    height: 137px;
+    margin-left: 8px;
+    margin-right: auto;
+}
+
+.boder-dashed {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-radius: 15px;
+    border: 8px dashed rgb(196, 228, 254) !important;
+    /* margin: 2px 1px; */
+}
+
+.emptyText {
+    width: 100%;
+    margin-top: 16%;
+    color: rgb(150, 206, 252);
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.border-empty {
+    border: 3px dashed rgba(0, 0, 0, 0) !important;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.border-solid {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-radius: 15px;
+    border: 8px solid rgb(0, 112, 192) !important;
+}
+
+.border-warning {
+    border: 8px solid rgb(255, 0, 0) !important;
+    border-radius: 15px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.btn {
+    flex: auto;
+    border-radius: 0;
+    border-radius: 6px;
+    border: none;
+    background-color: lightgrey;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    margin: -1px -13px;
+}
+
+.done {
+    height: 269px;
+    position: absolute;
+    width: 18%;
+    display: flex;
+
+}
+
+.done button {
+    margin: -1px;
+}
+
+
+.changePage:hover {
+    color: rgb(0, 176, 240);
+    background-color: #d8d8d8;
+}
+
+.changePage:active {
+    color: rgb(0, 176, 240) !important;
+}
+
+.changePage {
+    width: 60px;
+    height: 60px;
+    font-size: 38px;
+    --color: #000000;
+    --background-color: #d8d8d8;
+    --border-color: darken(#d8d8d8, 7.5%);
+    color: rgb(0, 176, 240);
+    font-family: inherit;
+    background-color: var(--background-color);
+    padding: $btn-padding;
+    border: solid 1px var(--border-color);
+    outline: none;
+    position: relative;
+    border-radius: $btn-border-radius;
+    user-select: none;
+    box-shadow:
+        0 0.2rem 0.4rem rgba(0, 0, 0, 0.4),
+        0 -0.3rem 0.6rem rgba(0, 0, 0, 0.2) inset;
+    transition: box-shadow $btn-transition-time ease-out;
+
+    &:after {
+        content: "";
+        background-color: #ffffff;
+        width: 75%;
+        height: 12.5%;
+        position: absolute;
+        top: 0.15rem;
+        left: 12.5%;
+        border-radius: 50%;
+        filter: blur(0.15rem);
+        transition: opacity $btn-transition-time ease-out;
+    }
+
+    &:active {
+        box-shadow:
+            0 0 0 rgba(0, 0, 0, 0.4),
+            0 0.4rem 1rem rgba(0, 0, 0, 0.3) inset;
+
+        &:after {
+            opacity: 0;
+        }
+    }
+}
+
+.modal-body {
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.chooesBtn {
+    width: 100px;
+}
+
+.checkbtn.active {
+    background-color: rgb(0, 204, 0);
+}
+
+.checkbtn.decative {
+    background-color: rgb(252, 0, 0);
+}
+
+.checkbtnm {
+    margin: -1px -22px 0 7px;
+    border-radius: 0;
+}
+
+.checkbtnl {
+    margin: -1px -4px 0px -13px;
+    border-radius: 6px 0 0 6px;
+}
+
+.checkbtnr {
+    margin: -1px -13px 0px 25px;
+    border-radius: 0 6px 6px 0;
+}
+
+.border-solid.active {
+    border-color: rgb(0, 204, 0) !important;
+}
+
+.showModelName {
+    background-color: rgb(1, 183, 254);
+    width: 77%;
+    height: 1.8em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -16px;
+    margin-bottom: 50px;
+    border-radius: 0 0 15px 15px;
+    color: white;
+}
+
+.showModelCount {
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.modalFirstRow {
+    margin-top: 28vh;
+}
+
+.chooseBtn:active {
+    color: rgb(0, 176, 240) !important;
+}
+
+.chooseBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 38px;
+    --color: #000000;
+    --background-color: #d8d8d8;
+    --border-color: darken(#d8d8d8, 7.5%);
+    color: rgb(0, 176, 240);
+    font-family: inherit;
+    background-color: var(--background-color);
+    padding: $btn-padding;
+    border: solid 1px var(--border-color);
+    outline: none;
+    position: relative;
+    border-radius: $btn-border-radius;
+    user-select: none;
+    box-shadow:
+        0 0.2rem 0.4rem rgba(0, 0, 0, 0.4),
+        0 -0.3rem 0.6rem rgba(0, 0, 0, 0.2) inset;
+    transition: box-shadow $btn-transition-time ease-out;
+
+    &:after {
+        content: "";
+        background-color: #ffffff;
+        width: 75%;
+        height: 12.5%;
+        position: absolute;
+        top: 0.15rem;
+        left: 12.5%;
+        border-radius: 50%;
+        filter: blur(0.15rem);
+        transition: opacity $btn-transition-time ease-out;
+    }
+
+    &:active {
+        box-shadow:
+            0 0 0 rgba(0, 0, 0, 0.4),
+            0 0.4rem 1rem rgba(0, 0, 0, 0.3) inset;
+
+        &:after {
+            opacity: 0;
+        }
+    }
+}
+
+#checkcBtn {
+    right: 61px;
+    position: absolute;
+    margin-top: 42px;
+    width: 170px;
+    color: black;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.warningText {
+    font-size: 60px;
+    font-weight: bold;
+    color: red;
+}

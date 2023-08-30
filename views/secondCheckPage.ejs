@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        MPN
+    </title>
+    <%- include('./layout/head') -%>
+    <link rel='stylesheet' href='/assets/css/second.css' />
+    <link rel='stylesheet' href='/assets/css/secondCheck.css' />
+    <link rel="stylesheet" href="/assets/plugins/css/simple-keyboard@latest_build_css_index.css">
+
+</head>
+
+
+<body>
+    <div class="fluid-container text-center secondpage-layout">
+        <div class="row">
+            <img id="processImg" src="/assets/img/process3.png" alt="進度條">
+        </div>
+        <div class="currentlyModelContainer">
+            <p id="currentlyModelName">MPN</p>
+            <p id="btn-login"></p>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <div class="row processContainer">
+                    <img src="/assets/img/secondPageProcess2.png" alt="目前步驟">
+                </div>
+                <div class="row">
+                    <script>
+                        let arr1 = [];
+                        let arr2 = [];
+                    </script>
+                    <% if(id=='mpn' ){ %>
+                    <script>
+                        arr1 = ['S502', 'S503', 'S505', 'S506', 'S507', 'S508', 'S510', 'S511']
+                        arr2 = ['N701', 'N702', 'N703', 'N704', 'N705', 'N706', 'N707', 'N710', 'N711', 'N712', 'N714', 'N715']
+                    </script>
+                    <h1>Samples: <input type="number" pattern="\d*" max="8" min="1" value="1" id="sampleNumberInput" disabled oninput="if(value<=0)value=1;if(value>8)value=8;" inputmode="numeric"></h1>
+                    <% }else if(id=='leukemia' ){ %>
+                    <script>
+                        arr1 = ['S505', 'S506', 'S507', 'S508']
+                        arr2 = ['i701', 'i707', 'i708', 'i709', 'i710', 'i711', 'i712']
+                    </script>
+                    <h1>Samples: <input type="number" max="22" min="1" value="1" id="sampleNumberInput" disabled oninput="if(value<=0)value=1;if(value>22)value=22;"></h1>
+                    <% }else{ %>
+                    <script>
+                        arr1 = ['S502', 'S503', 'S505', 'S506', 'S507', 'S508', 'S510', 'S511']
+                        arr2 = ['N716', 'N718', 'N719', 'N720', 'N721', 'N722', 'N723', 'N724', 'N726', 'N727', 'N728', 'N729']
+                    </script>
+                    <h1>Samples: <input type="number" max="24" min="1" value="1" id="sampleNumberInput" disabled oninput="if(value<=0)value=1;if(value>24)value=24;"></h1>
+                    <% } %>
+                </div>
+            </div>
+            <div class="col-10">
+                <table class="demo" style="border-collapse:collapse;border: 5px solid rgb(65, 113, 156);" rules="all" cellpadding='5' ;>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td colspan="3">
+                                <div class="row">
+                                    <h2 class="thHeader">Samples</h2>
+                                </div>
+                            </td>
+                            <td colspan="3">
+                                <div class="row">
+                                    <h2 class="thHeader">Index</h2>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdRow"></td>
+                            <td class="tdRow">1</td>
+                            <td class="tdRow">2</td>
+                            <td class="tdRow">3</td>
+                            <td class="tdRow">4</td>
+                            <td class="tdRow">5</td>
+                            <td class="tdRow">6</td>
+                        </tr>
+                        <tr>
+                            <td class="tdCol">A</td>
+                            <td id="tdFirst_1" class="tdWidth" rowName="A" colName="1">
+
+                            </td>
+                            <td id="tdFirst_9" class="tdWidth" rowName="A" colName="2">
+
+                            </td>
+                            <td id="tdFirst_17" class="tdWidth" rowName="A" colName="3">
+
+                            </td>
+                            <td id="tdSecond_1" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_9" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_17" class="tdWidth">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdCol">B</td>
+                            <td id="tdFirst_2" class="tdWidth" rowName="B" colName="1">
+
+                            </td>
+                            <td id="tdFirst_10" class="tdWidth" rowName="B" colName="2">
+
+                            </td>
+                            <td id="tdFirst_18" class="tdWidth" rowName="B" colName="3">
+
+                            </td>
+                            <td id="tdSecond_2" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_10" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_18" class="tdWidth">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdCol">C</td>
+                            <td id="tdFirst_3" class="tdWidth" rowName="C" colName="1">
+
+                            </td>
+                            <td id="tdFirst_11" class="tdWidth" rowName="C" colName="2">
+
+                            </td>
+                            <td id="tdFirst_19" class="tdWidth" rowName="C" colName="3">
+
+                            </td>
+                            <td id="tdSecond_3" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_11" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_19" class="tdWidth">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdCol">D</td>
+                            <td id="tdFirst_4" class="tdWidth" rowName="D" colName="1">
+
+                            </td>
+                            <td id="tdFirst_12" class="tdWidth" rowName="D" colName="2">
+
+                            </td>
+                            <td id="tdFirst_20" class="tdWidth" rowName="D" colName="3">
+
+                            </td>
+                            <td id="tdSecond_4" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_12" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_20" class="tdWidth">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdCol">E</td>
+                            <td id="tdFirst_5" class="tdWidth" rowName="E" colName="1">
+
+                            </td>
+                            <td id="tdFirst_13" class="tdWidth" rowName="E" colName="2">
+
+                            </td>
+                            <td id="tdFirst_21" class="tdWidth" rowName="E" colName="3">
+
+                            </td>
+                            <td id="tdSecond_5" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_13" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_21" class="tdWidth">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdCol">F</td>
+                            <td id="tdFirst_6" class="tdWidth" rowName="F" colName="1">
+
+                            </td>
+                            <td id="tdFirst_14" class="tdWidth" rowName="F" colName="2">
+
+                            </td>
+                            <td id="tdFirst_22" class="tdWidth" rowName="F" colName="3">
+
+                            </td>
+                            <td id="tdSecond_6" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_14" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_22" class="tdWidth">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdCol">G</td>
+                            <td id="tdFirst_7" class="tdWidth" rowName="G" colName="1">
+
+                            </td>
+                            <td id="tdFirst_15" class="tdWidth" rowName="G" colName="2">
+
+                            </td>
+                            <td id="tdFirst_23" class="tdWidth" rowName="G" colName="3">
+
+                            </td>
+                            <td id="tdSecond_7" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_15" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_23" class="tdWidth">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdCol">H</td>
+                            <td id="tdFirst_8" class="tdWidth" rowName="H" colName="1">
+
+                            </td>
+                            <td id="tdFirst_16" class="tdWidth" rowName="H" colName="2">
+
+                            </td>
+                            <td id="tdFirst_24" class="tdWidth" rowName="H" colName="3">
+
+                            </td>
+                            <td id="tdSecond_8" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_16" class="tdWidth">
+
+                            </td>
+                            <td id="tdSecond_24" class="tdWidth">
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="row mt-5 justify-content-between">
+            <div class="col-2">
+                <button type="button" class="changePage prevPage btn-primary border-5">
+                    <i class="fa-solid fa-caret-left"></i>
+                </button>
+            </div>
+            <div class="col-2">
+                <button type="button" class="changePage nextPage btn-primary border-5">
+                    <i class="fa-solid fa-caret-right"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal fade bg-transparent" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop2Label" aria-hidden="false">
+        <div class="modal-dialog countTotalContainerLeft">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="showSampleIndex">
+                                <p style="margin-top: 13px;">Sample and Index </p>
+                                <p id="showSampleIndexCell" style="margin-top: -12\px;"></p>
+                            </div>
+                        </div>
+                        <div class="row text-start sampleIndexSelectionContainer">
+                            <div class="col-5">
+                                <p>Sample Name:</p>
+                            </div>
+                            <div class="col-7">
+                                <input id="sName" type="text" maxlength="10" id="Name" class="form-control form-control-lg input" placeholder="Samplename" />
+                            </div>
+                            <div class="simple-keyboard"></div>
+                            <div class="col-12">
+                                Index:
+                            </div>
+                            <div class="col-12">
+                                <div class="row siBtnContainer">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 text-start">
+                                <button id="cancleChoose2" type="button" class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">X</button>
+                            </div>
+                            <div class="col-6 text-end">
+                                <button id="doneChoose2" type="button" class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">&#10003;</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="simple-keyboard"></div>
+    <%- include('./layout/js') -%>
+    <script src="/assets/plugins/js/simple-keyboard@latest_build_index.js"></script>
+    <script src="/assets/js/secondCheckPage.js"></script>
+</body>
+
+</html>

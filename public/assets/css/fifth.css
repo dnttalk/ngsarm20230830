@@ -1,0 +1,598 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:700,400");
+
+* {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0px;
+    height: 100%;
+}
+
+body,
+.modal-body {
+    background-image: url("/assets/img/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.modal-body p {
+    font-size: 40px;
+}
+
+.modalFirstRow {
+    margin-top: 40vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+.frame {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.frame .div {
+    border: 1px none;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.frame .overlap {
+    width: 100%;
+    margin-top: 24px;
+}
+
+.frame .overlap-group {
+    left: 16px;
+    position: relative;
+}
+
+.frame .element {
+    height: 51px;
+    font-weight: bold;
+    font-size: 33px;
+}
+
+
+.frame .img {
+    height: 317px;
+    left: 96px;
+    position: absolute;
+    top: 140px;
+    width: 159px;
+    scale: 1.5;
+}
+
+.frame .element-2 {
+    height: 173px;
+    left: 79px;
+    position: absolute;
+    top: 212px;
+    width: 87px;
+    scale: 1.5;
+}
+
+.frame .element-wrapper {
+    height: 22px;
+    left: 26px;
+    position: absolute;
+    top: 272px;
+    width: 42px;
+    scale: 1.5;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.frame .element-3 {
+    height: 63px;
+    left: 273px;
+    position: absolute;
+    top: 15px;
+    width: 222px;
+    scale: 1.4;
+}
+
+.frame .element-4 {
+    height: 11px;
+    left: 393px;
+    position: absolute;
+    top: 18px;
+    width: 121px;
+}
+
+.frame .text-wrapper-2 {
+    color: #000000;
+    font-family: "Inter", Helvetica;
+    font-size: 9.3px;
+    font-weight: 700;
+    left: -105px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    top: 15px;
+    white-space: pre-wrap;
+    scale: 1.6;
+}
+
+.frame .element-6 {
+    height: 49px;
+    left: 180px;
+    position: absolute;
+    top: 61px;
+    width: 41px;
+    scale: 1.2;
+}
+
+.frame .overlap-group-2 {
+    background-size: 100% 100%;
+    height: 48px;
+    left: -119px;
+    position: relative;
+    top: 25px;
+    width: 48px;
+    scale: 1.5;
+}
+
+.frame .text-wrapper-3 {
+    color: #ffffff;
+    font-family: "Inter", Helvetica;
+    font-size: 32.7px;
+    font-weight: 400;
+    left: 5px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 3px;
+}
+
+.frame .element-7 {
+    height: 63px;
+    left: 403px;
+    position: absolute;
+    top: 329px;
+    width: 222px;
+    scale: 1.4;
+}
+
+.frame .element-8 {
+    height: 11px;
+    left: 468px;
+    position: absolute;
+    top: 118px;
+    width: 64px;
+}
+
+
+.frame .element-11 {
+    height: 62px;
+    left: 247px;
+    position: absolute;
+    top: 114px;
+    width: 93px;
+    scale: 1.2;
+}
+
+.frame .element-12 {
+    height: 63px;
+    left: 405px;
+    position: absolute;
+    top: 222px;
+    width: 222px;
+    scale: 1.4;
+}
+
+.frame .element-50 {
+    height: 63px;
+    left: 355px;
+    position: absolute;
+    top: 434px;
+    width: 222px;
+    scale: 1.4;
+}
+
+.frame .element-13 {
+    height: 20px;
+    left: 514px;
+    position: absolute;
+    top: 223px;
+    width: 133px;
+}
+
+.frame .element-51 {
+    height: 20px;
+    left: 471px;
+    position: absolute;
+    top: 338px;
+    width: 133px;
+}
+
+
+.frame .element-18 {
+    height: 68px;
+    left: 289px;
+    position: absolute;
+    top: 221px;
+    width: 97px;
+    scale: 1.2;
+}
+
+.frame .element-52 {
+    height: 68px;
+    left: 287px;
+    position: absolute;
+    top: 327px;
+    width: 97px;
+    scale: 1.2;
+}
+
+.frame .element-19 {
+    height: 63px;
+    left: 363px;
+    position: absolute;
+    top: 110px;
+    width: 222px;
+    scale: 1.4;
+}
+
+.frame .element-20 {
+    height: 11px;
+    left: 477px;
+    position: absolute;
+    top: 435px;
+    width: 110px;
+}
+
+.frame .element-23 {
+    height: 68px;
+    left: 243px;
+    position: absolute;
+    top: 431px;
+    width: 95px;
+    scale: 1.2;
+}
+
+.frame .element-24 {
+    height: 63px;
+    left: 263px;
+    position: absolute;
+    top: 520px;
+    width: 222px;
+    scale: 1.4;
+}
+
+.frame .element-25 {
+    height: 22px;
+    left: 381px;
+    position: absolute;
+    top: 529px;
+    width: 120px;
+}
+
+.frame .element-28 {
+    height: 79px;
+    left: 169px;
+    position: absolute;
+    top: 493px;
+    width: 70px;
+    scale: 1.2;
+}
+
+.frame .element-29 {
+    height: 96px;
+    width: 87px;
+    scale: 1.6;
+    position: absolute;
+    top: 198px;
+    left: 79px;
+}
+
+.overlap-2 {
+    position: relative;
+}
+
+.frame .text-wrapper-5 {
+    color: #ffffff;
+    font-family: "Inter", Helvetica;
+    font-size: 32.7px;
+    font-weight: 400;
+    left: 295px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 124px;
+    scale: 1.2;
+}
+
+.frame .text-wrapper-6 {
+    color: #ffffff;
+    font-family: "Inter", Helvetica;
+    font-size: 32.7px;
+    font-weight: 400;
+    left: 335px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 234px;
+    scale: 1.2;
+}
+
+.frame .text-wrapper-44 {
+    color: #ffffff;
+    font-family: "Inter", Helvetica;
+    font-size: 32.7px;
+    font-weight: 400;
+    left: 198px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 532px;
+    scale: 1.2;
+}
+
+.frame .text-wrapper-7 {
+    color: #ffffff;
+    font-family: "Inter", Helvetica;
+    font-size: 32.7px;
+    font-weight: 400;
+    left: 332px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 341px;
+    scale: 1.2;
+}
+
+.frame .text-wrapper-8 {
+    color: #ffffff;
+    font-family: "Inter", Helvetica;
+    font-size: 32.7px;
+    font-weight: 400;
+    left: 286px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 446px;
+    scale: 1.2;
+}
+
+.frame .overlap-3,
+.frame .overlap-4,
+.frame .overlap-6 {
+    height: 62px;
+    position: relative;
+    left: 80px;
+    margin: 140px 0px;
+    scale: 1.2;
+    cursor: pointer;
+}
+
+.frame .element-35 {
+    height: 62px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 147px;
+}
+
+.frame .overlap-group-4 {
+    background-image: url(/assets/img/--5@2x.png);
+    background-size: 100% 100%;
+    height: 62px;
+    position: relative;
+    width: 145px;
+}
+
+.frame .element-36 {
+    height: 50px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 145px;
+}
+
+.frame .text-wrapper-9 {
+    color: #a7aab3;
+    font-family: "Inter", Helvetica;
+    font-size: 16.3px;
+    font-weight: 400;
+    left: 60px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 15px;
+}
+
+.frame .element-37 {
+    height: 19px;
+    left: 31px;
+    position: absolute;
+    top: 17px;
+    width: 5px;
+}
+
+.frame .element-38 {
+    height: 19px;
+    left: 22px;
+    position: absolute;
+    top: 16px;
+    width: 15px;
+}
+
+.frame .overlap-5 {
+    background-image: url(/assets/img/--13@2x.png);
+    background-size: 100% 100%;
+    height: 62px;
+    position: relative;
+    width: 145px;
+}
+
+.frame .element-39 {
+    height: 12px;
+    left: 17px;
+    mix-blend-mode: overlay;
+    position: absolute;
+    top: 15px;
+    width: 12px;
+}
+
+.frame .element-40 {
+    height: 24px;
+    left: 18px;
+    position: absolute;
+    top: 14px;
+    width: 27px;
+}
+
+.frame .overlap-wrapper {
+    background-image: url(/assets/img/--21@2x.png);
+    background-size: 100% 100%;
+    height: 62px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 145px;
+}
+
+.frame .end-of-program-wrapper {
+    background-image: url(/assets/img/--26@2x.png);
+    background-size: 100% 100%;
+    height: 50px;
+}
+
+.frame .end-of-program {
+    height: 40px;
+    left: 53px;
+    position: relative;
+    top: 4px;
+    width: 74px;
+}
+
+.frame .overlap-group-5 {
+    height: 40px;
+    position: relative;
+    width: 70px;
+}
+
+.frame .text-wrapper-10 {
+    color: #a7aab3;
+    font-family: "Inter", Helvetica;
+    font-size: 16.3px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+}
+
+.frame .program {
+    color: #a7aab3;
+    font-family: "Inter", Helvetica;
+    font-size: 16.3px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 20px;
+}
+
+.frame .element-41 {
+    height: 14px;
+    left: 19px;
+    position: absolute;
+    top: 21px;
+    width: 14px;
+}
+
+.frame .element-42 {
+    height: 14px;
+    left: 21px;
+    position: absolute;
+    top: 19px;
+    width: 14px;
+}
+
+.frame .element-43 {
+    height: 14px;
+    left: 945px;
+    position: absolute;
+    top: 487px;
+    width: 1px;
+}
+
+.chooseBtn:active {
+    color: rgb(0, 176, 240) !important;
+}
+
+.chooseBtn.active {
+    color: rgb(0, 176, 240) !important;
+}
+
+
+.chooseBtn {
+    width: 60px;
+    height: 60px;
+    font-size: 38px;
+    --color: #000000;
+    --background-color: #d8d8d8;
+    --border-color: darken(#d8d8d8, 7.5%);
+    color: rgb(114, 114, 114);
+    font-family: inherit;
+    background-color: var(--background-color);
+    padding: $btn-padding;
+    border: solid 1px var(--border-color);
+    outline: none;
+    position: relative;
+    border-radius: $btn-border-radius;
+    user-select: none;
+    box-shadow:
+        0 0.2rem 0.4rem rgba(0, 0, 0, 0.4),
+        0 -0.3rem 0.6rem rgba(0, 0, 0, 0.2) inset;
+    transition: box-shadow $btn-transition-time ease-out;
+
+    &:after {
+        content: "";
+        background-color: #ffffff;
+        width: 75%;
+        height: 12.5%;
+        position: absolute;
+        top: 0.15rem;
+        left: 12.5%;
+        border-radius: 50%;
+        filter: blur(0.15rem);
+        transition: opacity $btn-transition-time ease-out;
+    }
+
+    &:active {
+        box-shadow:
+            0 0 0 rgba(0, 0, 0, 0.4),
+            0 0.4rem 1rem rgba(0, 0, 0, 0.3) inset;
+
+        &:after {
+            opacity: 0;
+        }
+    }
+}
+
+.btn-confirm {
+    border-radius: 50px;
+    height: 85px;
+    width: 8em;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 32px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    margin-top: 5em;
+}

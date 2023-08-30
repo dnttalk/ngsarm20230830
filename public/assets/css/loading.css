@@ -1,0 +1,25 @@
+body {
+    background-image: url("/assets/img/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+p {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+span {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.firstRow {
+    margin-top: 7em;
+}
+
+.oeC.active {
+    color: rgb(0, 253, 42);
+}

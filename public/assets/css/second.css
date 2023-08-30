@@ -1,0 +1,339 @@
+body {
+    background-image: url("/assets/img/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.thHeader {
+    padding-top: 10px;
+}
+
+table {
+    height: 487px;
+    width: 953px;
+}
+
+.tdRow,
+.tdCol {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.tdRow {
+    height: 20px;
+}
+
+th,
+td {
+    height: 53px;
+}
+
+.secondpage-layout {
+    padding: 1rem;
+}
+
+.scircle {
+    border-radius: 50%;
+    width: 85px;
+    height: 85px;
+    margin: 5px 0;
+    font-size: 12px;
+    border: 1px solid rgb(24, 166, 244);
+}
+
+.sscircle {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    font-size: 12px;
+    border: 1px solid rgb(24, 166, 244);
+}
+
+.sscircle.active {
+    background-color: rgb(44, 235, 44);
+}
+
+.ShowUser {
+    background-color: rgb(255, 102, 255);
+    position: absolute;
+    top: 50px;
+    right: 140px;
+    width: 100px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(218, 227, 243);
+}
+
+.nextPage {
+    margin-left: 2.9em;
+    margin-top: -3em;
+}
+
+.prevPage {
+    margin-left: -3.1em;
+    margin-top: -3em;
+}
+
+.changePage:hover {
+    color: rgb(0, 176, 240);
+    background-color: #d8d8d8;
+}
+
+.changePage:active {
+    color: rgb(0, 176, 240) !important;
+}
+
+.changePage {
+    width: 60px;
+    height: 60px;
+    font-size: 38px;
+    --color: #000000;
+    --background-color: #d8d8d8;
+    --border-color: darken(#d8d8d8, 7.5%);
+    color: rgb(0, 176, 240);
+    font-family: inherit;
+    background-color: var(--background-color);
+    padding: $btn-padding;
+    border: solid 1px var(--border-color);
+    outline: none;
+    position: relative;
+    border-radius: $btn-border-radius;
+    user-select: none;
+    box-shadow:
+        0 0.2rem 0.4rem rgba(0, 0, 0, 0.4),
+        0 -0.3rem 0.6rem rgba(0, 0, 0, 0.2) inset;
+    transition: box-shadow $btn-transition-time ease-out;
+
+    &:after {
+        content: "";
+        background-color: #ffffff;
+        width: 75%;
+        height: 12.5%;
+        position: absolute;
+        top: 0.15rem;
+        left: 12.5%;
+        border-radius: 50%;
+        filter: blur(0.15rem);
+        transition: opacity $btn-transition-time ease-out;
+    }
+
+    &:active {
+        box-shadow:
+            0 0 0 rgba(0, 0, 0, 0.4),
+            0 0.4rem 1rem rgba(0, 0, 0, 0.3) inset;
+
+        &:after {
+            opacity: 0;
+        }
+    }
+}
+
+.asbtn {
+    width: 85px;
+    margin: 0 10px;
+}
+
+.modal-body {
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.chooesBtn {
+    width: 100px;
+}
+
+.countPopBtn.active {
+    background-color: rgb(44, 235, 44);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.modal input {
+    font-size: 16px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* 只是一些簡單的CSS樣式，可自行調整 */
+#sampleNumberInput {
+    width: 100px;
+    height: 45px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 34px;
+    padding: 30px 0px;
+    border-radius: 15px;
+    border: 8px dashed rgb(125, 194, 251);
+    margin: 15px;
+}
+
+#sampleNumberInput:focus-visible {
+    border: 8px dashed rgb(125, 194, 251);
+    outline: none;
+}
+
+.scircle.disabled {
+    background-size: 100% 100px !important;
+    background: repeating-linear-gradient(-45deg, rgb(208, 206, 206) 86px, rgb(208, 206, 206) 91px, rgb(255, 255, 255) 50px, rgb(255, 255, 255) 100px);
+}
+
+.processContainer {
+    margin: 7rem 0em;
+}
+
+.countTotalContainerRight {
+    margin-left: auto;
+    margin-right: 10%;
+    margin-top: 12%;
+}
+
+.countTotalContainerLeft {
+    margin-left: 0;
+    margin-right: auto;
+    margin-top: 11%;
+}
+
+.showModelName {
+    background-color: rgb(1, 183, 254);
+    width: 77%;
+    height: 1.8em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -16px;
+    margin-bottom: 50px;
+    border-radius: 0 0 15px 15px;
+}
+
+.showSampleIndex {
+    background-color: rgb(1, 183, 254);
+    width: 77%;
+    height: 3.8em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -16px;
+    margin-bottom: 50px;
+    border-radius: 0 0 15px 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.modalText {
+    font-size: 24px;
+}
+
+.sampleIndexSelectionContainer {
+    font-size: 18px;
+}
+
+.sampleIndexSelectionContainer input {
+    font-size: 18px;
+    padding: 0;
+    border: 3px solid rgb(24, 166, 244);
+    border-radius: 6px;
+}
+
+.selectionBtn1 {
+    font-size: 24px !important;
+    font-weight: bold !important;
+    padding: 0px 23px !important;
+    border: 4px solid rgb(24, 166, 244);
+    margin: 7px 0px !important;
+    border-radius: 6px;
+    width: 110px;
+}
+
+.selectionBtn2 {
+    font-size: 24px !important;
+    font-weight: bold !important;
+    padding: 0px 19px !important;
+    border: 4px solid rgb(0, 0, 255);
+    margin: 7px 0px !important;
+    border-radius: 6px;
+    width: 110px;
+}
+
+.selectionBtn2.active {
+    background-color: rgb(0, 0, 255);
+    color: white;
+}
+
+.selectionBtn1.active {
+    background-color: rgb(24, 166, 244);
+    color: white;
+}
+
+#keyboardContainer {
+    position: absolute;
+    right: 20%;
+    margin-top: -6rem;
+    font-size: 35px;
+    display: none;
+}
+
+#keyboard {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.key {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.key:hover {
+    background-color: #e0e0e0;
+}
+
+.key:active {
+    background-color: #a0a0a0;
+}
+
+
+
+.scircle disabled btn-primary border-5 {
+    background-color: green;
+}

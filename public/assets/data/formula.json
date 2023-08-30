@@ -1,0 +1,96 @@
+{
+    "PCR_Mixes": [
+        {
+            "Mix_Name": "PCR Mix 1",
+            "iNA_2X_PCR_Master_Mix": {
+                "count1": "+1",
+                "count2": "*10"
+            },
+            "iNA_Leukemia_Primer_Pool": {
+                "count1": "+1",
+                "count2": "*2"
+            }
+        },
+        {
+            "Mix_Name": "PCR Mix 2",
+            "iNA_2X_PCR_Master_Mix": {
+                "count1": "+1",
+                "count2": "*10"
+            },
+            "iNA_Leukemia_Primer_Pool": {
+                "count1": "+1",
+                "count2": "*2"
+            }
+        },
+        {
+            "Mix_Name": "PCR Mix 3",
+            "iNA_2X_PCR_Master_Mix": {
+                "count1": "+1",
+                "count2": "*10"
+            },
+            "iNA_Leukemia_Primer_Pool": {
+                "count1": "+1",
+                "count2": "*4"
+            }
+        },
+        {
+            "Mix_Name": "PCR Mix 4",
+            "iNA_2X_PCR_Master_Mix": {
+                "count1": "+1",
+                "count2": "*10"
+            },
+            "iNA_Leukemia_Primer_Pool": {
+                "count1": "+1",
+                "count2": "*2"
+            }
+        },
+        {
+            "Mix_Name": "PCR Mix MP1",
+            "iNA_2X_PCR_Master_Mix": {
+                "count1": "+1",
+                "count2": "*10"
+            },
+            "iNA_Leukemia_Primer_Pool": {
+                "count1": "+1",
+                "count2": "*2"
+            }
+        }
+    ],
+    "Magnetic_Beads": {
+        "count1": "+1",
+        "count2": "*105"
+    },
+    "Fragmentation_Mix": {
+        "iNA_Fragmentation_Reaction_Buffer": {
+            "count1": "+1",
+            "count2": "*7"
+        },
+        "iNA_Fragmentation_Enzyme_Mix": {
+            "count1": "+1",
+            "count2": "*2"
+        }
+    },
+    "Ligation_Mix": {
+        "iNA_Ligation_Master_Mix": {
+            "count1": "+1",
+            "count2": "*30"
+        },
+        "iNA_Ligation_Enhancer": {
+            "count1": "+1"
+        },
+        "iNA_Adaptor_for_Illumina": {
+            "count1": "+1",
+            "count2": "*2.5"
+        }
+    },
+    "U_excision": {
+        "iNA_U_Excision_Enzyme": {
+            "count1": "+1",
+            "count2": "*3"
+        },
+        "TE_buffer": {
+            "count1": "+1",
+            "count2": "*2"
+        }
+    }
+}

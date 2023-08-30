@@ -1,0 +1,98 @@
+{
+    "mpn": {
+        "primer1": [
+            "S502 Primer",
+            "S503 Primer",
+            "S505 Primer",
+            "S506 Primer",
+            "S507 Primer",
+            "S508 Primer",
+            "S510 Primer",
+            "S511 Primer"
+        ],
+        "primer2": [
+            "N701 Primer",
+            "N702 Primer",
+            "N703 Primer",
+            "N704 Primer",
+            "N705 Primer",
+            "N706 Primer",
+            "N707 Primer",
+            "N710 Primer",
+            "N711 Primer",
+            "N712 Primer",
+            "N714 Primer",
+            "N715 Primer"
+        ],
+        "Reagents": [
+            "PCR Mix 1",
+            "PCR Mix 2",
+            "Magnetic beads"
+        ],
+        "SampleLimit": 8,
+        "name": "NPM"
+    },
+    "leukemia": {
+        "primer1": [
+            "S505 Primer",
+            "S506 Primer",
+            "S507 Primer",
+            "S508 Primer"
+        ],
+        "primer2": [
+            "i701 Primer",
+            "i707 Primer",
+            "i708 Primer",
+            "i709 Primer",
+            "i710 Primer",
+            "i711 Primer",
+            "i712 Primer"
+        ],
+        "Reagents": [
+            "PCR Mix 1",
+            "PCR Mix 2",
+            "PCR Mix 3",
+            "PCR Mix 4",
+            "PCR Mix MP1",
+            "Magnetic beads",
+            "Fragmen-tation Mix",
+            "Ligation Mix",
+            "U-excision"
+        ],
+        "SampleLimit": 22,
+        "name": "Leukemia"
+    },
+    "TP53": {
+        "primer1": [
+            "S502 Primer",
+            "S503 Primer",
+            "S505 Primer",
+            "S506 Primer",
+            "S507 Primer",
+            "S508 Primer",
+            "S510 Primer",
+            "S511 Primer"
+        ],
+        "primer2": [
+            "N716 Primer",
+            "N718 Primer",
+            "N719 Primer",
+            "N720 Primer",
+            "N721 Primer",
+            "N722 Primer",
+            "N723 Primer",
+            "N724 Primer",
+            "N726 Primer",
+            "N727 Primer",
+            "N728 Primer",
+            "N729 Primer"
+        ],
+        "Reagents": [
+            "PCR Mix 1",
+            "PCR Mix 2",
+            "Magnetic beads"
+        ],
+        "SampleLimit": 24,
+        "name": "TP53"
+    }
+}

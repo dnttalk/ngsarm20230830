@@ -1,0 +1,73 @@
+section {
+    background-image: url("/assets/img/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+* {
+    letter-spacing: 2px;
+}
+
+html,
+body {
+    font-family: "Open Sans";
+}
+
+a {
+    text-decoration: none;
+}
+
+.d-md-block img {
+    margin: 0px auto;
+    width: 275px;
+    display: block;
+    margin-top: 12em;
+}
+
+.form-control-lg {
+    min-height: calc(1.5em + 1rem + calc(var(--bs-border-width) * 2));
+    padding: 1.1rem 1rem;
+    font-size: 1.25rem;
+    border-radius: inherit !important;
+    border-color: rgba(255, 255, 255, 0);
+    margin: 0 auto;
+    box-shadow: -6px 0 0px -1.4px rgb(9, 127, 245);
+    -moz-box-shadow: -6px 0 0px -1.4px rgb(9, 127, 245);
+    -webkit-box-shadow: -6px 0 0px -1.4px rgb(9, 127, 245);
+    background-color: rgb(247, 247, 247);
+}
+
+.form-control:focus {
+    border-color: rgba(255, 255, 255, 0);
+    box-shadow: -6px 0 0px -1.4px rgb(9, 127, 245);
+    box-shadow: -6px 0 0px -1.4px rgb(9, 127, 245);
+    -moz-box-shadow: -6px 0 0px -1.4px rgb(9, 127, 245);
+    -webkit-box-shadow: -6px 0 0px -1.4px rgb(9, 127, 245);
+    outline: 0;
+}
+
+.btn-primary {
+    background-color: rgb(9, 127, 245);
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+}
+
+.simple-keyboard {
+    max-width: 850px;
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    .form-control {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+}

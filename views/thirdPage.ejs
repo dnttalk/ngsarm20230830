@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        MPN
+    </title>
+    <%- include('./layout/head') -%>
+    <link rel='stylesheet' href='/assets/css/third.css' />
+</head>
+
+
+<body>
+    <div class="fluid-container text-center secondpage-layout">
+        <div class="row">
+            <img id="processImg" src="/assets/img/process4.png" alt="進度條">
+        </div>
+        <div class="currentlyModelContainer">
+            <p id="currentlyModelName"></p>
+            <p id="btn-login"></p>
+        </div>
+        <button id="checkcBtn" type="button" class="changePage btn-primary border-5">All Set!</button>
+        <div class="row checkSOP">
+            <div class="col border-3 border-solid">
+                <button type="button" id="trx1" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Tip Rack A X1</button>
+            </div>
+            <div class="col border-3 border-solid">
+                <button type="button" id="reagents" class="checkbtn checkbtnl btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Reagents</button>
+                <button type="button" id="sample" class="checkbtn checkbtnm btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sample</button>
+                <button type="button" id="ipcrm" class="checkbtn checkbtnr btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Index PCR mix</button>
+            </div>
+            <div class="col border-3 border-solid">
+
+                <button type="button" id="96wpcrp" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">PCR plate</button>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row checkSOP">
+            <div class="col border-3 border-solid">
+                <button type="button" id="trx3" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Tip Rack B X3</button>
+            </div>
+            <div class="col border-3 boder-dashed">
+                <p class="emptyText">Temp. Ctrl. module</p>
+            </div>
+            <div class="col border-3 boder-dashed">
+                <p class="emptyText">Magnetic stand</p>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row checkSOP">
+            <div class="col border-3 boder-dashed">
+                <p class="emptyText">Empty Rack</p>
+            </div>
+            <div class="col border-3 border-solid">
+
+                <button type="button" id="12wpwr" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">12 well plate with reagent</button>
+            </div>
+            <div class="col border-3 border-solid">
+
+                <button type="button" id="dwp" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Deep well plate</button>
+            </div>
+            <div class="col">
+                <div class="done border-3 border-solid">
+                    <button type="button" id="ashcan" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ashcan</button>
+                </div>
+            </div>
+        </div>
+        <div class="row checkSOP">
+            <div class="col border-3 boder-dashed">
+                <p class="emptyText">Empty Rack</p>
+            </div>
+            <div class="col border-empty"></div>
+            <div class="col border-3 border-solid">
+                <button type="button" id="erc" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Empty racks Cleaned</button>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row mt-5 justify-content-between">
+            <div class="col-2">
+                <button type="button" class="changePage prevPage btn-primary border-5">
+                    <i class="fa-solid fa-caret-left"></i>
+                </button>
+            </div>
+            <div class="col-2">
+                <button id="startstep" type="button" class="changePage nextPage btn-primary border-5">
+                    <i class="fa-solid fa-caret-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="showModelName">
+                                <p id="showModelName12"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <img id="sampleImg" src="" alt="示意圖">
+                        </div>
+                        <div class="row">
+                            <p id="showModelCount"></p>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 text-start">
+                                <button id="cancleChoose" type="button" class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">X</button>
+                            </div>
+                            <div class="col-6 text-end">
+                                <button id="doneChoose" type="button" class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">&#10003;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="fluid-container text-center">
+                        <div class="row">
+                            <img id="processImg" src="/assets/img/process4.png" alt="進度條">
+                        </div>
+                        <div class="currentlyModelContainer">
+                            <p id="currentlyModelName">MPN</p>
+                            <p id="btn-login"></p>
+                        </div>
+                        <div class="row modalFirstRow">
+                            <p>MPN NGS library preparation start?</p>
+                        </div>
+                        <div class="row justify-content-md-center my-5">
+                            <div class="col-3">
+                                <button type="button" class="btn chooseBtn" data-bs-dismiss="modal">
+                                    <i class="fa-solid fa-caret-left"></i>
+                                </button>
+                            </div>
+                            <div class="col-3">
+                                <button id="btn-go" type="button" class="btn chooseBtn">
+                                    <i class="fa-solid fa-caret-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./layout/js') -%>
+    <script src="/assets/js/third.js"></script>
+</body>
+
+</html>

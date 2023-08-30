@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>第一頁</title>
+    <%- include('./layout/head') -%>
+    <link rel="stylesheet" href="/assets/css/loading.css" />
+    <script>
+        let user = null;
+        <% if (locals.u) { %>
+        user = '<%= u %>';
+        <% } %>
+    </script>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div id="oe1" class="oeC my-5">
+            <p>Robotic arm<span>...........................</span><span id="oe1" class="oeC">Ready</span></p>
+        </div>
+        <div id="oe2" class="oeC my-5">
+            <p>Temperature module<span>...........</span><span id="oe2" class="oeC">Ready</span></p>
+        </div>
+        <div id="oe3" class="oeC my-5">
+            <p>PCR module<span>...........................</span><span id=" oe3" class="oeC">Ready</span></p>
+        </div>
+        <div id="oe4" class="oeC my-5">
+            <p>Magnetic stand<span>.....................</span><span id="oe4" class="oeC">Ready</span></p>
+        </div>
+        <div id="oe5" class="oeC my-5">
+            <p>Vortex module<span>......................</span><span id="oe5" class="oeC">Ready</span></p>
+        </div>
+        <div id="oe1" class="oeC my-5">
+            <p id="popMessage"></p>
+        </div>
+    </div>
+    <%- include('./layout/js') -%>
+    <script src="/assets/js/loading.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Login</title>
+
+    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+
+    <%- include('./layout/head') -%>
+        <link rel="stylesheet" href="/assets/css/login.css">
+        <link rel="stylesheet" href="/assets/plugins/css/simple-keyboard@latest_build_css_index.css">
+        <link rel="stylesheet" href="/assets/plugins/css/googleapi.css">
+</head>
+
+<body>
+    <section class="vh-100" style="background-color: rgb(250, 250, 250);">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-6">
+                    <div class="card" style="border-radius: 1rem;">
+                        <div class="row g-0">
+                            <div class="card-body p-4 py-5 my-5 text-black">
+                                <form id="loginForm" action="/api/user/login" method="post">
+                                    <div class="d-flex align-items-center mb-5 pb-5">
+                                        <span class="h1 fw-bold mb-0"
+                                            style="color:rgb(9, 127, 245);width: 100%;text-align: center;">Login
+                                            Account</span>
+                                    </div>
+                                    <div class="form-outline my-5">
+                                        <input type="text" name="user" id="user" maxlength="10"
+                                            class="form-control form-control-lg input" placeholder="Username" />
+                                    </div>
+                                    <div class="form-outline my-5">
+                                        <input type="password" name="pwd" id="pwd" maxlength="10"
+                                            class="form-control form-control-lg input" placeholder="Password" />
+                                    </div>
+                                    <div class="form-outline my-5"></div>
+                                    <div class="d-grid gap-2">
+                                        <button id="login" class="btn btn-primary" type="button">sign in</button>
+                                    </div>
+                                    <div class="form-outline my-5"></div>
+                                    <div class="d-grid gap-2">
+                                        <button id="register" class="btn btn-secondary" type="button">sign up</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button id="closePage" class="btn btn-danger" type="button">CLOSE PAGE</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card" style="border-radius: 1rem;">
+                        <div class="row g-0">
+                            <div class="card-body p-4 py-5 my-5 text-black">
+                                <form id="registerForm">
+                                    <div class="d-flex align-items-center mb-5 pb-5">
+
+                                        <span class="h1 fw-bold mb-0"
+                                            style="color:rgb(9, 127, 245);width: 100%;text-align: center;">Create an
+                                            Account</span>
+                                    </div>
+                                    <div class="form-outline my-5">
+                                        <input type="text" name="ruser" id="ruser" maxlength="10"
+                                            class="form-control form-control-lg input" placeholder="Username" />
+                                    </div>
+                                    <div class="form-outline my-5">
+                                        <input type="password" name="rpwd" id="rpwd" maxlength="10"
+                                            class="form-control form-control-lg input" placeholder="Password" />
+                                    </div>
+                                    <div class="form-outline my-5">
+                                        <input type="password" name="rcpwd" id="rcpwd" maxlength="10"
+                                            class="form-control form-control-lg input" placeholder="Confirm Password" />
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <button id="signup" class="btn btn-primary" type="button">SIGN UP</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="simple-keyboard"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/assets/plugins/js/socket.io.js"></script>
+<script src="/assets/plugins/js/jquery-3.7.0.min.js"></script>
+<script src="/assets/plugins/js/jquery.cookie.min.js"></script>
+<script src="/assets/plugins/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/plugins/js/simple-keyboard@latest_build_index.js"></script>
+<script src="/assets/js/login.js"></script>
+
+</html>
