@@ -1,5 +1,6 @@
 let primer1 = [];
 let primer2 = [];
+let formula = null
 
 $(function () {
     init()
@@ -36,6 +37,11 @@ let init = function () {
                 }
             })
         });
+    fetch('/assets/data/formula.json')
+        .then((response) => response.json())
+        .then((json) => {
+            formula = json
+        });
 }
 
 // 檢查項
@@ -54,10 +60,93 @@ let checkDoneEvent = function () {
 let countPopBtnEvent = function () {
     $('.countPopBtn').click(function () {
         $(".showModelName").children().text($(this).text())
-        let count = parseInt($('#sampleNumberInput').val())
-        $('#masterMix').text((10 * (count + 1)).toString() + 'µl')
-        $('#primerPool').text((2 * (count + 1)).toString() + 'µl')
-        $('#total').text(((10 * (count + 1)) + (2 * (count + 1))).toString() + 'µl')
+        $('.contentInner').empty()
+        for (const key in formula) {
+            if ($(this).text().indexOf(key) >= 0) {
+                let showData = null
+                formula[key].forEach((cell) => {
+                    if (cell['Name'] == $(this).text()) {
+                        showData = cell
+                    }
+                })
+                // 如果有total
+
+                if (showData['total'] == true) {
+                    let total = 0
+                    for (const keyc in showData) {
+                        if (keyc != 'Name' && keyc != 'total') {
+                            let count = parseInt($('#sampleNumberInput').val())
+                            for (let i = 1; i < 5; i++) {
+                                if (showData[keyc][`count${i}`]) {
+                                    if (showData[keyc][`count${i}`].indexOf('+') >= 0) {
+                                        count = count + parseInt(showData[keyc][`count${i}`].replace('+', ''))
+                                    }
+                                    if (showData[keyc][`count${i}`].indexOf('*') >= 0) {
+                                        count = count * parseInt(showData[keyc][`count${i}`].replace('*', ''))
+                                    }
+                                }
+                            }
+                            if (showData['Name'] == 'Fragmen-tation Mix') {
+                                $('.contentInner').append(`
+                                    <div class="row">
+                                        <div class="modalText" style="justify-content: space-between; padding-bottom: 2rem;">
+                                            <p style="font-size:20px;">${keyc}</span>&emsp;:</p>
+                                            <p style="font-size:20px;"><span id="masterMix">${count.toString() + 'µl'}</span></p>
+                                        </div>
+                                    </div>
+                                `)
+                            } else {
+                                $('.contentInner').append(`
+                                    <div class="row">
+                                        <div class="modalText" style="display: flex; justify-content: space-between; padding-bottom: 2rem;">
+                                            <p style="font-size:20px;">${keyc}</span>&emsp;:</p>
+                                            <p style="font-size:20px;"><span id="masterMix">${count.toString() + 'µl'}</span></p>
+                                        </div>
+                                    </div>
+                                `)
+                            }
+                            total = total + count
+                        }
+                        if (keyc == 'total') {
+                            $('.contentInner').append(`
+                            <hr class="my-4">
+                            <div class="row my-4">
+                                <div class="modalText" style="display: flex; justify-content: space-between;">
+                                    <p style="font-size:20px">Total&emsp;:</p>
+                                    <p style="font-size:20px"><span id="total">${total}µl</span></p>
+                                </div>
+                            </div>
+                        `)
+                        }
+                    }
+                } else {
+                    for (const keyc in showData) {
+                        if (keyc != 'Name' && keyc != 'total') {
+                            let count = parseInt($('#sampleNumberInput').val())
+                            for (let i = 1; i < 5; i++) {
+                                if (showData[keyc][`count${i}`]) {
+                                    if (showData[keyc][`count${i}`].indexOf('+') >= 0) {
+                                        count = count + parseInt(showData[keyc][`count${i}`].replace('+', ''))
+                                    }
+                                    if (showData[keyc][`count${i}`].indexOf('*') >= 0) {
+                                        count = count * parseInt(showData[keyc][`count${i}`].replace('*', ''))
+                                    }
+                                }
+                            }
+                            $('.contentInner').append(`
+                                <div class="row">
+                                    <div class="modalText" style="display: flex; justify-content: space-between; padding-bottom: 2rem;">
+                                        <p style="font-size:20px;">${keyc}</span>&emsp;:</p>
+                                        <p style="font-size:20px;"><span id="masterMix">${count.toString() + 'µl'}</span></p>
+                                    </div>
+                                </div>
+                            `)
+
+                        }
+                    }
+                }
+            }
+        }
         $('#cancleChoose').attr('dataId', $(this).attr('id'))
         $('#doneChoose').attr('dataId', $(this).attr('id'))
     })
@@ -65,11 +154,18 @@ let countPopBtnEvent = function () {
 
 // 檢查是否全部按鈕都Active
 let checkEvent = function () {
-    if ($('#pm1').hasClass('active') && $('#mb').hasClass('active') && $('#pm2').hasClass('active')) {
+    let checkAllBtnActive = true
+    $('.countPopBtn').each(function () {
+        if (!$(this).hasClass('disabled')) {
+            if (!$(this).hasClass('active')) {
+                checkAllBtnActive = false
+            }
+        }
+    })
+    if (checkAllBtnActive) {
         $('.nextPage').css('cursor', 'pointer')
         $('.nextPage').css('background-color', 'rgb(0, 0, 204)')
         $('.nextPage').css('color', 'white')
-
     } else {
         $('.nextPage').css('cursor', 'not-allowed')
         $('.nextPage').css('background-color', '#d8d8d8')
@@ -81,7 +177,15 @@ let nextPageEvent = function () {
     $('.nextPage').css('cursor', 'not-allowed')
     $('.nextPage').click(function () {
         let id = getUrlParameter('id')
-        if ($('#pm1').hasClass('active') && $('#mb').hasClass('active') && $('#pm2').hasClass('active')) {
+        let checkAllBtnActive = true
+        $('.countPopBtn').each(function () {
+            if (!$(this).hasClass('disabled')) {
+                if (!$(this).hasClass('active')) {
+                    checkAllBtnActive = false
+                }
+            }
+        })
+        if (checkAllBtnActive) {
             window.location.href = "/secondCheck?id=" + id + "&scount=" + $('#sampleNumberInput').val();
         }
     })
@@ -108,7 +212,6 @@ let updateSscircleBtnEvent = function () {
             $(`#tdFirst_${i}`).find('.sscircle').removeClass('active')
             $(`#tdSecond_${i}`).find('.sscircle').removeClass('active')
         }
-
     }
 }
 
@@ -125,7 +228,6 @@ keys.forEach(key => {
             $('#sampleNumberInput').val(1)
         } else if (value === 'OK') {
             $('#keyboardContainer').css('display', 'none')
-
         } else {
             if (parseInt($('#sampleNumberInput').val()) + parseInt(value) >= parseInt($('#sampleNumberInput').attr('max'))) {
                 $('#sampleNumberInput').val(parseInt($('#sampleNumberInput').attr('max')))

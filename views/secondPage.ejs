@@ -6,7 +6,7 @@
         MPN
     </title>
     <%- include('./layout/head') -%>
-        <link rel='stylesheet' href='/assets/css/second.css' />
+    <link rel='stylesheet' href='/assets/css/second.css' />
 
 </head>
 
@@ -39,63 +39,43 @@
                                 <div class="row">
 
                                     <div class="col-sm-6">
-                                        <button type="button" id="reagents1"
-                                            class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop"></button>
+                                        <button type="button" id="reagents1" class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button type="button" id="reagents6"
-                                            class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop"></button>
+                                        <button type="button" id="reagents6" class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <button type="button" id="reagents2"
-                                            class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop"></button>
+                                        <button type="button" id="reagents2" class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button type="button" id="reagents7"
-                                            class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop"></button>
+                                        <button type="button" id="reagents7" class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
                                     </div>
                                 </div>
                                 <div class="row">
 
                                     <div class="col-sm-6">
-                                        <button type="button" id="reagents3"
-                                            class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop"></button>
+                                        <button type="button" id="reagents3" class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button type="button" id="reagents8"
-                                            class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop"></button>
+                                        <button type="button" id="reagents8" class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <button type="button" id="reagents4"
-                                            class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop"></button>
+                                        <button type="button" id="reagents4" class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button type="button" id="reagents9"
-                                            class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop"></button>
+                                        <button type="button" id="reagents9" class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <button type="button" id="reagents5"
-                                            class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop"></button>
+                                        <button type="button" id="reagents5" class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button type="button" id="reagents10"
-                                            class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop"></button>
+                                        <button type="button" id="reagents10" class="countPopBtn scircle btn-primary border-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
                                     </div>
                                 </div>
                             </td>
@@ -329,44 +309,45 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade bg-transparent" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
-        <div class="modal-dialog countTotalContainerRight">
+    <div class="modal fade bg-transparent" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
+        <div class="modal-dialog modal-md countTotalContainerRight">
             <div class="modal-content">
                 <div class="modal-body text-center">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="showModelName">
-                                <p></p>
+                                <p style="font-size: 31px;"></p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="modalText" style="display: flex; justify-content: space-between;">
-                                <p>iNA-2X PCR Master Mix</span>&emsp;:</p>
-                                <p><span id="masterMix"></span></p>
+                        <div class="contentInner">
+                            <!-- <div class="row">
+                                <div class="modalText" style="display: flex; justify-content: space-between;">
+                                    <p>iNA-2X PCR Master Mix</span>&emsp;:</p>
+                                    <p><span id="masterMix"></span></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="modalText" style="display: flex; justify-content: space-between;">
-                                <p>iNA-MPN Pool 1</span>&emsp;:</p>
-                                <p><span id="primerPool"></span></p>
+                            <div class="row">
+                                <div class="modalText" style="display: flex; justify-content: space-between;">
+                                    <p>iNA-MPN Pool 1</span>&emsp;:</p>
+                                    <p><span id="primerPool"></span></p>
+                                </div>
                             </div>
+                            <hr class="my-4">
+                            <div class="row my-4">
+                                <div class="modalText" style="display: flex; justify-content: space-between;">
+                                    <p>Total&emsp;:</p>
+                                    <p><span id="total"></span></p>
+                                </div>
+                            </div> -->
                         </div>
-                        <hr class="my-4">
-                        <div class="row my-4">
-                            <div class="modalText" style="display: flex; justify-content: space-between;">
-                                <p>Total&emsp;:</p>
-                                <p><span id="total"></span></p>
-                            </div>
-                        </div>
+
+
                         <div class="row">
                             <div class="col-6 text-start">
-                                <button id="cancleChoose" type="button"
-                                    class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">X</button>
+                                <button id="cancleChoose" type="button" class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">X</button>
                             </div>
                             <div class="col-6 text-end">
-                                <button id="doneChoose" type="button" class="chooesBtn changePage btn-primary border-5"
-                                    data-bs-dismiss="modal">&#10003;</button>
+                                <button id="doneChoose" type="button" class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">&#10003;</button>
                             </div>
                         </div>
                     </div>
@@ -392,7 +373,7 @@
         </div>
     </div>
     <%- include('./layout/js') -%>
-        <script src="/assets/js/secondPage.js"></script>
+    <script src="/assets/js/secondPage.js"></script>
 </body>
 
 </html>
