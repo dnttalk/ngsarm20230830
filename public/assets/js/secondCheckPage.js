@@ -27,7 +27,7 @@ let nextPageEvent = function () {
             let id = getUrlParameter('id')
             window.location.href = "/third?id=" + id;
         } else {
-            alert('Please Complate Sample&Index Setting!')
+            showCenteredAlert('Please Complate Sample&Index Setting!')
         }
 
     })
@@ -120,7 +120,7 @@ let tdEvent = function () {
                 }
             }
             if (check) {
-                alert('Selected primer combination conflicts with the other sample. Please choose different primers.')
+                showCenteredAlert('Selected primer combination conflicts with the other sample. Please choose different primers.')
             } else {
                 $('.selectionBtn1').removeClass('active')
                 $(this).addClass('active')
@@ -140,7 +140,7 @@ let tdEvent = function () {
                 }
             }
             if (check) {
-                alert('Selected primer combination conflicts with the other sample. Please choose different primers.')
+                showCenteredAlert('Selected primer combination conflicts with the other sample. Please choose different primers.')
             } else {
                 $('.selectionBtn2').removeClass('active')
                 $(this).addClass('active')
@@ -169,7 +169,7 @@ let tdEvent = function () {
 
             checkEvent()
         } else {
-            alert('Please Check Sample Number and Selection !')
+            showCenteredAlert('Please Check Sample Number and Selection !')
         }
     })
 }
@@ -295,3 +295,20 @@ function handleNumbers() {
         layoutName: numbersToggle
     });
 }
+function showCenteredAlert(message) {
+    var alertContainer = $('<div>').addClass('alert-container');
+    var alertBox = $('<div>').addClass('alert-box').text(message);
+    alertContainer.append(alertBox);
+    $('body').append(alertContainer);
+
+    // Remove the alert after a certain time
+    setTimeout(function () {
+        alertContainer.remove();
+    }, 2000); // Remove after 2 seconds
+}
+$(document).ready(function () {
+    $("#existBtn").click(function () {
+        $("#exampleModal").modal("show");
+    });
+    btnChooseEvent();
+});

@@ -74,8 +74,14 @@ function fadeAnimation($element, duration) {
         });
     });
 }
-let curryInput = '#sName'
-let Keyboard = window.SimpleKeyboard.default;
+let curryInput;
+let Keyboard;
+
+if (curryInput === '#lotnumber') {
+    Keyboard = window.SimpleKeyboard.number;
+} else {
+    Keyboard = window.SimpleKeyboard.default;
+}
 
 let keyboard = new Keyboard({
     onChange: input => onChange(input),

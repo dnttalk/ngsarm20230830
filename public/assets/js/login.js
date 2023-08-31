@@ -3,7 +3,7 @@ var user = document.querySelector("#user")
 var pwd = document.querySelector('#pwd')
 var login = document.querySelector('#login')
 var form = document.querySelector('#loginForm')
-const socket = io("http://your-server-address:port");
+const socket = io("http://http://localhost:3000/");
 
 $(function () {
     registerEvent()
@@ -12,7 +12,7 @@ $(function () {
 login.onclick = function (e) {
     if (user.value === '' || pwd.value === '') {
         e.preventDefault()
-        alert("Username and password are required......")
+        showCenteredAlert("Username and password are required......")
     } else {
         form.action = '/api/user/login'
         form.submit()
@@ -36,7 +36,7 @@ let registerEvent = function () {
             paramObj[kv.name] = kv.value;
         });
         if (empty == 0) {
-            alert('Please Check Register Infomation')
+            showCenteredAlert('Please Check Register Infomation')
         } else {
             $.ajax({
                 url: '/api/user/register',
@@ -47,7 +47,7 @@ let registerEvent = function () {
                 cache: false,
                 processData: false,
                 success: function (data) {
-                    alert(data.message)
+                    showCenteredAlert(data.message)
                 }, error: function (data) {
                     $('#popMessage').text('伺服器發生錯誤, 請稍後在試')
                 }
@@ -212,8 +212,17 @@ function handleNumbers() {
 
 document.getElementById("closePage").addEventListener("click", function () {
     socket.emit('close'); // 发送关闭消息到服务器
+    window.close(); // 延迟一段时间后关闭窗口
 
-    setTimeout(() => {
-        window.close(); // 延迟一段时间后关闭窗口
-    }, 5000);
 });
+function showCenteredAlert(message) {
+    var alertContainer = $('<div>').addClass('alert-container');
+    var alertBox = $('<div>').addClass('alert-box').text(message);
+    alertContainer.append(alertBox);
+    $('body').append(alertContainer);
+
+    // Remove the alert after a certain time
+    setTimeout(function () {
+        alertContainer.remove();
+    }, 2000); // Remove after 2 seconds
+}

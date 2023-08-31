@@ -1,9 +1,10 @@
 $(document).ready(function () {
     const requiredSections = [
-        '#trx1', '#reagents', '#sample', '#ipcrm', '#96wpcrp',
+        '#trx1',
+        //  '#reagents', '#sample', '#ipcrm',
+        '#96wpcrp',
         '#trx3', '#12wpwr', '#dwp', '#ashcan', '#erc'
     ];
-
     function updateNextButtonState() {
         const allSectionsActive = requiredSections.every(section => $(section).hasClass('active'));
         const $nextPageButton = $('.nextPage');
@@ -21,7 +22,6 @@ $(document).ready(function () {
             });
         }
     }
-
     function updateBorderColor() {
         $('.border-solid').each(function () {
             let activeBorder = 1
@@ -62,10 +62,6 @@ $(document).ready(function () {
         if (requiredSections.every(section => $(section).hasClass('active'))) {
             let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('exampleModal'))
             modal.show()
-            // window.location.href = "/fifth";
-            // $.get("/api/start/stepstart", function (data) {
-            //     console.log(data);
-            // });
         }
     });
 
