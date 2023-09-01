@@ -50,7 +50,7 @@ let ChangeStatus = function () {
         } else {
             processStatus++
             clearInterval(cStatus)
-            $('#popMessage').text('page jump...')
+            $('#popMessage').text('Finish...')
             setTimeout(function () {
                 window.location.href = "/";
             }, 1000)

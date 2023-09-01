@@ -17,7 +17,7 @@ let loadAllSampleBtn = function () {
             Object.keys(json).forEach(function (k) {
                 $('.chooseContainer').append(`
                 <div class="col-3 mx-3">
-                    <button id="${k.toLocaleLowerCase()}" class="fsbtn btn btn-primary border-5" data-bs-dismiss="modal">${k.toUpperCase()}</button>
+                    <button id="${k}" class="fsbtn btn btn-primary border-5" data-bs-dismiss="modal">${k}</button>
                 </div>
                 `)
             });
@@ -28,6 +28,8 @@ let resetCookie = function () {
     $.removeCookie("sname");
     $.removeCookie("lotnumber");
     $.removeCookie("cmodelname");
+    $.removeCookie("reportTable");
+
 }
 
 async function statusEvent() {
@@ -74,15 +76,8 @@ function fadeAnimation($element, duration) {
         });
     });
 }
-let curryInput;
-let Keyboard;
-
-if (curryInput === '#lotnumber') {
-    Keyboard = window.SimpleKeyboard.number;
-} else {
-    Keyboard = window.SimpleKeyboard.default;
-}
-
+let curryInput = '#sName';
+let Keyboard = window.SimpleKeyboard.default;
 let keyboard = new Keyboard({
     onChange: input => onChange(input),
     onKeyPress: button => onKeyPress(button),
@@ -121,6 +116,8 @@ let keyboard = new Keyboard({
         "{abc}": "ABC"
     }
 });
+
+
 
 // 处理数字按钮切换
 function handleNumbers() {
@@ -168,19 +165,22 @@ function isInputElement(element, inputElements) {
     }
     return false;
 }
-function onChange(input) {
-
-}
 
 function onKeyPress(button) {
+    const maxInputLength = 10; // 设置最大输入字符数量
+    const currentInput = document.querySelector(curryInput).value;
     if (button == '{backspace}') {
         document.querySelector(curryInput).value = document.querySelector(curryInput).value.substring(0, document.querySelector(curryInput).value.length - 1);
     } else if (button == '{backspace}' || button == '{shift}' || button == '{ent}' || button == '{enter}' || button == '{numbers}' || button == '{abc}') {
 
     } else if (button == '{space}') {
-        document.querySelector(curryInput).value = document.querySelector(curryInput).value + ' '
+        if (currentInput.length < maxInputLength) {
+            document.querySelector(curryInput).value = currentInput + ' ';
+        }
     } else {
-        document.querySelector(curryInput).value = document.querySelector(curryInput).value + button
+        if (currentInput.length < maxInputLength) {
+            document.querySelector(curryInput).value = currentInput + button;
+        }
     }
     console.log("Button pressed", button);
 
@@ -209,7 +209,7 @@ function handleNumbers() {
 function btnChooseEvent() {
     $(document).on('click', '.fsbtn', function (e) {
         if ($('#sName').val().length == 0 || $('#lotnumber').val() == 0) {
-            showCenteredAlert('please input Samplename and LotNumber')
+            showCenteredAlert('Please input ProjectName and LotNumber')
         } else {
             $.cookie("sname", $('#sName').val(), { path: '/' });
             $.cookie("lotnumber", $('#lotnumber').val(), { path: '/' });

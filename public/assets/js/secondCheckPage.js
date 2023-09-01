@@ -1,3 +1,5 @@
+let arr1 = [];
+let arr2 = [];
 $(function () {
     initData()
     nextPageEvent()
@@ -7,7 +9,25 @@ $(function () {
 
 let initData = function () {
     let scount = getUrlParameter('scount')
+    console.log(scount)
     $('#sampleNumberInput').val(scount)
+
+    let id = getUrlParameter('id')
+    fetch('../assets/data/sample.json')
+        .then((response) => response.json())
+        .then((json) => {
+            $('.samplenumberContainer').append(`
+                <h1>Samples: <input type="number" pattern="\d*" max="${json[id]['SampleLimit']}" min="1" value="1" id="sampleNumberInput" oninput="if(value<=0)value=1;if(value>${json[id]['SampleLimit']})value=${json[id]['SampleLimit']};" inputmode="numeric" /></h1>
+            `)
+            arr1 = json[id]['primer1']
+            arr2 = json[id]['primer2']
+            for (let i = 0; i < arr1.length; i++) {
+                arr1[i] = arr1[i].replace(' Primer', '')
+            }
+            for (let i = 0; i < arr2.length; i++) {
+                arr2[i] = arr2[i].replace(' Primer', '')
+            }
+        });
 }
 
 // 下一頁允許事件
@@ -24,10 +44,17 @@ let nextPageEvent = function () {
             }
         }
         if (check) {
+            let history = []
+            for (let i = 1; i <= 24; i++) {
+                if (i <= $('#sampleNumberInput').val()) {
+                    history.push([$(`#tdFirst_${i}`).attr('id'), $(`#tdFirst_${i}`).attr('sn'), $(`#tdFirst_${i}`).attr('s1'), $(`#tdFirst_${i}`).attr('s2')])
+                }
+            }
+            $.cookie("reportTable", history, { path: '/' });
             let id = getUrlParameter('id')
             window.location.href = "/third?id=" + id;
         } else {
-            showCenteredAlert('Please Complate Sample&Index Setting!')
+            alert('Please Complate Sample&Index Setting!')
         }
 
     })
@@ -120,7 +147,7 @@ let tdEvent = function () {
                 }
             }
             if (check) {
-                showCenteredAlert('Selected primer combination conflicts with the other sample. Please choose different primers.')
+                alert('Selected primer combination conflicts with the other sample. Please choose different primers.')
             } else {
                 $('.selectionBtn1').removeClass('active')
                 $(this).addClass('active')
@@ -140,7 +167,7 @@ let tdEvent = function () {
                 }
             }
             if (check) {
-                showCenteredAlert('Selected primer combination conflicts with the other sample. Please choose different primers.')
+                alert('Selected primer combination conflicts with the other sample. Please choose different primers.')
             } else {
                 $('.selectionBtn2').removeClass('active')
                 $(this).addClass('active')
@@ -169,7 +196,7 @@ let tdEvent = function () {
 
             checkEvent()
         } else {
-            showCenteredAlert('Please Check Sample Number and Selection !')
+            alert('Please Check Sample Number and Selection !')
         }
     })
 }
@@ -295,20 +322,3 @@ function handleNumbers() {
         layoutName: numbersToggle
     });
 }
-function showCenteredAlert(message) {
-    var alertContainer = $('<div>').addClass('alert-container');
-    var alertBox = $('<div>').addClass('alert-box').text(message);
-    alertContainer.append(alertBox);
-    $('body').append(alertContainer);
-
-    // Remove the alert after a certain time
-    setTimeout(function () {
-        alertContainer.remove();
-    }, 2000); // Remove after 2 seconds
-}
-$(document).ready(function () {
-    $("#existBtn").click(function () {
-        $("#exampleModal").modal("show");
-    });
-    btnChooseEvent();
-});

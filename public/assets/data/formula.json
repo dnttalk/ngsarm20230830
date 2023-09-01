@@ -88,11 +88,11 @@
     "Ligation": [
         {
             "Name": "Ligation Mix",
-            "iNA_Ligation_Master_Mix": {
+            "iNA Ligation_Master_Mix": {
                 "count1": "+1",
                 "count2": "*30"
             },
-            "iNA_Ligation_Enhancer": {
+            "iNA Ligation_Enhancer": {
                 "count1": "+1"
             },
             "iNA_Adaptor_for_Illumina": {

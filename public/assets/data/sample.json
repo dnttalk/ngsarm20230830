@@ -1,5 +1,5 @@
 {
-    "mpn": {
+    "MPN": {
         "primer1": [
             "S502 Primer",
             "S503 Primer",
@@ -29,10 +29,10 @@
             "PCR Mix 2",
             "Magnetic beads"
         ],
-        "SampleLimit": 8,
-        "name": "NPM"
+        "SampleLimit": 22,
+        "name": "MPN"
     },
-    "leukemia": {
+    "Leukemia": {
         "primer1": [
             "S505 Primer",
             "S506 Primer",
@@ -59,7 +59,7 @@
             "Ligation Mix",
             "U-excision"
         ],
-        "SampleLimit": 22,
+        "SampleLimit": 8,
         "name": "Leukemia"
     },
     "TP53": {

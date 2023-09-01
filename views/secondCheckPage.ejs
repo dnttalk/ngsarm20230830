@@ -28,29 +28,7 @@
                     <img src="/assets/img/secondPageProcess2.png" alt="目前步驟">
                 </div>
                 <div class="row">
-                    <script>
-                        let arr1 = [];
-                        let arr2 = [];
-                    </script>
-                    <% if(id=='mpn' ){ %>
-                    <script>
-                        arr1 = ['S502', 'S503', 'S505', 'S506', 'S507', 'S508', 'S510', 'S511']
-                        arr2 = ['N701', 'N702', 'N703', 'N704', 'N705', 'N706', 'N707', 'N710', 'N711', 'N712', 'N714', 'N715']
-                    </script>
-                    <h1>Samples: <input type="number" pattern="\d*" max="8" min="1" value="1" id="sampleNumberInput" disabled oninput="if(value<=0)value=1;if(value>8)value=8;" inputmode="numeric"></h1>
-                    <% }else if(id=='leukemia' ){ %>
-                    <script>
-                        arr1 = ['S505', 'S506', 'S507', 'S508']
-                        arr2 = ['i701', 'i707', 'i708', 'i709', 'i710', 'i711', 'i712']
-                    </script>
-                    <h1>Samples: <input type="number" max="22" min="1" value="1" id="sampleNumberInput" disabled oninput="if(value<=0)value=1;if(value>22)value=22;"></h1>
-                    <% }else{ %>
-                    <script>
-                        arr1 = ['S502', 'S503', 'S505', 'S506', 'S507', 'S508', 'S510', 'S511']
-                        arr2 = ['N716', 'N718', 'N719', 'N720', 'N721', 'N722', 'N723', 'N724', 'N726', 'N727', 'N728', 'N729']
-                    </script>
-                    <h1>Samples: <input type="number" max="24" min="1" value="1" id="sampleNumberInput" disabled oninput="if(value<=0)value=1;if(value>24)value=24;"></h1>
-                    <% } %>
+                    <h1>Samples: <input type="number" id="sampleNumberInput" disabled></h1>
                 </div>
             </div>
             <div class="col-10">

@@ -4,9 +4,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Login</title>
-
-    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
-
     <%- include('./layout/head') -%>
         <link rel="stylesheet" href="/assets/css/login.css">
         <link rel="stylesheet" href="/assets/plugins/css/simple-keyboard@latest_build_css_index.css">
@@ -20,7 +17,7 @@
                 <div class="col-6">
                     <div class="card" style="border-radius: 1rem;">
                         <div class="row g-0">
-                            <div class="card-body p-4 py-5 my-5 text-black">
+                            <div class="card-body p-4 pt-5 text-black">
                                 <form id="loginForm" action="/api/user/login" method="post">
                                     <div class="d-flex align-items-center mb-5 pb-5">
                                         <span class="h1 fw-bold mb-0"
@@ -37,24 +34,25 @@
                                     </div>
                                     <div class="form-outline my-5"></div>
                                     <div class="d-grid gap-2">
-                                        <button id="login" class="btn btn-primary" type="button">sign in</button>
+                                        <button id="login" class="btn btn-primary" type="button">Sign In</button>
                                     </div>
                                     <div class="form-outline my-5"></div>
                                     <div class="d-grid gap-2">
-                                        <button id="register" class="btn btn-secondary" type="button">sign up</button>
+                                        <button id="register" class="btn btn-secondary" type="button">Sign Up</button>
                                     </div>
                                 </form>
+                                <div class="d-grid gap-2">
+                                    <button id="closePage" class="btn btn-danger" type="button">Close Page</button>
+                                </div>
                             </div>
-                            <div class="d-grid gap-2">
-                                <button id="closePage" class="btn btn-danger" type="button">CLOSE PAGE</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="card" style="border-radius: 1rem;">
                         <div class="row g-0">
-                            <div class="card-body p-4 py-5 my-5 text-black">
+                            <div class="card-body p-4 pt-5 text-black">
                                 <form id="registerForm">
                                     <div class="d-flex align-items-center mb-5 pb-5">
 
@@ -75,7 +73,7 @@
                                             class="form-control form-control-lg input" placeholder="Confirm Password" />
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <button id="signup" class="btn btn-primary" type="button">SIGN UP</button>
+                                        <button id="signup" class="btn btn-primary" type="button">Sign Up</button>
                                     </div>
                                 </form>
                             </div>
@@ -87,8 +85,6 @@
         </div>
     </section>
 </body>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/assets/plugins/js/socket.io.js"></script>
 <script src="/assets/plugins/js/jquery-3.7.0.min.js"></script>
 <script src="/assets/plugins/js/jquery.cookie.min.js"></script>
 <script src="/assets/plugins/js/bootstrap.bundle.min.js"></script>

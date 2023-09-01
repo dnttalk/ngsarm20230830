@@ -3,7 +3,7 @@ var user = document.querySelector("#user")
 var pwd = document.querySelector('#pwd')
 var login = document.querySelector('#login')
 var form = document.querySelector('#loginForm')
-const socket = io("http://http://localhost:3000/");
+
 
 $(function () {
     registerEvent()
@@ -174,14 +174,20 @@ function onChange(input) {
 }
 
 function onKeyPress(button) {
+    const maxInputLength = 10; // 设置最大输入字符数量
+    const currentInput = document.querySelector(curryInput).value;
     if (button == '{backspace}') {
         document.querySelector(curryInput).value = document.querySelector(curryInput).value.substring(0, document.querySelector(curryInput).value.length - 1);
     } else if (button == '{backspace}' || button == '{shift}' || button == '{ent}' || button == '{enter}' || button == '{numbers}' || button == '{abc}') {
 
     } else if (button == '{space}') {
-        document.querySelector(curryInput).value = document.querySelector(curryInput).value + ' '
+        if (currentInput.length < maxInputLength) {
+            document.querySelector(curryInput).value = currentInput + ' ';
+        }
     } else {
-        document.querySelector(curryInput).value = document.querySelector(curryInput).value + button
+        if (currentInput.length < maxInputLength) {
+            document.querySelector(curryInput).value = currentInput + button;
+        }
     }
     console.log("Button pressed", button);
 
@@ -211,9 +217,10 @@ function handleNumbers() {
 
 
 document.getElementById("closePage").addEventListener("click", function () {
-    socket.emit('close'); // 发送关闭消息到服务器
-    window.close(); // 延迟一段时间后关闭窗口
-
+    $.get("/api/admin/closeAllProcess", function (data) {
+        console.log(data);
+    });
+    window.close()
 });
 function showCenteredAlert(message) {
     var alertContainer = $('<div>').addClass('alert-container');

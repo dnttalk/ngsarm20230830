@@ -37,6 +37,10 @@ router.get('/login', pageController.loginPage);
 // API區段
 router.post('/api/user/register', loginController.register)
 router.post('/api/user/login', loginController.login)
+// 關閉所有程序
+router.get('/api/admin/closeAllProcess', (req, res) => {
+    process.exit(0)
+})
 // 示例路由处理程序，使用 apiUrl
 router.get('', (req, res) => {
     const apiUrl = req.path;

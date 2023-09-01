@@ -1,33 +1,14 @@
 const app = require('../app');
 const debug = require('debug')('nodejs-03:server');
 const http = require('http');
-const socketIo = require('socket.io');
+// const socketIo = require('socket.io');
 const { exec } = require('child_process');
-const WebSocket = require('ws');
+// const WebSocket = require('ws');
 
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
-const io = socketIo(server);
-wss.on('connection', handleWebSocketConnection);
-io.on('connection', (socket) => {
-    console.log('A client connected.');
-
-    // 监听关闭消息
-    socket.on('close', () => {
-        console.log('Server is shutting down...');
-
-        // 执行清理操作，如关闭数据库连接等
-
-        // 关闭服务器
-        server.close(() => {
-            console.log('Server has been closed.');
-            process.exit(0);
-        });
-    });
-});
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
@@ -87,7 +68,7 @@ function handleWebSocketConnection(ws) {
 
 async function gracefulShutdown() {
     console.log('收到退出信号，正在优雅地关闭。');
-    await closeWebSocketServer();
+    // await closeWebSocketServer();
     await closeHttpServer();
     console.log('已成功关闭。');
     process.exit(0);
@@ -116,13 +97,24 @@ function onListening() {
     const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
     debug('Listening on ' + bind);
     console.log(`Server running at http://localhost:${port}/`);
-    openBrowser(`http://localhost:${port}`);
+    const { platform } = require('os');
+    const { exec } = require('child_process');
+    const WINDOWS_PLATFORM = 'win32';
+    const osPlatform = platform();
+    let url = 'http://localhost:3000/'
+    let command;
+
+    if (osPlatform === WINDOWS_PLATFORM) {
+        command = `start chrome ${url} --kiosk --incognito --disable-pinch --overscroll-history-navigation=0`;
+    }
+    console.log(`executing command: ${command}`);
+
+    exec(command);
 }
 
 process.on('exit', (code) => {
     console.log(`进程即将退出，退出码: ${code}`);
     gracefulShutdown();
+
 });
 
-process.on('SIGINT', gracefulShutdown);
-process.on('SIGTERM', gracefulShutdown);
