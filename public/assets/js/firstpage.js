@@ -17,7 +17,7 @@ let loadAllSampleBtn = function () {
             Object.keys(json).forEach(function (k) {
                 $('.chooseContainer').append(`
                 <div class="col-3 mx-3">
-                    <button id="${k.toLocaleLowerCase()}" class="fsbtn btn btn-primary border-5" data-bs-dismiss="modal">${k}</button>
+                    <button id="${k.toString()}" class="fsbtn btn btn-primary border-5" data-bs-dismiss="modal">${k}</button>
                 </div>
                 `)
             });
@@ -85,6 +85,7 @@ function fadeAnimation($element, duration) {
 }
 let curryInput = '#sName';
 let Keyboard = window.SimpleKeyboard.default;
+
 let keyboard = new Keyboard({
     onChange: input => onChange(input),
     onKeyPress: button => onKeyPress(button),

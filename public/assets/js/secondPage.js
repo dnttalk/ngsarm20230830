@@ -267,17 +267,15 @@ function showCenteredAlert(message) {
     }, 2000); // Remove after 2 seconds
 }
 // 获取currentlyModelName元素
-var modelNameElement = document.getElementById("currentlyModelName");
+var modelNameElement = document.getElementById("#currentlyModelName");
 
 // 获取modelImage元素
-var modelImageElement = document.getElementById("modelImage");
+var modelImageElement = document.getElementById("#modelImage");
 
 // 根据modelName更改图像
 function changeImage() {
-    var modelName = modelNameElement.textContent;
-    var imagePath = "/assets/img/" + modelName + ".png"; // 根据文件路径更改
+    var modelName = modelNameElement;
+    var imagePath = "/assets/img/" + modelName + "1.png"; // 根据文件路径更改
     modelImageElement.src = imagePath;
 }
 
-// 初始化时调用一次
-changeImage();
