@@ -266,16 +266,14 @@ function showCenteredAlert(message) {
         alertContainer.remove();
     }, 2000); // Remove after 2 seconds
 }
-// 获取currentlyModelName元素
-var modelNameElement = document.getElementById("#currentlyModelName");
+function showCenteredAlert(message) {
+    var alertContainer = $('<div>').addClass('alert-container');
+    var alertBox = $('<div>').addClass('alert-box').text(message);
+    alertContainer.append(alertBox);
+    $('body').append(alertContainer);
 
-// 获取modelImage元素
-var modelImageElement = document.getElementById("#modelImage");
-
-// 根据modelName更改图像
-function changeImage() {
-    var modelName = modelNameElement;
-    var imagePath = "/assets/img/" + modelName + "1.png"; // 根据文件路径更改
-    modelImageElement.src = imagePath;
+    // Remove the alert after a certain time
+    setTimeout(function () {
+        alertContainer.remove();
+    }, 2000); // Remove after 2 seconds
 }
-
