@@ -10,28 +10,6 @@
 </head>
 
 <body>
-    <div class="container text-center firstpage-layout">
-        <div class="row">
-            <div class="col-6">
-                <div class="row leftContainer1">
-                    <button id="check" type="button" class="fbtn btn btn-primary border-5" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal2">NGS Library Prep</button>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="row">
-                    <button id="pcrBtn" class="fbtn btn btn-primary border-5">PCR unload</button>
-                </div>
-                <div class="row">
-                    <a href="/history"><button type="button" class="fbtn btn btn-primary border-5">History</button></a>
-                </div>
-                <div class="row">
-                    <button type="button" class="fbtn btn btn-primary border-5">Setting</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="siderbar">
         <div class="row">
             <a href="/login"><button id="btn-login" type="button"
@@ -42,6 +20,30 @@
                 data-bs-target="#exampleModal">Exit</button>
         </div>
     </div>
+    <div class="container text-center firstpage-layout">
+        <div class="row">
+            <div class="col-6">
+                <div class="row leftContainer1">
+                    <button id="check" type="button" class="mfbtn fbtn btn btn-primary border-5" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2">NGS <br>Library Prep</button>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <button id="pcrBtn" class="mfbtn fbtn btn btn-primary border-5">PCR <br>Open</button>
+                </div>
+                <div class="row">
+                    <a href="/history"><button type="button"
+                            class="mfbtn fbtn btn btn-primary border-5">History</button></a>
+                </div>
+                <div class="row">
+                    <button type="button" class="mfbtn fbtn btn btn-primary border-5">Setting</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
@@ -57,45 +59,46 @@
                                     class="form-control form-control-lg input" placeholder="Project Name"
                                     maxlength="20">
                             </div>
-                            <div class="col-5 mx-1">
-                                <input id="lotnumber" type="number" class="form-control form-control-lg input"
-                                    placeholder="Lot Number" maxlength="20">
+
+                            <div class="row justify-content-md-center inputContainer">
+                                <div class="col-5 mx-1">
+                                    <input id="lotnumber" type="number" class="form-control form-control-lg input"
+                                        placeholder="Lot Number" maxlength="20">
+                                </div>
                             </div>
+                            <div class="row justify-content-md-center chooseContainer"></div>
                             <div class="simple-keyboard"></div>
                         </div>
-                        <div class="row justify-content-md-center chooseContainer"></div>
-                        <div class="simple-keyboard"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="container text-center">
-                        <div class="row modalFirstRow">
-                            <p>Exit iNA NGS workstation?</p>
-                        </div>
-                        <div class="row justify-content-md-center my-5">
-                            <div class="col-3">
-                                <button type="button" class="btn chooseBtn" data-bs-dismiss="modal">&Chi;</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="container text-center">
+                            <div class="row modalFirstRow">
+                                <p>Exit iNA NGS workstation?</p>
                             </div>
-                            <div class="col-3">
-                                <button id="btn-logout" type="button" class="btn chooseBtn">&radic;</button>
+                            <div class="row justify-content-md-center my-5">
+                                <div class="col-3">
+                                    <button type="button" class="btn chooseBtn" data-bs-dismiss="modal">&Chi;</button>
+                                </div>
+                                <div class="col-3">
+                                    <button id="btn-logout" type="button" class="btn chooseBtn">&radic;</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <%- include('./layout/js') -%>
-        <script src="/assets/plugins/js/simple-keyboard@latest_build_index.js"></script>
-        <script src="/assets/js/firstpage.js"></script>
-        <script src="/assets/js/PCR_open.js"></script>
-        <script src="/assets/js/PCR_close.js"></script>
+        <%- include('./layout/js') -%>
+            <script src="/assets/plugins/js/simple-keyboard@latest_build_index.js"></script>
+            <script src="/assets/js/firstpage.js"></script>
+            <script src="/assets/js/PCR_open.js"></script>
+            <script src="/assets/js/PCR_close.js"></script>
 
 </body>
 

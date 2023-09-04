@@ -23,7 +23,7 @@ input[type=number] {
 
 table {
     height: 487px;
-    width: 953px;
+    width: 800px;
 }
 
 .tdRow,
@@ -50,8 +50,9 @@ td {
     width: 85px;
     height: 85px;
     margin: 5px 0;
-    font-size: 12px;
+    font-size: 22px;
     border: 1px solid rgb(24, 166, 244);
+    font-weight: bold;
 }
 
 .sscircle {
@@ -79,13 +80,15 @@ td {
 }
 
 .nextPage {
-    margin-left: 2.9em;
-    margin-top: -3em;
+    position: absolute !important;
+    margin-left: -0.9rem;
+    margin-top: -1.7em;
 }
 
 .prevPage {
-    margin-left: -3.1em;
-    margin-top: -3em;
+    position: absolute !important;
+    margin-left: -1.9rem;
+    margin-top: -3.9rem;
 }
 
 .changePage:hover {
@@ -205,7 +208,7 @@ td {
 }
 
 .processContainer {
-    margin: 7rem 0em;
+    margin: 5rem 0em;
 }
 
 .countTotalContainerRight {
@@ -336,4 +339,24 @@ td {
 
 .scircle disabled btn-primary border-5 {
     background-color: green;
+}
+
+.alert-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.alert-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

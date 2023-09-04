@@ -6,7 +6,7 @@
         MPN
     </title>
     <%- include('./layout/head') -%>
-        <link rel='stylesheet' href='/assets/css/third.css' />
+    <link rel='stylesheet' href='/assets/css/third.css' />
 </head>
 
 
@@ -22,28 +22,27 @@
         <button id="checkcBtn" type="button" class="changePage btn-primary border-5">All Set!</button>
         <div class="row checkSOP">
             <div class="col border-3 border-solid">
-                <button type="button" id="trx1" class="checkbtn btn btn-secondary" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">Tip Rack A X1</button>
+                <button type="button" id="trx1" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Tip Rack A X1</button>
             </div>
-            <div class="col border-3 border-solid">
-                <button type="button" id="reagents" class="checkbtn checkbtnl btn btn-secondary"
-                    data-bs-target="#staticBackdrop" disabled>Reagents</button>
-                <button type="button" id="sample" class="checkbtn checkbtnm btn btn-secondary"
-                    data-bs-target="#staticBackdrop" disabled>Sample</button>
-                <button type="button" id="ipcrm" class="checkbtn checkbtnr btn btn-secondary"
-                    data-bs-target="#staticBackdrop" disabled>Index PCR mix</button>
+            <div class="col border-3 border-solid active">
+                <!-- <button type="button" id="reagents" class="checkbtn checkbtnl btn btn-secondary" disabled>Reagents</button>
+                <button type="button" id="sample" class="checkbtn checkbtnm btn btn-secondary" disabled>Sample</button>
+                <button type="button" id="ipcrm" class="checkbtn checkbtnr btn btn-secondary" disabled>Index PCR mix</button> -->
+                <button type="button" class="checkbtn btn btn-secondary exception active">
+                    Reagents</br>
+                    Sample</br>
+                    Index PCR mix
+                </button>
             </div>
             <div class="col border-3 border-solid">
 
-                <button type="button" id="96wpcrp" class="checkbtn btn btn-secondary" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">PCR plate</button>
+                <button type="button" id="96wpcrp" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">PCR plate</button>
             </div>
             <div class="col"></div>
         </div>
         <div class="row checkSOP">
             <div class="col border-3 border-solid">
-                <button type="button" id="trx3" class="checkbtn btn btn-secondary" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">Tip Rack B X3</button>
+                <button type="button" id="trx3" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Tip Rack B X3</button>
             </div>
             <div class="col border-3 boder-dashed">
                 <p class="emptyText">Temp. Ctrl. module</p>
@@ -59,18 +58,15 @@
             </div>
             <div class="col border-3 border-solid">
 
-                <button type="button" id="12wpwr" class="checkbtn btn btn-secondary" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">12 well plate with reagent</button>
+                <button type="button" id="12wpwr" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">12 well plate with reagent</button>
             </div>
             <div class="col border-3 border-solid">
 
-                <button type="button" id="dwp" class="checkbtn btn btn-secondary" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">Deep well plate</button>
+                <button type="button" id="dwp" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Deep well plate</button>
             </div>
             <div class="col">
                 <div class="done border-3 border-solid">
-                    <button type="button" id="ashcan" class="checkbtn btn btn-secondary" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">Ashcan</button>
+                    <button type="button" id="ashcan" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ashcan</button>
                 </div>
             </div>
         </div>
@@ -80,8 +76,7 @@
             </div>
             <div class="col border-empty"></div>
             <div class="col border-3 border-solid">
-                <button type="button" id="erc" class="checkbtn btn btn-secondary" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">Empty racks Cleaned</button>
+                <button type="button" id="erc" class="checkbtn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Empty racks Cleaned</button>
             </div>
             <div class="col"></div>
         </div>
@@ -99,8 +94,7 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body text-center">
@@ -118,12 +112,10 @@
                         </div>
                         <div class="row">
                             <div class="col-6 text-start">
-                                <button id="cancleChoose" type="button"
-                                    class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">X</button>
+                                <button id="cancleChoose" type="button" class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">X</button>
                             </div>
                             <div class="col-6 text-end">
-                                <button id="doneChoose" type="button" class="chooesBtn changePage btn-primary border-5"
-                                    data-bs-dismiss="modal">&#10003;</button>
+                                <button id="doneChoose" type="button" class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">&#10003;</button>
                             </div>
                         </div>
                     </div>
@@ -164,7 +156,7 @@
         </div>
     </div>
     <%- include('./layout/js') -%>
-        <script src="/assets/js/third.js"></script>
+    <script src="/assets/js/third.js"></script>
 </body>
 
 </html>

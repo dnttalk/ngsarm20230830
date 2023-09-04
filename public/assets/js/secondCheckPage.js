@@ -16,11 +16,17 @@ let initData = function () {
     fetch('../assets/data/sample.json')
         .then((response) => response.json())
         .then((json) => {
+            let tmp_key = null
+            for (const key in json) {
+                if (key.toLocaleLowerCase() == id.toLocaleLowerCase()) {
+                    tmp_key = key
+                }
+            }
             $('.samplenumberContainer').append(`
-                <h1>Samples: <input type="number" pattern="\d*" max="${json[id]['SampleLimit']}" min="1" value="1" id="sampleNumberInput" oninput="if(value<=0)value=1;if(value>${json[id]['SampleLimit']})value=${json[id]['SampleLimit']};" inputmode="numeric" /></h1>
+                <h1>Samples: <input type="number" pattern="\d*" max="${json[tmp_key]['SampleLimit']}" min="1" value="1" id="sampleNumberInput" oninput="if(value<=0)value=1;if(value>${json[tmp_key]['SampleLimit']})value=${json[tmp_key]['SampleLimit']};" inputmode="numeric" /></h1>
             `)
-            arr1 = json[id]['primer1']
-            arr2 = json[id]['primer2']
+            arr1 = json[tmp_key]['primer1']
+            arr2 = json[tmp_key]['primer2']
             for (let i = 0; i < arr1.length; i++) {
                 arr1[i] = arr1[i].replace(' Primer', '')
             }
@@ -34,12 +40,24 @@ let initData = function () {
 let nextPageEvent = function () {
     $('.nextPage').click(function () {
         let check = 1
+        let checksn = []
+        let checks1s2 = []
         for (let i = 1; i <= 24; i++) {
             if (i <= $('#sampleNumberInput').val()) {
                 let attr = $(`#tdFirst_${i}`).attr('sn');
                 if (typeof attr !== 'undefined' && attr !== false) {
                 } else {
                     check = 0
+                }
+                if (checksn.includes($(`#tdFirst_${i}`).attr('sn'))) {
+                    check = 0
+                } else {
+                    checksn.push($(`#tdFirst_${i}`).attr('sn'))
+                }
+                if (checks1s2.includes($(`#tdSecond_${i}`).text())) {
+                    check = 0
+                } else {
+                    checks1s2.push($(`#tdSecond_${i}`).text())
                 }
             }
         }
@@ -54,7 +72,7 @@ let nextPageEvent = function () {
             let id = getUrlParameter('id')
             window.location.href = "/third?id=" + id;
         } else {
-            alert('Please Complate Sample&Index Setting!')
+            showCenteredAlert('Please Complate Sample&Index Setting!')
         }
 
     })
@@ -69,12 +87,24 @@ let prevPageEvent = function () {
 
 let checkEvent = function () {
     let check = 1
+    let checksn = []
+    let checks1s2 = []
     for (let i = 1; i <= 24; i++) {
         if (i <= $('#sampleNumberInput').val()) {
             let attr = $(`#tdFirst_${i}`).attr('sn');
             if (typeof attr !== 'undefined' && attr !== false) {
             } else {
                 check = 0
+            }
+            if (checksn.includes($(`#tdFirst_${i}`).attr('sn'))) {
+                check = 0
+            } else {
+                checksn.push($(`#tdFirst_${i}`).attr('sn'))
+            }
+            if (checks1s2.includes($(`#tdSecond_${i}`).text())) {
+                check = 0
+            } else {
+                checks1s2.push($(`#tdSecond_${i}`).text())
             }
         }
     }
@@ -140,18 +170,8 @@ let tdEvent = function () {
     })
     $(document).on('click', '.selectionBtn1', async function (e) {
         if (arr1.includes($(this).text()) && arr2.includes($('.selectionBtn2.active').text())) {
-            let check = 0
-            for (let i = 1; i <= 24; i++) {
-                if ($(`#tdFirst_${i}`).attr('s1') == $(this).text() && $(`#tdFirst_${i}`).attr('s2') == $('.selectionBtn2.active').text()) {
-                    check = 1
-                }
-            }
-            if (check) {
-                alert('Selected primer combination conflicts with the other sample. Please choose different primers.')
-            } else {
-                $('.selectionBtn1').removeClass('active')
-                $(this).addClass('active')
-            }
+            $('.selectionBtn1').removeClass('active')
+            $(this).addClass('active')
         } else {
             $('.selectionBtn1').removeClass('active')
             $(this).addClass('active')
@@ -160,18 +180,10 @@ let tdEvent = function () {
     })
     $(document).on('click', '.selectionBtn2', async function (e) {
         if (arr1.includes($('.selectionBtn1.active').text()) && arr2.includes($(this).text())) {
-            let check = 0
-            for (let i = 1; i <= 24; i++) {
-                if ($(`#tdFirst_${i}`).attr('s1') == $('.selectionBtn1.active').text() && $(`#tdFirst_${i}`).attr('s2') == $(this).text()) {
-                    check = 1
-                }
-            }
-            if (check) {
-                alert('Selected primer combination conflicts with the other sample. Please choose different primers.')
-            } else {
-                $('.selectionBtn2').removeClass('active')
-                $(this).addClass('active')
-            }
+
+            $('.selectionBtn2').removeClass('active')
+            $(this).addClass('active')
+
         } else {
             $('.selectionBtn2').removeClass('active')
             $(this).addClass('active')
@@ -187,16 +199,46 @@ let tdEvent = function () {
         checkEvent()
     })
     $('#doneChoose2').click(function () {
+        for (let i = 1; i <= 24; i++) {
+            $(`#tdFirst_${i}`).css('background-color', 'white')
+            $(`#tdSecond_${i}`).css('background-color', 'white')
+        }
         if ($('#sName').val() != '' && arr1.includes($('.selectionBtn1.active').text()) && arr2.includes($('.selectionBtn2.active').text())) {
+
             $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).attr('sn', $('#sName').val())
             $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).attr('s1', $('.selectionBtn1.active').text())
             $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).attr('s2', $('.selectionBtn2.active').text())
             $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).text($('#sName').val())
             $(`#tdSecond_${$('#doneChoose2').attr('dataNumber')}`).text($('.selectionBtn1.active').text() + ',' + $('.selectionBtn2.active').text())
+            let check = 0
+            let getSameID = 0
+            for (let i = 1; i <= 24; i++) {
+                if (i != parseInt($('#doneChoose2').attr('dataNumber'))) {
+                    if ($(`#tdFirst_${i}`).attr('sn') == $('#sName').val()) {
+                        check = 1
+                        getSameID = i
+                    }
+                    if ($(`#tdFirst_${i}`).attr('s1') == $('.selectionBtn1.active').text() && $(`#tdFirst_${i}`).attr('s2') == $('.selectionBtn2.active').text()) {
+                        check = 1
+                        getSameID = i
+                    }
+                }
 
+            }
+            if (check) {
+                $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'red')
+                $(`#tdSecond_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'red')
+                $(`#tdFirst_${getSameID}`).css('background-color', 'red')
+                $(`#tdSecond_${getSameID}`).css('background-color', 'red')
+            } else {
+                $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'white')
+                $(`#tdSecond_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'white')
+                $(`#tdFirst_${getSameID}`).css('background-color', 'white')
+                $(`#tdSecond_${getSameID}`).css('background-color', 'white')
+            }
             checkEvent()
         } else {
-            alert('Please Check Sample Number and Selection !')
+            showCenteredAlert('Please Check Sample Number and Selection !')
         }
     })
 }
@@ -321,4 +363,13 @@ function handleNumbers() {
     keyboard.setOptions({
         layoutName: numbersToggle
     });
+}
+function showCenteredAlert(message) {
+    var alertContainer = $('<div>').addClass('alert-container');
+    var alertBox = $('<div>').addClass('alert-box').text(message);
+    alertContainer.append(alertBox);
+    $('body').append(alertContainer);
+    setTimeout(function () {
+        alertContainer.remove();
+    }, 2000);
 }

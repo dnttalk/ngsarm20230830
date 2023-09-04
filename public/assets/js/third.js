@@ -89,10 +89,15 @@ $(document).ready(function () {
         } else {
             $(this).text('All Set!')
             $('.border-solid').each(function () {
-                $(this).find('.btn').each(function () {
+                // unset時排除例外
+                if ($(this).find('.btn').hasClass('exception')) {
+
+                } else {
+                    $(this).find('.btn').each(function () {
+                        $(this).removeClass('active')
+                    })
                     $(this).removeClass('active')
-                })
-                $(this).removeClass('active')
+                }
             })
             updateNextButtonState();
             updateBorderColor();

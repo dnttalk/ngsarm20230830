@@ -66,22 +66,29 @@ body,
 .fbtn {
     height: 100%;
     width: 100%;
-    font-size: 23px;
+    font-size: 48px;
     color: rgb(255, 255, 255);
     font-weight: blod;
     white-space: nowrap;
     background: linear-gradient(to bottom, #00aaff, #0077cc);
 }
 
+.mfbtn {
+    font-size: 48px;
+    white-space: pre-line;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
 #btn-login {
     background-color: rgb(255, 102, 255) !important;
     border-color: rgb(218, 227, 243);
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 0px;
+    right: 80px;
     z-index: 9999;
-    width: 170px;
-    height: 55px;
+    width: 200px;
+    height: 100px;
 }
 
 
@@ -97,8 +104,8 @@ body,
 
 .siderbar {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 40px;
+    right: 120px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -146,8 +153,8 @@ body,
 }
 
 .fsbtn {
-    width: 170px;
-    height: 170px;
+    width: 200px;
+    height: 200px;
     font-size: 23px;
     color: rgb(255, 255, 255);
     font-weight: blod;
@@ -199,4 +206,16 @@ body,
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.inputContainer {
+    margin-top: 40px;
+    /* Add top margin for spacing */
+    margin-bottom: 40px;
+    /* Add bottom margin for spacing */
+}
+
+.chooseContainer {
+    margin-top: 10px;
+    /* 调整需要的间距值 */
 }

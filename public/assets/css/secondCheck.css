@@ -1,8 +1,8 @@
 tr,
 td {
     border-width: 1px;
-    height: 60px;
-    width: 60px;
+    height: 52px;
+    width: 114px;
 }
 
 .simple-keyboard {
@@ -37,4 +37,8 @@ td {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.tdWidth.error {
+    background-color: red;
 }

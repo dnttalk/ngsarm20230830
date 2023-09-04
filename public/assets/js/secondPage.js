@@ -16,18 +16,28 @@ let init = function () {
     fetch('/assets/data/sample.json')
         .then((response) => response.json())
         .then((json) => {
+            let tmp_key = null
+            for (const key in json) {
+                if (key.toLocaleLowerCase() == id.toLocaleLowerCase()) {
+                    tmp_key = key
+                }
+            }
             $('.samplenumberContainer').append(`
-                <h1>Samples: <input type="number" pattern="\d*" max="${json[id]['SampleLimit']}" min="1" value="1" id="sampleNumberInput" oninput="if(value<=0)value=1;if(value>${json[id]['SampleLimit']})value=${json[id]['SampleLimit']};" inputmode="numeric" /></h1>
+                <h1>Samples: <input type="number" pattern="\d*" max="${json[tmp_key]['SampleLimit']}" min="1" value="1" id="sampleNumberInput" oninput="if(value<=0)value=1;if(value>${json[tmp_key]['SampleLimit']})value=${json[tmp_key]['SampleLimit']};" inputmode="numeric" /></h1>
             `)
-            primer1 = json[id]['primer1']
-            primer2 = json[id]['primer2']
-            if (json[id]['Reagents'].length == 3) {
-                $('#reagents1').text(json[id]['Reagents'][0])
-                $('#reagents2').text(json[id]['Reagents'][1])
-                $('#reagents6').text(json[id]['Reagents'][2])
+            primer1 = json[tmp_key]['primer1']
+            primer2 = json[tmp_key]['primer2']
+            if (json[tmp_key]['Reagents'].length == 3) {
+                $('#reagents1').text(json[tmp_key]['Reagents'][0].split(',')[0])
+                $('#reagents2').text(json[tmp_key]['Reagents'][1].split(',')[0])
+                $('#reagents6').text(json[tmp_key]['Reagents'][2].split(',')[0])
+                $('#reagents1').attr('ssName', json[tmp_key]['Reagents'][0].split(',')[1])
+                $('#reagents2').attr('ssName', json[tmp_key]['Reagents'][1].split(',')[1])
+                $('#reagents6').attr('ssName', json[tmp_key]['Reagents'][2].split(',')[1])
             } else {
-                for (let i = 0; i < json[id]['Reagents'].length; i++) {
-                    $(`#reagents${i + 1}`).text(json[id]['Reagents'][i])
+                for (let i = 0; i < json[tmp_key]['Reagents'].length; i++) {
+                    $(`#reagents${i + 1}`).text(json[tmp_key]['Reagents'][i].split(',')[0])
+                    $(`#reagents${i + 1}`).attr('ssName', json[tmp_key]['Reagents'][i].split(',')[1])
                 }
             }
             $('.countPopBtn').each(function () {
@@ -59,13 +69,13 @@ let checkDoneEvent = function () {
 // 試算µl
 let countPopBtnEvent = function () {
     $('.countPopBtn').click(function () {
-        $(".showModelName").children().text($(this).text())
+        $(".showModelName").children().text($(this).attr('ssName'))
         $('.contentInner').empty()
         for (const key in formula) {
-            if ($(this).text().indexOf(key) >= 0) {
+            if ($(this).attr('ssName').indexOf(key) >= 0) {
                 let showData = null
                 formula[key].forEach((cell) => {
-                    if (cell['Name'] == $(this).text()) {
+                    if (cell['Name'] == $(this).attr('ssName')) {
                         showData = cell
                     }
                 })
@@ -182,6 +192,7 @@ let nextPageEvent = function () {
             if (!$(this).hasClass('disabled')) {
                 if (!$(this).hasClass('active')) {
                     checkAllBtnActive = false
+                    showCenteredAlert('Please Check')
                 }
             }
         })
@@ -193,6 +204,12 @@ let nextPageEvent = function () {
 
 let openKeyboardEvent = function () {
     $(document).on('click', '#sampleNumberInput', function (e) {
+        $('.countPopBtn').each(function () {
+            if (!$(this).hasClass('disabled')) {
+                $(this).removeClass('active')
+            }
+        })
+        checkEvent()
         $('#keyboardContainer').css('display', 'block')
     })
 }
@@ -238,3 +255,29 @@ keys.forEach(key => {
         updateSscircleBtnEvent()
     });
 });
+function showCenteredAlert(message) {
+    var alertContainer = $('<div>').addClass('alert-container');
+    var alertBox = $('<div>').addClass('alert-box').text(message);
+    alertContainer.append(alertBox);
+    $('body').append(alertContainer);
+
+    // Remove the alert after a certain time
+    setTimeout(function () {
+        alertContainer.remove();
+    }, 2000); // Remove after 2 seconds
+}
+// 获取currentlyModelName元素
+var modelNameElement = document.getElementById("currentlyModelName");
+
+// 获取modelImage元素
+var modelImageElement = document.getElementById("modelImage");
+
+// 根据modelName更改图像
+function changeImage() {
+    var modelName = modelNameElement.textContent;
+    var imagePath = "/assets/img/" + modelName + ".png"; // 根据文件路径更改
+    modelImageElement.src = imagePath;
+}
+
+// 初始化时调用一次
+changeImage();

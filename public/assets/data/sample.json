@@ -25,9 +25,9 @@
             "N715 Primer"
         ],
         "Reagents": [
-            "PCR Mix 1",
-            "PCR Mix 2",
-            "Magnetic beads"
+            "1,PCR Mix 1",
+            "2,PCR Mix 2",
+            "Beads,Magnetic beads"
         ],
         "SampleLimit": 22,
         "name": "MPN"
@@ -49,15 +49,15 @@
             "i712 Primer"
         ],
         "Reagents": [
-            "PCR Mix 1",
-            "PCR Mix 2",
-            "PCR Mix 3",
-            "PCR Mix 4",
-            "PCR Mix MP1",
-            "Magnetic beads",
-            "Fragmen-tation Mix",
-            "Ligation Mix",
-            "U-excision"
+            "1,PCR Mix 1",
+            "2,PCR Mix 2",
+            "3,PCR Mix 3",
+            "4,PCR Mix 4",
+            "MP1,PCR Mix MP1",
+            "Beads,Magnetic beads",
+            "FR Mix,Fragmen-tation Mix",
+            "L Mix,Ligation Mix",
+            "U-Exc.,U-excision"
         ],
         "SampleLimit": 8,
         "name": "Leukemia"
@@ -88,9 +88,9 @@
             "N729 Primer"
         ],
         "Reagents": [
-            "PCR Mix 1",
-            "PCR Mix 2",
-            "Magnetic beads"
+            "1,PCR Mix 1",
+            "2,PCR Mix 2",
+            "Beads,Magnetic beads"
         ],
         "SampleLimit": 24,
         "name": "TP53"

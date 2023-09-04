@@ -1,5 +1,5 @@
 let status = 0;
-const statusArr = ['PCR open', 'PCR opening', 'PCR close', 'PCR closing'];
+const statusArr = ['PCR \n Open', 'PCR \n Opening', 'PCR \n Close', 'PCR \n Closing'];
 const $pcrBtn = $('#pcrBtn'); // Cache the button element
 
 $(function () {
@@ -17,11 +17,19 @@ let loadAllSampleBtn = function () {
             Object.keys(json).forEach(function (k) {
                 $('.chooseContainer').append(`
                 <div class="col-3 mx-3">
-                    <button id="${k}" class="fsbtn btn btn-primary border-5" data-bs-dismiss="modal">${k}</button>
+                    <button id="${k.toLocaleLowerCase()}" class="fsbtn btn btn-primary border-5" data-bs-dismiss="modal">${k}</button>
                 </div>
                 `)
             });
         });
+
+    let rStatus = getUrlParameter('rediret')
+    if (rStatus == 'true') {
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModal2'), {
+            keyboard: true
+        });
+        myModal.show();
+    }
 }
 
 let resetCookie = function () {
@@ -29,7 +37,6 @@ let resetCookie = function () {
     $.removeCookie("lotnumber");
     $.removeCookie("cmodelname");
     $.removeCookie("reportTable");
-
 }
 
 async function statusEvent() {
