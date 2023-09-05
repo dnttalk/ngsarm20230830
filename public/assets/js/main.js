@@ -51,19 +51,7 @@ let getCurrentlyModel = function () {
             });
         });
 }
-// {/* <div class="currentlyModelContainer">
-//             <p id="currentlyModelName">mpn</p>
-//             <p id="btn-login">User:a</p>
-//         </div> */}
-// let getCurrentlyModel = function () {
-//     fetch('/assets/data/sample.json')
-//         .then((response) => response.json())
-//         .then((json) => {
-//             Object.keys(json).forEach(function (k) {
-//                 $('.currentlyModelContainer').append(`<p id = "currentlyModelName">${k}</p>`)
-//             });
-//         });
-// }
+
 
 let getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
