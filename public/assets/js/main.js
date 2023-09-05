@@ -51,8 +51,8 @@ let getCurrentlyModel = function () {
                 console.log(img1, k)
                 if (k.toLocaleLowerCase() == id) {
                     $('#currentlyModelName').text(k)
-                    $('#modelImage1').attr('src', img1);
-                    $('#modelImage2').attr('src', img2);
+                    $('#modelImage1').attr('src', json[k].img1); // 這裡讀取並設定img1值
+                    $('#modelImage2').attr('src', json[k].img2);
                 }
             });
         });
