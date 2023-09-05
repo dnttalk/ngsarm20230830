@@ -37,25 +37,33 @@ let checkUser = function () {
     }
 }
 
-// let getCurrentlyModel = function () {
-//     let id = getUrlParameter('id')
-//     if (id) {
-//         $('#currentlyModelName').text(id.toString())
-//     }
-// }
-// {/* <div class="currentlyModelContainer">
-//             <p id="currentlyModelName">mpn</p>
-//             <p id="btn-login">User:a</p>
-//         </div> */}
 let getCurrentlyModel = function () {
+    let id = getUrlParameter('id')
+
     fetch('/assets/data/sample.json')
         .then((response) => response.json())
         .then((json) => {
             Object.keys(json).forEach(function (k) {
-                $('.currentlyModelContainer').append(`<p id = "currentlyModelName">${k}</p>`)
+                console.log(id, k)
+                if (k.toLocaleLowerCase() == id) {
+                    $('#currentlyModelName').text(k)
+                }
             });
         });
 }
+// {/* <div class="currentlyModelContainer">
+//             <p id="currentlyModelName">mpn</p>
+//             <p id="btn-login">User:a</p>
+//         </div> */}
+// let getCurrentlyModel = function () {
+//     fetch('/assets/data/sample.json')
+//         .then((response) => response.json())
+//         .then((json) => {
+//             Object.keys(json).forEach(function (k) {
+//                 $('.currentlyModelContainer').append(`<p id = "currentlyModelName">${k}</p>`)
+//             });
+//         });
+// }
 
 let getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
