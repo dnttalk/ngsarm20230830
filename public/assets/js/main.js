@@ -11,9 +11,6 @@ let checkUser = function () {
     if (typeof user != 'undefined') {
         if (user) {
             const d = new Date();
-            // 一天
-            // d.setTime(d.getTime() + (1 * 24 * 60 * 60 * 1000));
-            // 一小時
             $.cookie("user", user, { expires: 1, path: '/' });
             if (typeof $.cookie('user') == 'undefined') {
 
@@ -40,12 +37,24 @@ let checkUser = function () {
     }
 }
 
+// let getCurrentlyModel = function () {
+//     let id = getUrlParameter('id')
+//     if (id) {
+//         $('#currentlyModelName').text(id.toString())
+//     }
+// }
+// {/* <div class="currentlyModelContainer">
+//             <p id="currentlyModelName">mpn</p>
+//             <p id="btn-login">User:a</p>
+//         </div> */}
 let getCurrentlyModel = function () {
-    let id = getUrlParameter('id')
-    if (id) {
-        $('#currentlyModelName').text(id.toUpperCase())
-    }
-
+    fetch('/assets/data/sample.json')
+        .then((response) => response.json())
+        .then((json) => {
+            Object.keys(json).forEach(function (k) {
+                $('.currentlyModelContainer').append(`<p id = "currentlyModelName">${k}</p>`)
+            });
+        });
 }
 
 let getUrlParameter = function getUrlParameter(sParam) {

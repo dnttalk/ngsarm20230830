@@ -18,7 +18,7 @@ let init = function () {
         .then((json) => {
             let tmp_key = null
             for (const key in json) {
-                if (key.toLocaleLowerCase() == id.toLocaleLowerCase()) {
+                if (key() == id()) {
                     tmp_key = key
                 }
             }
@@ -255,17 +255,6 @@ keys.forEach(key => {
         updateSscircleBtnEvent()
     });
 });
-function showCenteredAlert(message) {
-    var alertContainer = $('<div>').addClass('alert-container');
-    var alertBox = $('<div>').addClass('alert-box').text(message);
-    alertContainer.append(alertBox);
-    $('body').append(alertContainer);
-
-    // Remove the alert after a certain time
-    setTimeout(function () {
-        alertContainer.remove();
-    }, 2000); // Remove after 2 seconds
-}
 function showCenteredAlert(message) {
     var alertContainer = $('<div>').addClass('alert-container');
     var alertBox = $('<div>').addClass('alert-box').text(message);
