@@ -10,7 +10,6 @@ $(function () {
 let checkUser = function () {
     if (typeof user != 'undefined') {
         if (user) {
-            const d = new Date();
             $.cookie("user", user, { expires: 1, path: '/' });
             if (typeof $.cookie('user') == 'undefined') {
 
@@ -39,16 +38,12 @@ let checkUser = function () {
 
 let getCurrentlyModel = function () {
     let id = getUrlParameter('id')
-    let img1 = getUrlParameter('img1')
-    let img2 = getUrlParameter('img2')
-    let imageSrc = $('#modelImage').attr('src');
-    console.log(imageSrc);
+
     fetch('/assets/data/sample.json')
         .then((response) => response.json())
         .then((json) => {
             Object.keys(json).forEach(function (k) {
-                console.log(id, k)
-                console.log(img1, k)
+
                 if (k.toLocaleLowerCase() == id) {
                     $('#currentlyModelName').text(k)
                     $('#modelImage1').attr('src', json[k].img1); // 這裡讀取並設定img1值

@@ -275,3 +275,8 @@ body {
     font-weight: bold;
     color: red;
 }
+
+.center-heading {
+    color: rgb(55, 45, 200);
+    text-align: center;
+}

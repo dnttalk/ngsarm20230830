@@ -175,26 +175,28 @@ function onChange(input) {
 
 function onKeyPress(button) {
     const maxInputLength = 10; // 设置最大输入字符数量
-    const currentInput = document.querySelector(curryInput).value;
-    if (button == '{backspace}') {
-        document.querySelector(curryInput).value = document.querySelector(curryInput).value.substring(0, document.querySelector(curryInput).value.length - 1);
-    } else if (button == '{backspace}' || button == '{shift}' || button == '{ent}' || button == '{enter}' || button == '{numbers}' || button == '{abc}') {
+    const inputElement = document.querySelector(curryInput);
 
-    } else if (button == '{space}') {
-        if (currentInput.length < maxInputLength) {
-            document.querySelector(curryInput).value = currentInput + ' ';
-        }
-    } else {
-        if (currentInput.length < maxInputLength) {
-            document.querySelector(curryInput).value = currentInput + button;
+    if (button === '{backspace}') {
+        inputElement.value = inputElement.value.substring(0, inputElement.value.length - 1);
+    } else if (button === '{space}') {
+        inputElement.value += ' ';
+    } else if (button !== '{shift}' && button !== '{ent}' && button !== '{enter}' && button !== '{numbers}' && button !== '{abc}') {
+        if (inputElement.value.length < maxInputLength) {
+            inputElement.value += button;
         }
     }
+
     console.log("Button pressed", button);
 
-    if (button === "{numbers}" || button === "{abc}") handleNumbers();
-    if (button === "{shift}" || button === "{lock}") handleShift();
-}
+    if (button === "{numbers}" || button === "{abc}") {
+        handleNumbers();
+    }
 
+    if (button === "{shift}" || button === "{lock}") {
+        handleShift();
+    }
+}
 function handleShift() {
     let currentLayout = keyboard.options.layoutName;
     let shiftToggle = currentLayout === "default" ? "shift" : "default";
