@@ -6,9 +6,9 @@
         MPN
     </title>
     <%- include('./layout/head') -%>
-    <link rel='stylesheet' href='/assets/css/second.css' />
-    <link rel='stylesheet' href='/assets/css/secondCheck.css' />
-    <link rel="stylesheet" href="/assets/plugins/css/simple-keyboard@latest_build_css_index.css">
+        <link rel='stylesheet' href='/assets/css/second.css' />
+        <link rel='stylesheet' href='/assets/css/secondCheck.css' />
+        <link rel="stylesheet" href="/assets/plugins/css/simple-keyboard@latest_build_css_index.css">
 
 </head>
 
@@ -25,14 +25,15 @@
         <div class="row">
             <div class="col-2">
                 <div class="row processContainer">
-                    <img src="/assets/img/secondPageProcess2.png" alt="目前步驟">
+                    <img id="modelImage1" src="" alt="目前步驟">
                 </div>
                 <div class="row">
                     <h1>Samples: <input type="number" id="sampleNumberInput" disabled></h1>
                 </div>
             </div>
             <div class="col-10" style="overflow-x: auto;">
-                <table class="demo" style="border-collapse:collapse;border: 5px solid rgb(65, 113, 156);" rules="all" cellpadding='5' ;>
+                <table class="demo" style="border-collapse:collapse;border: 5px solid rgb(65, 113, 156);" rules="all"
+                    cellpadding='5' ;>
                     <tbody>
                         <tr>
                             <td></td>
@@ -243,7 +244,8 @@
         </div>
 
     </div>
-    <div class="modal fade bg-transparent" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop2Label" aria-hidden="false">
+    <div class="modal fade bg-transparent" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdrop2Label" aria-hidden="false">
         <div class="modal-dialog countTotalContainerLeft">
             <div class="modal-content">
                 <div class="modal-body text-center">
@@ -259,7 +261,8 @@
                                 <p>Sample Name:</p>
                             </div>
                             <div class="col-7">
-                                <input id="sName" type="text" maxlength="10" id="Name" class="form-control form-control-lg input" placeholder="Samplename" />
+                                <input id="sName" type="text" maxlength="10" id="Name"
+                                    class="form-control form-control-lg input" placeholder="Samplename" />
                             </div>
                             <div class="simple-keyboard"></div>
                             <div class="col-12">
@@ -273,10 +276,12 @@
                         </div>
                         <div class="row">
                             <div class="col-6 text-start">
-                                <button id="cancleChoose2" type="button" class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">X</button>
+                                <button id="cancleChoose2" type="button"
+                                    class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">X</button>
                             </div>
                             <div class="col-6 text-end">
-                                <button id="doneChoose2" type="button" class="chooesBtn changePage btn-primary border-5" data-bs-dismiss="modal">&#10003;</button>
+                                <button id="doneChoose2" type="button" class="chooesBtn changePage btn-primary border-5"
+                                    data-bs-dismiss="modal">&#10003;</button>
                             </div>
                         </div>
 
@@ -288,8 +293,8 @@
     </div>
     <div class="simple-keyboard"></div>
     <%- include('./layout/js') -%>
-    <script src="/assets/plugins/js/simple-keyboard@latest_build_index.js"></script>
-    <script src="/assets/js/secondCheckPage.js"></script>
+        <script src="/assets/plugins/js/simple-keyboard@latest_build_index.js"></script>
+        <script src="/assets/js/secondCheckPage.js"></script>
 </body>
 
 </html>

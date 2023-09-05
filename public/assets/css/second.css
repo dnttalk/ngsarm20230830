@@ -360,3 +360,8 @@ td {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+.center-heading {
+    color: rgb(55, 45, 200);
+    text-align: center;
+}

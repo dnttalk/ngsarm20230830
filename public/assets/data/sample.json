@@ -30,7 +30,9 @@
             "Beads,Magnetic beads"
         ],
         "SampleLimit": 22,
-        "name": "MPN"
+        "name": "MPN",
+        "img1": "/assets/img/MPN_1.png",
+        "img2": "/assets/img/MPN_2.png"
     },
     "Leukemia": {
         "primer1": [
@@ -60,7 +62,9 @@
             "U-Exc.,U-excision"
         ],
         "SampleLimit": 8,
-        "name": "Leukemia"
+        "name": "Leukemia",
+        "img1": "/assets/img/Leukemia_1.png",
+        "img2": "/assets/img/Leukemia_2.png"
     },
     "TP53": {
         "primer1": [
@@ -93,6 +97,8 @@
             "Beads,Magnetic beads"
         ],
         "SampleLimit": 24,
-        "name": "TP53"
+        "name": "TP53",
+        "img1": "/assets/img/TP53_1.png",
+        "img2": "/assets/img/TP53_2.png"
     }
 }
