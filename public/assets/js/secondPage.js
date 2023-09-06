@@ -23,7 +23,7 @@ let init = function () {
                 }
             }
             $('.samplenumberContainer').append(`
-                <h1>Samples: <input type="number" pattern="\d*" max="${json[tmp_key]['SampleLimit']}" min="1" value="1" id="sampleNumberInput" oninput="if(value<=0)value=1;if(value>${json[tmp_key]['SampleLimit']})value=${json[tmp_key]['SampleLimit']};" inputmode="numeric" /></h1>
+                <h1>Samples: <input type="number" pattern="\d*" max="${json[tmp_key]['SampleLimit']}" min="0" value="0" id="sampleNumberInput" oninput="if(value<0)value=0;if(value>${json[tmp_key]['SampleLimit']})value=${json[tmp_key]['SampleLimit']};" inputmode="numeric" /></h1>
             `)
             primer1 = json[tmp_key]['primer1']
             primer2 = json[tmp_key]['primer2']
@@ -71,6 +71,7 @@ let countPopBtnEvent = function () {
     $('.countPopBtn').click(function () {
         $(".showModelName").children().text($(this).attr('ssName'))
         $('.contentInner').empty()
+        // $('#currentlyModelName')
         for (const key in formula) {
             if ($(this).attr('ssName').indexOf(key) >= 0) {
                 let showData = null
@@ -80,10 +81,11 @@ let countPopBtnEvent = function () {
                     }
                 })
                 // 如果有total
-
                 if (showData['total'] == true) {
                     let total = 0
-                    for (const keyc in showData) {
+                    let appendText = ''
+                    appendText = appendText + '<div class="row"><table style="height:60px" class="mb-5"><tbody>'
+                    for (let keyc in showData) {
                         if (keyc != 'Name' && keyc != 'total') {
                             let count = parseInt($('#sampleNumberInput').val())
                             for (let i = 1; i < 5; i++) {
@@ -96,40 +98,61 @@ let countPopBtnEvent = function () {
                                     }
                                 }
                             }
+
                             if (showData['Name'] == 'Fragmen-tation Mix') {
-                                $('.contentInner').append(`
-                                    <div class="row">
-                                        <div class="modalText" style="justify-content: space-between; padding-bottom: 2rem;">
-                                            <p style="font-size:20px;">${keyc}</span>&emsp;:</p>
-                                            <p style="font-size:20px;"><span id="masterMix">${count.toString() + 'µl'}</span></p>
-                                        </div>
-                                    </div>
+                                appendText = appendText + (`
+                                    <tr>
+                                        <td class="text-start" style="font-size:18px;font-weight:bold;">${keyc}</td>
+                                        <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
+                                        <td class="text-end" style="font-size:18px;font-weight:bold;">${count.toString()}</td>
+                                        <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
+                                    </tr>
                                 `)
                             } else {
-                                $('.contentInner').append(`
-                                    <div class="row">
-                                        <div class="modalText" style="display: flex; justify-content: space-between; padding-bottom: 2rem;">
-                                            <p style="font-size:20px;">${keyc}</span>&emsp;:</p>
-                                            <p style="font-size:20px;"><span id="masterMix">${count.toString() + 'µl'}</span></p>
-                                        </div>
-                                    </div>
-                                `)
+                                if (keyc == 'iNA_Leukemia_Primer_Pool') {
+                                    let tmp_keyc = null
+                                    tmp_keyc = keyc.replace('Leukemia', $('#currentlyModelName').text())
+                                    appendText = appendText + (`
+                                        <tr>
+                                            <td class="text-start" style="font-size:18px;font-weight:bold;">${tmp_keyc}</td>
+                                            <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
+                                            <td class="text-end" style="font-size:18px;font-weight:bold;">${count.toString()}</td>
+                                            <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
+                                        </tr>
+                                    `)
+                                } else {
+                                    appendText = appendText + (`
+                                        <tr>
+                                            <td class="text-start" style="font-size:18px;font-weight:bold;">${keyc}</td>
+                                            <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
+                                            <td class="text-end" style="font-size:18px;font-weight:bold;">${count.toString()}</td>
+                                            <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
+                                        </tr>
+                                    `)
+                                }
+
                             }
                             total = total + count
                         }
                         if (keyc == 'total') {
-                            $('.contentInner').append(`
-                            <hr class="my-4">
-                            <div class="row my-4">
-                                <div class="modalText" style="display: flex; justify-content: space-between;">
-                                    <p style="font-size:20px">Total&emsp;:</p>
-                                    <p style="font-size:20px"><span id="total">${total}µl</span></p>
-                                </div>
-                            </div>
-                        `)
+                            appendText = appendText + (`
+                                <tr><td colspan="4"><hr class="my-4"></td></tr>
+                                <tr>
+                                    <td class="text-start" style="font-size:18px;font-weight:bold;">Total</td>
+                                    <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
+                                    <td class="text-end" style="font-size:18px;font-weight:bold;">${total}</td>
+                                    <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
+                                </tr>
+                            `)
                         }
                     }
+                    appendText = appendText + '</tbody></table></div>'
+                    $('.contentInner').append(appendText)
+
                 } else {
+                    console.log($('#currentlyModelName').text())
+                    let appendText = ''
+                    appendText = appendText + '<div class="row"><table style="height:60px" class="mb-5"><tbody>'
                     for (const keyc in showData) {
                         if (keyc != 'Name' && keyc != 'total') {
                             let count = parseInt($('#sampleNumberInput').val())
@@ -143,17 +166,19 @@ let countPopBtnEvent = function () {
                                     }
                                 }
                             }
-                            $('.contentInner').append(`
-                                <div class="row">
-                                    <div class="modalText" style="display: flex; justify-content: space-between; padding-bottom: 2rem;">
-                                        <p style="font-size:20px;">${keyc}</span>&emsp;:</p>
-                                        <p style="font-size:20px;"><span id="masterMix">${count.toString() + 'µl'}</span></p>
-                                    </div>
-                                </div>
+                            appendText = appendText + (`
+                                <tr>
+                                    <td class="text-start" style="font-size:18px;font-weight:bold;">${keyc}</td>
+                                    <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
+                                    <td class="text-end" style="font-size:18px;font-weight:bold;">${count.toString()}</td>
+                                    <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
+                                </tr>
                             `)
 
                         }
                     }
+                    appendText = appendText + '</tbody></table></div>'
+                    $('.contentInner').append(appendText)
                 }
             }
         }

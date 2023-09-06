@@ -11,20 +11,21 @@
 </head>
 
 <body>
-    <section class="vh-100" style="background-color: rgb(250, 250, 250);">
+    <section class="vh-100 d-flex justify-content-center align-items-center"
+        style="background-color: rgb(250, 250, 250);">
         <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="row justify-content-center">
                 <div class="col-6">
                     <div class="card" style="border-radius: 1rem;">
                         <div class="row g-0">
                             <div class="card-body p-4 pt-5 text-black">
                                 <form id="loginForm" action="/api/user/login" method="post">
-                                    <div class="d-flex align-items-center mb-5 pb-5">
+                                    <div class="d-flex align-items-center mb-3 pb-5">
                                         <span class="h1 fw-bold mb-0"
                                             style="color:rgb(9, 127, 245);width: 100%;text-align: center;">Login
                                             Account</span>
                                     </div>
-                                    <div class="form-outline my-5">
+                                    <div class="form-outline my-3">
                                         <input type="text" name="user" id="user" maxlength="10"
                                             class="form-control form-control-lg input" placeholder="Username" />
                                     </div>
@@ -37,52 +38,59 @@
                                         <button id="login" class="btn btn-primary" type="button">Sign In</button>
                                     </div>
                                     <div class="form-outline my-5"></div>
-                                    <div class="d-grid gap-2">
+                                    <div class="d-grid gap-2 d-grid-gap-2">
                                         <button id="register" class="btn btn-secondary" type="button">Sign Up</button>
                                     </div>
+                                    <div class="d-grid gap-2 d-grid-gap-2">
+                                        <button id="closePage" class="btn btn-danger" type="button">Close Page</button>
+                                    </div>
                                 </form>
-                                <div class="d-grid gap-2">
-                                    <button id="closePage" class="btn btn-danger" type="button">Close Page</button>
-                                </div>
+
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="card" style="border-radius: 1rem;">
-                        <div class="row g-0">
-                            <div class="card-body p-4 pt-5 text-black">
-                                <form id="registerForm">
-                                    <div class="d-flex align-items-center mb-5 pb-5">
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <div class="card" style="border-radius: 1rem;">
+                            <div class="row g-0">
+                                <div class="card-body p-4 pt-5 text-black">
+                                    <form id="registerForm">
+                                        <div class="d-flex align-items-center mb-5 pb-5">
 
-                                        <span class="h1 fw-bold mb-0"
-                                            style="color:rgb(9, 127, 245);width: 100%;text-align: center;">Create an
-                                            Account</span>
-                                    </div>
-                                    <div class="form-outline my-5">
-                                        <input type="text" name="ruser" id="ruser" maxlength="10"
-                                            class="form-control form-control-lg input" placeholder="Username" />
-                                    </div>
-                                    <div class="form-outline my-5">
-                                        <input type="password" name="rpwd" id="rpwd" maxlength="10"
-                                            class="form-control form-control-lg input" placeholder="Password" />
-                                    </div>
-                                    <div class="form-outline my-5">
-                                        <input type="password" name="rcpwd" id="rcpwd" maxlength="10"
-                                            class="form-control form-control-lg input" placeholder="Confirm Password" />
-                                    </div>
-                                    <div class="d-grid gap-2">
-                                        <button id="signup" class="btn btn-primary" type="button">Sign Up</button>
-                                    </div>
-                                </form>
+                                            <span class="h1 fw-bold mb-0"
+                                                style="color:rgb(9, 127, 245);width: 100%;text-align: center;">Create an
+                                                Account</span>
+                                        </div>
+                                        <div class="form-outline my-3">
+                                            <input type="text" name="ruser" id="ruser" maxlength="10"
+                                                class="form-control form-control-lg input" placeholder="Username" />
+                                        </div>
+                                        <div class="form-outline my-3">
+                                            <input type="password" name="rpwd" id="rpwd" maxlength="10"
+                                                class="form-control form-control-lg input" placeholder="Password" />
+                                        </div>
+                                        <div class="form-outline my-3">
+                                            <input type="password" name="rcpwd" id="rcpwd" maxlength="10"
+                                                class="form-control form-control-lg input"
+                                                placeholder="Confirm Password" />
+                                        </div>
+                                        <div class="d-grid gap-2 d-grid-gap-2">
+                                            <button id="signup" class="btn btn-primary" type="button">Sign Up</button>
+                                        </div>
+                                        <div class="d-grid gap-2 d-grid-gap-2">
+                                            <button id="closePage" class="btn btn-danger" type="button">Close
+                                                Page</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="simple-keyboard"></div>
                             </div>
-                            <div class="simple-keyboard"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 </body>
 <script src="/assets/plugins/js/jquery-3.7.0.min.js"></script>

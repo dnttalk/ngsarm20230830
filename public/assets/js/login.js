@@ -233,5 +233,5 @@ function showCenteredAlert(message) {
     // Remove the alert after a certain time
     setTimeout(function () {
         alertContainer.remove();
-    }, 2000); // Remove after 2 seconds
+    }, 3000); // Remove after 2 seconds
 }

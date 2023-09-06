@@ -66,7 +66,7 @@ body,
 .fbtn {
     height: 100%;
     width: 100%;
-    font-size: 48px;
+    font-size: 24px;
     color: rgb(255, 255, 255);
     font-weight: blod;
     white-space: nowrap;
@@ -81,14 +81,14 @@ body,
 }
 
 #btn-login {
-    background-color: rgb(255, 102, 255) !important;
-    border-color: rgb(218, 227, 243);
+    background-color: rgb(137, 96, 137);
+
     position: fixed;
     top: 0px;
     right: 80px;
     z-index: 9999;
-    width: 200px;
-    height: 100px;
+    width: 500px;
+    height: 50px;
 }
 
 
@@ -134,7 +134,7 @@ body,
 }
 
 .siderbar a {
-    margin: 2vh 0;
+    margin: 12vh 0;
 }
 
 #existBtn {
@@ -163,11 +163,11 @@ body,
 }
 
 .chooseContainer {
-    margin-top: 20vh;
+    margin-top: 20px;
 }
 
 .exitContainer {
-    margin-top: 30vh;
+    margin-top: 30px;
 }
 
 #existModalBtn {
@@ -209,13 +209,35 @@ body,
 }
 
 .inputContainer {
-    margin-top: 40px;
+    margin-top: 20px;
     /* Add top margin for spacing */
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     /* Add bottom margin for spacing */
 }
 
 .chooseContainer {
     margin-top: 10px;
     /* 调整需要的间距值 */
+}
+
+#check {
+    width: 400px;
+    margin-left: 100px;
+}
+
+#pcrBtn {
+    width: 400px;
+}
+
+#history {
+    width: 400px;
+    margin-left: -50px;
+}
+
+#setting {
+    width: 400px;
+}
+
+#homeButton {
+    margin-left: 600px;
 }

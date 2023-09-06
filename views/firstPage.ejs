@@ -30,14 +30,14 @@
             </div>
             <div class="col-6">
                 <div class="row">
-                    <button id="pcrBtn" class="mfbtn fbtn btn btn-primary border-5">PCR <br>Open</button>
+                    <button id="pcrBtn" class="mfbtn fbtn btn btn-primary border-5">PCR Open</button>
                 </div>
                 <div class="row">
-                    <a href="/history"><button type="button"
+                    <a href="/history"><button id="history" type="button"
                             class="mfbtn fbtn btn btn-primary border-5">History</button></a>
                 </div>
                 <div class="row">
-                    <button type="button" class="mfbtn fbtn btn btn-primary border-5">Setting</button>
+                    <button id="setting" type="button" class="mfbtn fbtn btn btn-primary border-5">Setting</button>
                 </div>
             </div>
         </div>
@@ -58,8 +58,10 @@
                                 <input id="sName" type="text" maxlength="10" id="Name"
                                     class="form-control form-control-lg input" placeholder="Project Name"
                                     maxlength="20">
+                                <a href="/?rediret=false">
+                                    <button id="homeButton" type="button">Home</button>
+                                </a>
                             </div>
-
                             <div class="row justify-content-md-center inputContainer">
                                 <div class="col-5 mx-1">
                                     <input id="lotnumber" type="number" class="form-control form-control-lg input"
@@ -67,6 +69,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-md-center chooseContainer"></div>
+
                             <div class="simple-keyboard"></div>
                         </div>
                     </div>

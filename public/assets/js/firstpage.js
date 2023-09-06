@@ -1,5 +1,5 @@
 let status = 0;
-const statusArr = ['PCR \n Open', 'PCR \n Opening', 'PCR \n Close', 'PCR \n Closing'];
+const statusArr = ['PCR Open', 'PCR Opening', 'PCR Close', 'PCR Closing'];
 const $pcrBtn = $('#pcrBtn'); // Cache the button element
 
 $(function () {
@@ -217,15 +217,31 @@ function handleNumbers() {
 function btnChooseEvent() {
     $(document).on('click', '.fsbtn', function (e) {
         if ($('#sName').val().length == 0 || $('#lotnumber').val() == 0) {
-            showCenteredAlert('Please input ProjectName and LotNumber')
+            $('#sName').css('border-color', 'red');
+            $('#lotnumber').css('border-color', 'red');
+            e.preventDefault();
         } else {
+            $('#sName').css('border-color', '');
+            $('#lotnumber').css('border-color', '');
             $.cookie("sname", $('#sName').val(), { path: '/' });
             $.cookie("lotnumber", $('#lotnumber').val(), { path: '/' });
             $.cookie("cmodelname", $(this).attr('id'), { path: '/' });
             window.location.href = "/second?id=" + $(this).attr('id');
         }
     })
+    $('#exampleModal2').on('hide.bs.modal', function (e) {
+        // 检查输入字段的值。
+        if ($('#sName').val().length == 0 || $('#lotnumber').val().length == 0) {
+            // 如果任何一个输入字段为空，阻止模态框关闭。
+            e.preventDefault();
+            e.stopPropagation();
+            // 可选择添加更多逻辑，以显示错误消息或更改输入框的边框以指示问题。
+        }
+    });
 }
+
+
+
 function showCenteredAlert(message) {
     var alertContainer = $('<div>').addClass('alert-container');
     var alertBox = $('<div>').addClass('alert-box').text(message);
@@ -235,7 +251,7 @@ function showCenteredAlert(message) {
     // Remove the alert after a certain time
     setTimeout(function () {
         alertContainer.remove();
-    }, 2000); // Remove after 2 seconds
+    }, 3000); // Remove after 2 seconds
 }
 $(document).ready(function () {
     $("#existBtn").click(function () {

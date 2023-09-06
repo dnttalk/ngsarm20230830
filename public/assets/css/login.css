@@ -90,4 +90,21 @@ a {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-size: larger;
+}
+
+.d-grid-gap-2 {
+    margin-bottom: 30px;
+}
+
+#register {
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: larger
+}
+
+#closePage {
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: larger
 }
