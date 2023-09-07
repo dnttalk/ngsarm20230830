@@ -17,7 +17,7 @@ let loadAllSampleBtn = function () {
             Object.keys(json).forEach(function (k) {
                 $('.chooseContainer').append(`
                 <div class="col-3 mx-3">
-                    <button id="${k.toLocaleLowerCase()}" class="fsbtn btn btn-primary border-5" data-bs-dismiss="modal">${k}</button>
+                    <button id="${k.toLocaleLowerCase()}" class="fsbtn btn btn-primary border-5">${k}</button>
                 </div>
                 `)
             });

@@ -81,13 +81,13 @@ td {
 
 .nextPage {
     position: absolute !important;
-    margin-left: -0.9rem;
+    margin-left: 0.1rem;
     margin-top: -1.7em;
 }
 
 .prevPage {
     position: absolute !important;
-    margin-left: -1.9rem;
+    margin-left: -3.9rem;
     margin-top: -3.9rem;
 }
 

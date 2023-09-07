@@ -11,7 +11,7 @@ let initData = function () {
     let scount = getUrlParameter('scount')
     console.log(scount)
     $('#sampleNumberInput').val(scount)
-
+    resetSAIColor()
     let id = getUrlParameter('id')
     fetch('../assets/data/sample.json')
         .then((response) => response.json())
@@ -34,6 +34,14 @@ let initData = function () {
                 arr2[i] = arr2[i].replace(' Primer', '')
             }
         });
+}
+
+// resetSampleAndIndexColor
+let resetSAIColor = function () {
+    for (let i = 1; i <= parseInt($('#sampleNumberInput').val()); i++) {
+        $(`#tdFirst_${i}`).css('background-color', 'rgb(125, 194, 251)')
+        $(`#tdSecond_${i}`).css('background-color', 'rgb(125, 194, 251)')
+    }
 }
 
 // 下一頁允許事件
@@ -121,6 +129,9 @@ let checkEvent = function () {
 
 let tdEvent = function () {
     $('td').click(function () {
+        if (parseInt($(this).attr('id').split('Second_')[1]) <= $('#sampleNumberInput').val()) {
+            $(`#tdFirst_${$(this).attr('id').split('Second_')[1]}`).click()
+        }
         if (parseInt($(this).attr('id').split('First_')[1]) <= $('#sampleNumberInput').val()) {
             $('#cancleChoose2').attr('dataNumber', $(this).attr('id').split('First_')[1])
             $('#doneChoose2').attr('dataNumber', $(this).attr('id').split('First_')[1])
@@ -199,10 +210,7 @@ let tdEvent = function () {
         checkEvent()
     })
     $('#doneChoose2').click(function () {
-        for (let i = 1; i <= 24; i++) {
-            $(`#tdFirst_${i}`).css('background-color', 'white')
-            $(`#tdSecond_${i}`).css('background-color', 'white')
-        }
+        resetSAIColor()
         if ($('#sName').val() != '' && arr1.includes($('.selectionBtn1.active').text()) && arr2.includes($('.selectionBtn2.active').text())) {
 
             $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).attr('sn', $('#sName').val())
@@ -210,31 +218,43 @@ let tdEvent = function () {
             $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).attr('s2', $('.selectionBtn2.active').text())
             $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).text($('#sName').val())
             $(`#tdSecond_${$('#doneChoose2').attr('dataNumber')}`).text($('.selectionBtn1.active').text() + '   ' + $('.selectionBtn2.active').text())
-            let check = 0
+            let check1 = 0
+            let check2 = 0
             let getSameID = 0
             for (let i = 1; i <= 24; i++) {
                 if (i != parseInt($('#doneChoose2').attr('dataNumber'))) {
                     if ($(`#tdFirst_${i}`).attr('sn') == $('#sName').val()) {
-                        check = 1
+                        check1 = 1
                         getSameID = i
                     }
                     if ($(`#tdFirst_${i}`).attr('s1') == $('.selectionBtn1.active').text() && $(`#tdFirst_${i}`).attr('s2') == $('.selectionBtn2.active').text()) {
-                        check = 1
+                        check2 = 1
                         getSameID = i
                     }
                 }
 
             }
-            if (check) {
+            if (check1) {
                 $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'red')
-                $(`#tdSecond_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'red')
+                // $(`#tdSecond_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'red')
                 $(`#tdFirst_${getSameID}`).css('background-color', 'red')
+                // $(`#tdSecond_${getSameID}`).css('background-color', 'red')
+            } else {
+                $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'rgb(125, 194, 251)')
+                // $(`#tdSecond_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'rgb(125, 194, 251)')
+                $(`#tdFirst_${getSameID}`).css('background-color', 'rgb(125, 194, 251)')
+                // $(`#tdSecond_${getSameID}`).css('background-color', 'rgb(125, 194, 251)')
+            }
+            if (check2) {
+                // $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'red')
+                $(`#tdSecond_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'red')
+                // $(`#tdFirst_${getSameID}`).css('background-color', 'red')
                 $(`#tdSecond_${getSameID}`).css('background-color', 'red')
             } else {
-                $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'white')
-                $(`#tdSecond_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'white')
-                $(`#tdFirst_${getSameID}`).css('background-color', 'white')
-                $(`#tdSecond_${getSameID}`).css('background-color', 'white')
+                // $(`#tdFirst_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'rgb(125, 194, 251)')
+                $(`#tdSecond_${$('#doneChoose2').attr('dataNumber')}`).css('background-color', 'rgb(125, 194, 251)')
+                // $(`#tdFirst_${getSameID}`).css('background-color', 'rgb(125, 194, 251)')
+                $(`#tdSecond_${getSameID}`).css('background-color', 'rgb(125, 194, 251)')
             }
             checkEvent()
         } else {
