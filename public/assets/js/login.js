@@ -4,7 +4,6 @@ var pwd = document.querySelector('#pwd')
 var login = document.querySelector('#login')
 var form = document.querySelector('#loginForm')
 
-
 $(function () {
     registerEvent()
 });
@@ -216,8 +215,6 @@ function handleNumbers() {
     });
 }
 // 在合适的位置创建一次连接
-
-
 document.getElementById("closePage").addEventListener("click", function () {
     $.get("/api/admin/closeAllProcess", function (data) {
         console.log(data);

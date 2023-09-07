@@ -1,8 +1,8 @@
 .currentlyModelContainer {
     position: absolute !important;
-    width: 240px !important;
+    width: 350px !important;
     height: 110px !important;
-    right: 0 !important;
+    right: 0px !important;
     top: 0 !important;
     background-color: rgb(125, 194, 251) !important;
     border-radius: 0 0 0 52px !important;

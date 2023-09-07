@@ -6,7 +6,8 @@ body {
 }
 
 .container {
-    position: relative;
+
+    position: absolute;
     height: 100vh;
     /* 设置容器的高度为视窗高度 */
 }
