@@ -148,6 +148,7 @@ let countPopBtnEvent = function () {
                     }
                     appendText = appendText + '</tbody></table></div>'
                     $('.contentInner').append(appendText)
+
                 } else {
                     console.log($('#currentlyModelName').text())
                     let appendText = ''
@@ -173,6 +174,7 @@ let countPopBtnEvent = function () {
                                     <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
                                 </tr>
                             `)
+
                         }
                     }
                     appendText = appendText + '</tbody></table></div>'
@@ -192,7 +194,6 @@ let checkEvent = function () {
         if (!$(this).hasClass('disabled')) {
             if (!$(this).hasClass('active')) {
                 checkAllBtnActive = false
-
             }
         }
     })
@@ -216,7 +217,6 @@ let nextPageEvent = function () {
             if (!$(this).hasClass('disabled')) {
                 if (!$(this).hasClass('active')) {
                     checkAllBtnActive = false
-                    showCenteredAlert("Please input Samples and Reagent")
                 }
             }
         })
@@ -259,13 +259,13 @@ let updateSscircleBtnEvent = function () {
 keys.forEach(key => {
     key.addEventListener('click', () => {
         const value = key.textContent;
-        if (value === '-1') {
+        if (value === '←') {
             if ($('#sampleNumberInput').val().slice(0, -1) == '') {
-                $('#sampleNumberInput').val(1);
+                $('#sampleNumberInput').val(1)
             } else {
-                $('#sampleNumberInput').val(parseInt($('#sampleNumberInput').val())) - 1;
+                $('#sampleNumberInput').val() = $('#sampleNumberInput').val().slice(0, -1);
             }
-        } else if (value === 'min') {
+        } else if (value === 'C') {
             $('#sampleNumberInput').val(1)
         } else if (value === 'OK') {
             $('#keyboardContainer').css('display', 'none')
@@ -279,14 +279,3 @@ keys.forEach(key => {
         updateSscircleBtnEvent()
     });
 });
-function showCenteredAlert(message) {
-    var alertContainer = $('<div>').addClass('alert-container');
-    var alertBox = $('<div>').addClass('alert-box').text(message);
-    alertContainer.append(alertBox);
-    $('body').append(alertContainer);
-
-    // Remove the alert after a certain time
-    setTimeout(function () {
-        alertContainer.remove();
-    }, 3000); // Remove after 2 seconds
-}

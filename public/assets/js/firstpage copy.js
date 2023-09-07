@@ -217,11 +217,9 @@ function handleNumbers() {
 function btnChooseEvent() {
     $(document).on('click', '.fsbtn', function (e) {
         if ($('#sName').val().length == 0 || $('#lotnumber').val() == 0) {
-            showCenteredAlert("Please input Sample Name and LotNumber");
             $('#sName').css('border-color', 'red');
             $('#lotnumber').css('border-color', 'red');
             e.preventDefault();
-
         } else {
             $('#sName').css('border-color', '');
             $('#lotnumber').css('border-color', '');
@@ -242,6 +240,8 @@ function btnChooseEvent() {
     });
 }
 
+
+
 function showCenteredAlert(message) {
     var alertContainer = $('<div>').addClass('alert-container');
     var alertBox = $('<div>').addClass('alert-box').text(message);
@@ -258,4 +258,4 @@ $(document).ready(function () {
         $("#exampleModal").modal("show");
     });
     btnChooseEvent();
-})
+});

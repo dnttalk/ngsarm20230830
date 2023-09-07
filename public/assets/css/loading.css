@@ -10,6 +10,7 @@ body {
     position: absolute;
     height: 100vh;
     /* 设置容器的高度为视窗高度 */
+    margin-left: 120px;
 }
 
 p {
