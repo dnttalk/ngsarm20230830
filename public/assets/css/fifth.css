@@ -596,3 +596,7 @@ a {
     font-weight: bold;
     margin-top: 5em;
 }
+
+.btn chooseBtn {
+    color: rgb(99, 180, 205) !important;
+}
