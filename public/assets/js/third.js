@@ -113,6 +113,7 @@ $(document).ready(function () {
 
     $('.checkbtn').click(function () {
         $('#showModelName12').text('')
+        $('#showModelName12').empty()
         $('#showModelCount').text('')
         if ($(this).text().indexOf('12 well plate with reagent') >= 0) {
             $('#showModelName12').text('12 well plate with reagent')
@@ -121,12 +122,11 @@ $(document).ready(function () {
         }
         else if ($(this).text().indexOf('Tip Rack A') >= 0) {
             $('#showModelName12').text('Tip Rack A')
-
-            $('#showModelCount').text($(this).text()).css('color', 'blue');
+            $('#showModelCount').append(`Tip Rack A <br><span style="color:blue;">${$(this).text().split('Rack A')[1]}</span>`)
             $('#sampleImg').attr('src', '/assets/img/Tip Rack A.png')
         } else if ($(this).text().indexOf('Tip Rack B') >= 0) {
             $('#showModelName12').text('Tip Rack B')
-            $('#showModelCount').text($(this).text()).css('color', 'blue');
+            $('#showModelCount').append(`Tip Rack B <br><span style="color:blue;">${$(this).text().split('Rack B ')[1]}</span>`)
             $('#sampleImg').attr('src', '/assets/img/Tip Rack B.png')
         } else {
             $('#showModelName12').text($(this).text())
