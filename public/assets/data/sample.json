@@ -29,7 +29,7 @@
             "2,PCR Mix 2",
             "Beads,Magnetic beads"
         ],
-        "SampleLimit": 22,
+        "SampleLimit": 24,
         "name": "MPN",
         "img1": "/assets/img/MPN_1.png",
         "img2": "/assets/img/MPN_2.png"

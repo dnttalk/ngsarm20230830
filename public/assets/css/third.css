@@ -280,3 +280,8 @@ body {
     color: rgb(55, 45, 200);
     text-align: center;
 }
+
+#sampleImg {
+    border-radius: 20px;
+    ;
+}
