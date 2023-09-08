@@ -121,14 +121,16 @@ $(document).ready(function () {
         }
         else if ($(this).text().indexOf('Tip Rack A') >= 0) {
             $('#showModelName12').text('Tip Rack A')
-            $('#showModelCount').text($(this).text())
+
+            $('#showModelCount').text($(this).text()).css('color', 'blue');
             $('#sampleImg').attr('src', '/assets/img/Tip Rack A.png')
         } else if ($(this).text().indexOf('Tip Rack B') >= 0) {
             $('#showModelName12').text('Tip Rack B')
-            $('#showModelCount').text($(this).text())
+            $('#showModelCount').text($(this).text()).css('color', 'blue');
             $('#sampleImg').attr('src', '/assets/img/Tip Rack B.png')
         } else {
             $('#showModelName12').text($(this).text())
+            $('#showModelCount').text($(this).text())
             $('#sampleImg').attr('src', '/assets/img/' + $(this).text() + '.png')
         }
     })
