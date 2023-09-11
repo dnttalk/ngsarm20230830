@@ -5,11 +5,12 @@ let timerPaused = false;  // 初始狀態為計時器運行
 let intervalId = null;    // 計時器間隔的 ID
 let startTime = Date.now();
 let pausedTime = null
+
 $(function () {
-    pauseEvent();
+    // pauseEvent();
     poe();
     setupActionButtons(); // 設定開始和暫停按鈕的點擊事件
-    // startTimer();// 初始狀態下啟動計時器
+    startTimer();// 初始狀態下啟動計時器
     flashNumber();
 });
 
@@ -29,22 +30,6 @@ let flashNumber = function () {
     }
 }
 
-let pauseEvent = function () {
-    $('.btn-pause').on('click', function () {
-        if (pauseStatus === 0) {
-            pauseStatus = 1;
-            $('.btn-pause-text').text('Continue');
-            intervalObj1 = setInterval(function () {
-                $('.btn-pause').fadeIn(500).fadeOut(500);
-            }, 1000);
-        } else {
-            $('.btn-pause-text').text('Pause');
-            $('.btn-pause').delay(1000).fadeIn(500);
-            clearInterval(intervalObj1);
-        }
-    });
-};
-
 let poe = function () {
     $('.btn-confirm').on('click', function () {
         var myModal = new bootstrap.Modal(document.getElementById('EOPModal'), {
@@ -52,24 +37,18 @@ let poe = function () {
         });
         myModal.show();
     });
-    $('.confirmPOE').on('click', function () {
-        $.get("/api/start/M301", function (data) {
-            console.log(data);
-        });
+    $('.confirmPOE').on('click', async function () {
+        clearInterval(intervalId);
         setTimeout(function () {
-            $.get("/api/start/M44", function (data) {
+            $.get("/api/start/M302", function (data) {
                 console.log(data);
             });
-        }, 2000);
-        setTimeout(function () {
-            $.get("/api/start/M45", function (data) {
-                console.log(data);
-            });
-        }, 4000);
+        }, 1500);
+
+
         setTimeout(function () {
             window.location.href = "/";
-        }, 5000);
-
+        }, 1600);
     });
 };
 
@@ -86,13 +65,15 @@ function setupActionButtons() {
         if ($('#start').hasClass('active')) {
             // 其他操作，例如觸發開始 API 端點
             $('#start').removeClass('active')
-            $.get("/api/start/M300", function (data) {
-                console.log(data);
-                $('#pause').addClass('active')
-                // timerPaused = false; // 恢復計時器
-                // startTime = ((startTime / 1000) * 1000) + (((Date.now() - pausedTime) / 1000) * 1000)
-                // startTimer();  // 重新啟動計時器
-            });
+            setTimeout(function () {
+                $.get("/api/start/M300", function (data) {
+                    console.log(data);
+                    $('#pause').addClass('active')
+                    timerPaused = false;
+                    startTimer();
+                });
+            }, 1000);
+
         }
     });
 
@@ -100,43 +81,33 @@ function setupActionButtons() {
         if ($('#pause').hasClass('active')) {
             // 其他操作，例如觸發暫停 API 端點
             $('#pause').removeClass('active')
-            $.get("/api/start/M301", function (data) {
-                console.log(data);
-                $('#start').addClass('active')
-                // timerPaused = true;
-                // clearInterval(intervalId);  // 清除計時器間隔
-                // pausedTime = Date.now(); // 計算暫停的時間
-            });
+            timerPaused = true;
+            clearInterval(intervalId);
+            setTimeout(function () {
+                $.get("/api/start/M301", function (data) {
+                    console.log(data);
+                    $('#start').addClass('active')
+                });
+            }, 1500)
         }
     });
 }
 
 function startTimer() {
-
-    intervalId = setInterval(async function () {
-        if (!timerPaused) {
-            let currentTime = Date.now();
-            let elapsedTime = currentTime - startTime;
-            let seconds = Math.floor((elapsedTime / 1000) % 60);
-            let minutes = Math.floor((elapsedTime / 1000 / 60) % 60);
-            let hours = Math.floor((elapsedTime / 1000 / 60 / 60) % 24);
-            let timerElement = document.getElementById('timer');
-            timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            $.get("/api/start/process", function (data) {
-                if (data.status) {
-                    processStatus = parseInt(data.status)
-                    console.log(data)
+    intervalId = setInterval(function () {
+        $.get("/api/start/process", function (data) {
+            if (data.status) {
+                processStatus = parseInt(data.status)
+                console.log(data)
+            }
+            if (processStatus === 20) {
+                let id = getUrlParameter('id')
+                if (id) {
+                    window.location.href = "/report?id=" + id;
                 }
-                if (processStatus === 20) {
-                    let id = getUrlParameter('id')
-                    if (id) {
-                        window.location.href = "/report?id=" + id;
-                    }
-                    window.location.href = "/report";
-                }
-            });
-            flashNumber();
-        }
 
+            }
+        });
+        flashNumber();
     }, 1000);
 }

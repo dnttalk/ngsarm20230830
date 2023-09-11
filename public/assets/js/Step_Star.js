@@ -39,5 +39,5 @@ client.on('close', () => {
 setTimeout(function () {
   console.log("Executed after 1 second");
   client.end();
-}, 1000);
+}, 2000);
 

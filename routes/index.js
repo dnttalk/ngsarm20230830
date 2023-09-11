@@ -86,38 +86,24 @@ router.get('/api/pcrlib/close', async (req, res) => {
 
 //Step start
 router.get('/api/start/stepstart', async (req, res) => {
-    var workerProcess = child_process.exec('node ' + path.join(__dirname, '../public/assets/js/Step_Star.js'), function (error, stdout, stderr) {
-        if (error) {
-            console.log(error.stack);
-            console.log('Error code: ' + error.code);
-            console.log('Signal received: ' + error.signal);
-        }
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + stderr);
-    });
-    await workerProcess.on('exit', function (code) {
-        console.log('子進程已退出，退出碼 ' + code);
-    });
+    try {
+        let { stdout, stderr } = await exec('node ' + path.join(__dirname, '../public/assets/js/Step_Star.js'))
+        console.log(stdout)
+        console.log(stderr)
+    } catch (err) {
+        console.log('發生錯誤')
+    }
     res.json({ message: '機器開始' });
 });
 //M300
 router.get('/api/start/M300', async (req, res) => {
-    // var workerProcess = child_process.exec('node ' + path.join(__dirname, '../public/assets/js/M300.js'), function (error, stdout, stderr) {
-    //     if (error) {
-    //         console.log(error.stack);
-    //         console.log('Error code: ' + error.code);
-    //         console.log('Signal received: ' + error.signal);
-    //     }
-    //     console.log('stdout: ' + stdout);
-    //     console.log('stderr: ' + stderr);
-    // });
-    // workerProcess.on('exit', function (code) {
-    //     console.log('子進程已退出，退出碼 ' + code);
-    // });
+
     try {
-        let { stdout, stderr } = await exec('node ' + path.join(__dirname, '../public/assets/js/M300.js'))
-        console.log(stdout)
-        console.log(stderr)
+        process.nextTick(async () => {
+            let { stdout, stderr } = await exec('node ' + path.join(__dirname, '../public/assets/js/M300.js'))
+            console.log(stdout)
+            console.log(stderr)
+        })
     } catch (err) {
         console.log('發生錯誤')
     }
@@ -125,41 +111,35 @@ router.get('/api/start/M300', async (req, res) => {
 });
 //M301
 router.get('/api/start/M301', async (req, res) => {
-    // var workerProcess = child_process.exec('node ' + path.join(__dirname, '../public/assets/js/M301.js'), function (error, stdout, stderr) {
-    //     if (error) {
-    //         console.log(error.stack);
-    //         console.log('Error code: ' + error.code);
-    //         console.log('Signal received: ' + error.signal);
-    //     }
-    //     console.log('stdout: ' + stdout);
-    //     console.log('stderr: ' + stderr);
-    // });
-    // workerProcess.on('exit', function (code) {
-    //     console.log('子進程已退出，退出碼 ' + code);
-    // });
+
     try {
-        let { stdout, stderr } = await exec('node ' + path.join(__dirname, '../public/assets/js/M301.js'))
-        console.log(stdout)
-        console.log(stderr)
+        process.nextTick(async () => {
+            let { stdout, stderr } = await exec('node ' + path.join(__dirname, '../public/assets/js/M301.js'))
+            console.log(stdout)
+            console.log(stderr)
+        })
     } catch (err) {
         console.log('發生錯誤')
     }
     res.json({ message: '機器開始' });
 });
+//M302
+router.get('/api/start/M302', async (req, res) => {
+
+    try {
+        process.nextTick(() => {
+            let { stdout, stderr } = exec('node ' + path.join(__dirname, '../public/assets/js/M302.js'))
+            console.log(stdout)
+            console.log(stderr)
+        })
+    } catch (err) {
+        console.log('發生錯誤')
+    }
+    res.json({ message: '機器停止' });
+});
 //M44
 router.get('/api/start/M44', async (req, res) => {
-    // var workerProcess = child_process.exec('node ' + path.join(__dirname, '../public/assets/js/M44.js'), function (error, stdout, stderr) {
-    //     if (error) {
-    //         console.log(error.stack);
-    //         console.log('Error code: ' + error.code);
-    //         console.log('Signal received: ' + error.signal);
-    //     }
-    //     console.log('stdout: ' + stdout);
-    //     console.log('stderr: ' + stderr);
-    // });
-    // await workerProcess.on('exit', function (code) {
-    //     console.log('子進程已退出，退出碼 ' + code);
-    // });
+
     try {
         let { stdout, stderr } = await exec('node ' + path.join(__dirname, '../public/assets/js/M44.js'))
         console.log(stdout)
@@ -171,18 +151,7 @@ router.get('/api/start/M44', async (req, res) => {
 });
 //M44
 router.get('/api/start/M45', async (req, res) => {
-    // var workerProcess = child_process.exec('node ' + path.join(__dirname, '../public/assets/js/M45.js'), function (error, stdout, stderr) {
-    //     if (error) {
-    //         console.log(error.stack);
-    //         console.log('Error code: ' + error.code);
-    //         console.log('Signal received: ' + error.signal);
-    //     }
-    //     console.log('stdout: ' + stdout);
-    //     console.log('stderr: ' + stderr);
-    // });
-    // await workerProcess.on('exit', function (code) {
-    //     console.log('子進程已退出，退出碼 ' + code);
-    // });
+
     try {
         let { stdout, stderr } = await exec('node ' + path.join(__dirname, '../public/assets/js/M45.js'))
         console.log(stdout)
@@ -213,9 +182,5 @@ router.get('/api/start/process', async (req, res) => {
     }
     res.json({ status: status, message: message });
 });
-// router.get('/api/start/step', (req, res) => {
-//     const read_head = require('../public/assets/js/read_head.js');
-//     read_head.req;
-//     res.json({ message: '槍頭' });
-// });
+
 module.exports = router;

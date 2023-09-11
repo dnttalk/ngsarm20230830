@@ -111,12 +111,13 @@ $(document).ready(function () {
         }
     })
 
+
     $('.checkbtn').click(function () {
         $('#showModelName12').text('')
         $('#showModelName12').empty()
         $('#showModelCount').text('')
         if ($(this).text().indexOf('12 well plate with reagent') >= 0) {
-            $('#showModelName12').text('12 well plate with reagent')
+            $('#showModelName12').text('12 well plate with reagent').split(' ').join('')
             $('#showModelCount').text($(this).text())
             $('#sampleImg').attr('src', '/assets/img/a.png')
         }
@@ -131,10 +132,9 @@ $(document).ready(function () {
         } else {
             $('#showModelName12').text($(this).text())
             $('#showModelCount').text($(this).text())
-            $('#sampleImg').attr('src', '/assets/img/' + $(this).text() + '.png')
+            $('#sampleImg').attr('src', '/assets/img/' + $(this).text().split(' ').join('') + '.png')
         }
     })
-
     // 初始狀態設定
     updateNextButtonState();
     updateBorderColor();

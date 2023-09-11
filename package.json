@@ -19,8 +19,10 @@
     "node-key-sender": "^1.0.11",
     "puppeteer": "^21.1.0",
     "rcedit": "^3.1.0",
+    "regex": "^0.1.1",
     "simple-keyboard": "latest",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "xregexp": "^5.1.1"
   },
   "devDependencies": {
     "electron": "^26.1.0",
