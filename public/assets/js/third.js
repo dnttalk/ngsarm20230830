@@ -76,8 +76,8 @@ $(document).ready(function () {
     })
 
     $('#checkcBtn').click(function () {
-        if ($(this).text() == 'All Set!') {
-            $(this).text('unset!')
+        if ($(this).text() == 'All Set') {
+            $(this).text('unset')
             $('.border-solid').each(function () {
                 $(this).find('.btn').each(function () {
                     $(this).addClass('active')
@@ -87,7 +87,7 @@ $(document).ready(function () {
             updateNextButtonState();
             updateBorderColor();
         } else {
-            $(this).text('All Set!')
+            $(this).text('All Set')
             $('.border-solid').each(function () {
                 // unset時排除例外
                 if ($(this).find('.btn').hasClass('exception')) {

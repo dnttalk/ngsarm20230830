@@ -9,7 +9,7 @@ $(function () {
     pauseEvent();
     poe();
     setupActionButtons(); // 設定開始和暫停按鈕的點擊事件
-    startTimer();// 初始狀態下啟動計時器
+    // startTimer();// 初始狀態下啟動計時器
     flashNumber();
 });
 
@@ -52,17 +52,24 @@ let poe = function () {
         });
         myModal.show();
     });
-    $('#confirmPOE').on('click', function () {
+    $('.confirmPOE').on('click', function () {
         $.get("/api/start/M301", function (data) {
             console.log(data);
         });
-        $.get("/api/start/M44", function (data) {
-            console.log(data);
-        });
-        $.get("/api/start/M45", function (data) {
-            console.log(data);
-        });
-        window.location.href = "/";
+        setTimeout(function () {
+            $.get("/api/start/M44", function (data) {
+                console.log(data);
+            });
+        }, 2000);
+        setTimeout(function () {
+            $.get("/api/start/M45", function (data) {
+                console.log(data);
+            });
+        }, 4000);
+        setTimeout(function () {
+            window.location.href = "/";
+        }, 5000);
+
     });
 };
 
@@ -77,28 +84,28 @@ function performAction(apiEndpoint, requiredSections) {
 function setupActionButtons() {
     $('#start').click(function () {
         if ($('#start').hasClass('active')) {
-            $('#start').removeClass('active')
-            $('#pause').addClass('active')
-            timerPaused = false; // 恢復計時器
-            startTime = ((startTime / 1000) * 1000) + (((Date.now() - pausedTime) / 1000) * 1000)
-            startTimer();  // 重新啟動計時器
             // 其他操作，例如觸發開始 API 端點
+            $('#start').removeClass('active')
             $.get("/api/start/M300", function (data) {
                 console.log(data);
+                $('#pause').addClass('active')
+                // timerPaused = false; // 恢復計時器
+                // startTime = ((startTime / 1000) * 1000) + (((Date.now() - pausedTime) / 1000) * 1000)
+                // startTimer();  // 重新啟動計時器
             });
         }
     });
 
     $('#pause').click(function () {
         if ($('#pause').hasClass('active')) {
-            $('#pause').removeClass('active')
-            $('#start').addClass('active')
-            timerPaused = true;
-            clearInterval(intervalId);  // 清除計時器間隔
-            pausedTime = Date.now(); // 計算暫停的時間
             // 其他操作，例如觸發暫停 API 端點
+            $('#pause').removeClass('active')
             $.get("/api/start/M301", function (data) {
                 console.log(data);
+                $('#start').addClass('active')
+                // timerPaused = true;
+                // clearInterval(intervalId);  // 清除計時器間隔
+                // pausedTime = Date.now(); // 計算暫停的時間
             });
         }
     });
@@ -115,20 +122,21 @@ function startTimer() {
             let hours = Math.floor((elapsedTime / 1000 / 60 / 60) % 24);
             let timerElement = document.getElementById('timer');
             timerElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }
-        $.get("/api/start/process", function (data) {
-            if (data.status) {
-                processStatus = parseInt(data.status)
-                console.log(data)
-            }
-            if (processStatus === 20) {
-                let id = getUrlParameter('id')
-                if (id) {
-                    window.location.href = "/report?id=" + id;
+            $.get("/api/start/process", function (data) {
+                if (data.status) {
+                    processStatus = parseInt(data.status)
+                    console.log(data)
                 }
-                window.location.href = "/report?id=";
-            }
-        });
-        flashNumber();
+                if (processStatus === 20) {
+                    let id = getUrlParameter('id')
+                    if (id) {
+                        window.location.href = "/report?id=" + id;
+                    }
+                    window.location.href = "/report";
+                }
+            });
+            flashNumber();
+        }
+
     }, 1000);
 }

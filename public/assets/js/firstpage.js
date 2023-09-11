@@ -1,5 +1,5 @@
 let status = 0;
-const statusArr = ['PCR Open', 'PCR Opening', 'PCR Close', 'PCR Closing'];
+const statusArr = ['PCR open', 'PCR opening', 'PCR close', 'PCR closing'];
 const $pcrBtn = $('#pcrBtn'); // Cache the button element
 
 $(function () {
@@ -9,35 +9,6 @@ $(function () {
     loadAllSampleBtn();
     btnChooseEvent();
 });
-
-let loadAllSampleBtn = function () {
-    fetch('/assets/data/sample.json')
-        .then((response) => response.json())
-        .then((json) => {
-            Object.keys(json).forEach(function (k) {
-                $('.chooseContainer').append(`
-                <div class="col-3 mx-3">
-                    <button id="${k.toLocaleLowerCase()}" class="fsbtn btn btn-primary border-5">${k}</button>
-                </div>
-                `)
-            });
-        });
-
-    let rStatus = getUrlParameter('rediret')
-    if (rStatus == 'true') {
-        var myModal = new bootstrap.Modal(document.getElementById('exampleModal2'), {
-            keyboard: true
-        });
-        myModal.show();
-    }
-}
-
-let resetCookie = function () {
-    $.removeCookie("sname");
-    $.removeCookie("lotnumber");
-    $.removeCookie("cmodelname");
-    $.removeCookie("reportTable");
-}
 
 async function statusEvent() {
     status = (status + 1) % 4;
@@ -83,11 +54,52 @@ function fadeAnimation($element, duration) {
         });
     });
 }
+
+let loadAllSampleBtn = function () {
+    fetch('/assets/data/sample.json')
+        .then((response) => response.json())
+        .then((json) => {
+            Object.keys(json).forEach(function (k) {
+                $('.chooseContainer').append(`
+                <div class="col-3 mx-3">
+                    <button id="${k.toLocaleLowerCase()}" class="fsbtn btn btn-primary border-5">${k}</button>
+                </div>
+                `)
+            });
+        });
+
+    let rStatus = getUrlParameter('rediret')
+    if (rStatus == 'true') {
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModal2'), {
+            keyboard: true
+        });
+        myModal.show();
+    }
+}
+
+let resetCookie = function () {
+    $.removeCookie("sname");
+    $.removeCookie("lotnumber");
+    $.removeCookie("cmodelname");
+    $.removeCookie("reportTable");
+}
+
+function btnChooseEvent() {
+    $('#leukemia').click(function () {
+        window.location.href = "/second?id=" + $(this).attr('id');
+    })
+    $('#tp53').click(function () {
+        window.location.href = "/second?id=" + $(this).attr('id');
+    })
+    $('#mpn').click(function () {
+        window.location.href = "/second?id=" + $(this).attr('id');
+    })
+}
+
 let curryInput = '#sName';
 let Keyboard = window.SimpleKeyboard.default;
 
 let keyboard = new Keyboard({
-    onChange: input => onChange(input),
     onKeyPress: button => onKeyPress(button),
     mergeDisplay: true,
     layoutName: "default",

@@ -6,9 +6,9 @@
         MPN
     </title>
     <%- include('./layout/head') -%>
-    <link rel='stylesheet' href='/assets/css/second.css' />
-    <link rel='stylesheet' href='/assets/css/secondCheck.css' />
-    <link rel='stylesheet' href='/assets/css/report.css' />
+        <link rel='stylesheet' href='/assets/css/second.css' />
+        <link rel='stylesheet' href='/assets/css/secondCheck.css' />
+        <link rel='stylesheet' href='/assets/css/report.css' />
 </head>
 
 
@@ -23,7 +23,8 @@
         </div>
         <div class="row">
             <div class="col-10">
-                <table id="reportTable" class="demo" style="border-collapse:collapse;border: 5px solid rgb(65, 113, 156);" rules="all" cellpadding='5' ;>
+                <table id="reportTable" class="demo"
+                    style="border-collapse:collapse;border: 5px solid rgb(65, 113, 156);" rules="all" cellpadding='5' ;>
                     <tbody>
                         <tr>
                             <td></td>
@@ -123,7 +124,7 @@
                 </table>
             </div>
             <div class="col-2">
-                <button id="btnETE" type="button" class="changePage nextPage btn-primary border-5">
+                <button id="btnETE" type="button" class="changePage btn-primary border-5">
                     Copy to Excel
                 </button>
             </div>
@@ -132,7 +133,7 @@
             <div class="col-2">
             </div>
             <div class="col-2">
-                <button id="Finish" type="button" class="changePage nextPage btn-primary border-5">
+                <button id="Finish" type="button" class="changePage btn-primary border-5">
                     <i class="fa-solid fa-caret-right"></i>
                 </button>
             </div>
@@ -140,7 +141,7 @@
     </div>
 
     <%- include('./layout/js') -%>
-    <script src="/assets/js/report.js"></script>
+        <script src="/assets/js/report.js"></script>
 </body>
 
 </html>

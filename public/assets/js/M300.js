@@ -9,35 +9,62 @@ const M300 = '500000FFFF03000D001000011401002C010090010010';
 const a = Buffer.from(M300, 'hex');
 
 
-const client = net.connect(PORT, HOST, () => {
+// const client = net.connect(PORT, HOST, () => {
+//   client.write(a);
+//   console.log('Command sent!');
+// });
+
+// client.on('data', (data) => {
+
+//   console.log('data received!');
+//   console.log('接收到的数据:', Buffer.from(data, 'hex'));
 
 
+// });
+// client.on('error', (error) => {
+//   console.log(error);
+// })
+
+// client.on('end', () => {
+//   client.end;
+//   console.log('已与服务器断开连接');
+// });
+
+// client.on('close', () => {
+//   console.log('Closing connection');
+// })
+
+// setTimeout(function () {
+//   console.log("Executed after 1 second");
+//   client.end();
+// }, 1000);
+
+const client = new net.Socket()
+
+function connect() {
+  client.connect({
+    port: PORT,
+    host: HOST
+  })
+}
+
+client.on('connect', () => {
   client.write(a);
   console.log('Command sent!');
-});
-
-client.on('data', (data) => {
-
-  console.log('data received!');
-  console.log('接收到的数据:', Buffer.from(data, 'hex'));
-
-
-});
-client.on('error', (error) => {
-  console.log(error);
 })
 
-client.on('end', () => {
-  client.end;
-  console.log('已与服务器断开连接');
-});
-
+client.on('error', (err) => {
+  console.log(err);
+})
 client.on('close', () => {
   console.log('Closing connection');
 })
+client.on('end', () => {
+  console.log('已与服务器断开连接');
+})
+
+connect()
 
 setTimeout(function () {
-  console.log("Executed after 1 second");
   client.end();
-}, 1000);
-
+}, 2000);

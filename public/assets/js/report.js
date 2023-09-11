@@ -5,7 +5,7 @@ $(function () {
 
 const initCookieData = function () {
     let reportTable = $.cookie("reportTable")
-    reportTable = reportTable.replace(',tdFirst_', '$')
+    reportTable = reportTable.replace(/,tdFirst_/g, '$')
     reportTable = reportTable.replace('tdFirst_', '')
     let arr1 = reportTable.split('$')
     for (let i = 0; i < arr1.length; i++) {
