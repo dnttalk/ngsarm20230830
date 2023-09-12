@@ -119,20 +119,29 @@ $(document).ready(function () {
         if ($(this).text().indexOf('12 well plate with reagent') >= 0) {
             $('#showModelName12').text('12 well plate with reagent').split(' ').join('')
             $('#showModelCount').text($(this).text())
-            $('#sampleImg').attr('src', '/assets/img/a.png')
-        }
-        else if ($(this).text().indexOf('Tip Rack A') >= 0) {
+            $('#sampleImg').attr('src', '/assets/img/12_Well_Plate_with_Reagent.png')
+        } else if ($(this).text().indexOf('Tip Rack A') >= 0) {
             $('#showModelName12').text('Tip Rack A')
             $('#showModelCount').append(`Tip Rack A <br><span style="color:blue;">${$(this).text().split('Rack A')[1]}</span>`)
-            $('#sampleImg').attr('src', '/assets/img/Tip Rack A.png')
+            $('#sampleImg').attr('src', '/assets/img/Tip_Rack_A.png')
         } else if ($(this).text().indexOf('Tip Rack B') >= 0) {
             $('#showModelName12').text('Tip Rack B')
             $('#showModelCount').append(`Tip Rack B <br><span style="color:blue;">${$(this).text().split('Rack B ')[1]}</span>`)
-            $('#sampleImg').attr('src', '/assets/img/Tip Rack B.png')
+            $('#sampleImg').attr('src', '/assets/img/Tip_Rack_B.png')
+        } else if ($(this).text().indexOf('Deep Well Plate') >= 0) {
+            $('#showModelName12').text($(this).text())
+            $('#showModelCount').text($(this).text())
+            $('#sampleImg').attr('src', '/assets/img/Deep_Well_Plate.png')
+        } else if ($(this).text().indexOf('Empty Racks') >= 0) {
+            $('#showModelName12').text('Empty Racks Clean')
+            $('#showModelCount').text('Empty Racks Clean')
+            $('#sampleImg').attr('src', '/assets/img/Empty_Racks_Clean.png')
         } else {
             $('#showModelName12').text($(this).text())
             $('#showModelCount').text($(this).text())
-            $('#sampleImg').attr('src', '/assets/img/' + $(this).text().split(' ').join('') + '.png')
+            var text = $(this).text();
+            var replacedText = text.replace(/\s+/g, '_'); // 这将把空格字符替换为底线
+            $('#sampleImg').attr('src', '/assets/img/' + replacedText + '.png');
         }
     })
     // 初始狀態設定
