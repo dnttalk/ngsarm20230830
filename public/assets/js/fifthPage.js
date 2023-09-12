@@ -13,7 +13,26 @@ $(function () {
     startTimer();// 初始狀態下啟動計時器
     flashNumber();
 });
-
+let poe = function () {
+    $('.btn-confirm').on('click', function () {
+        var myModal = new bootstrap.Modal(document.getElementById('EOPModal'), {
+            keyboard: false
+        });
+        myModal.show();
+    });
+    $('.confirmPOE').on('click', async function () {
+        console.log("初始化");
+        clearInterval(intervalId);
+        setTimeout(function () {
+            $.get("/api/start/M302", function (data) {
+                console.log(data);
+            });
+        }, 2000); //延遲傳送(重要)
+        setTimeout(function () {
+            window.location.href = "/";
+        }, 2500);
+    });
+};
 let flashNumber = function () {
     if (processStatus == 1) {
         $('#step1').fadeOut(500).fadeIn(500)
@@ -30,27 +49,7 @@ let flashNumber = function () {
     }
 }
 
-let poe = function () {
-    $('.btn-confirm').on('click', function () {
-        var myModal = new bootstrap.Modal(document.getElementById('EOPModal'), {
-            keyboard: false
-        });
-        myModal.show();
-    });
-    $('.confirmPOE').on('click', async function () {
-        clearInterval(intervalId);
-        setTimeout(function () {
-            $.get("/api/start/M302", function (data) {
-                console.log(data);
-            });
-        }, 1500);
 
-
-        setTimeout(function () {
-            window.location.href = "/";
-        }, 1600);
-    });
-};
 
 function performAction(apiEndpoint, requiredSections) {
     if (requiredSections.every(section => $(section).hasClass('active'))) {
@@ -62,6 +61,7 @@ function performAction(apiEndpoint, requiredSections) {
 
 function setupActionButtons() {
     $('#start').click(function () {
+        console.log("Pause button play");
         if ($('#start').hasClass('active')) {
             // 其他操作，例如觸發開始 API 端點
             $('#start').removeClass('active')
@@ -78,17 +78,22 @@ function setupActionButtons() {
     });
 
     $('#pause').click(function () {
+        console.log("Pause button clicked");
         if ($('#pause').hasClass('active')) {
-            // 其他操作，例如觸發暫停 API 端點
-            $('#pause').removeClass('active')
+            // 從元素中移除 "active" 類別
+            $('#pause').removeClass('active');
+
+            // 暫停計時器（如果適用）
             timerPaused = true;
             clearInterval(intervalId);
+
+            // 使用 setTimeout 進行延遲的 API 請求
             setTimeout(function () {
                 $.get("/api/start/M301", function (data) {
                     console.log(data);
-                    $('#start').addClass('active')
+                    $('#start').addClass('active');
                 });
-            }, 1500)
+            }, 4000); //延遲傳送(重要)
         }
     });
 }
@@ -105,7 +110,6 @@ function startTimer() {
                 if (id) {
                     window.location.href = "/report?id=" + id;
                 }
-
             }
         });
         flashNumber();

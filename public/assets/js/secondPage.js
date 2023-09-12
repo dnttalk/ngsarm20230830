@@ -9,6 +9,7 @@ $(function () {
     checkDoneEvent()
     openKeyboardEvent()
     updateSscircleBtnEvent()
+    countPopBtnEvent()
 });
 // 初始化
 let init = function () {
@@ -23,7 +24,7 @@ let init = function () {
                 }
             }
             $('.samplenumberContainer').append(`
-                <h1>Samples: <input type="number" pattern="\d*" max="${json[tmp_key]['SampleLimit']}" min="0" value="0" id="sampleNumberInput" oninput="if(value<0)value=0;if(value>${json[tmp_key]['SampleLimit']})value=${json[tmp_key]['SampleLimit']};" inputmode="numeric" /></h1>
+                <h1>Samples: <input type="number" pattern="\d*" max="${json[tmp_key]['SampleLimit']}" min="1" value="1" id="sampleNumberInput" oninput="if(value<0)value=0;if(value>${json[tmp_key]['SampleLimit']})value=${json[tmp_key]['SampleLimit']};" inputmode="numeric" /></h1>
             `)
             primer1 = json[tmp_key]['primer1']
             primer2 = json[tmp_key]['primer2']
@@ -66,61 +67,42 @@ let checkDoneEvent = function () {
     })
 }
 
-// 試算µl
+
 let countPopBtnEvent = function () {
     $('.countPopBtn').click(function () {
-        $(".showModelName").children().text($(this).attr('ssName'))
-        $('.contentInner').empty()
-        // $('#currentlyModelName')
-        for (const key in formula) {
-            if ($(this).attr('ssName').indexOf(key) >= 0) {
-                let showData = null
-                formula[key].forEach((cell) => {
-                    if (cell['Name'] == $(this).attr('ssName')) {
-                        showData = cell
-                    }
-                })
-                // 如果有total
-                if (showData['total'] == true) {
-                    let total = 0
-                    let appendText = ''
-                    appendText = appendText + '<div class="row"><table style="height:60px" class="mb-5"><tbody>'
-                    for (let keyc in showData) {
-                        if (keyc != 'Name' && keyc != 'total') {
-                            let count = parseInt($('#sampleNumberInput').val())
-                            for (let i = 1; i < 5; i++) {
-                                if (showData[keyc][`count${i}`]) {
-                                    if (showData[keyc][`count${i}`].indexOf('+') >= 0) {
-                                        count = count + parseInt(showData[keyc][`count${i}`].replace('+', ''))
-                                    }
-                                    if (showData[keyc][`count${i}`].indexOf('*') >= 0) {
-                                        count = count * parseInt(showData[keyc][`count${i}`].replace('*', ''))
+        if ($('#sampleNumberInput').val() == '0') {
+            showCenteredAlert("Sample Numer Not Zero");
+            return; // 阻止继续执行
+        } else {
+            $('.contentInner').empty()
+            for (const key in formula) {
+                if ($(this).attr('ssName').indexOf(key) >= 0) {
+                    let showData = null
+                    formula[key].forEach((cell) => {
+                        if (cell['Name'] == $(this).attr('ssName')) {
+                            showData = cell
+                        }
+                    })
+                    // 如果有total
+                    if (showData['total'] == true) {
+                        let total = 0
+                        let appendText = ''
+                        appendText = appendText + '<div class="row"><table style="height:60px" class="mb-5"><tbody>'
+                        for (let keyc in showData) {
+                            if (keyc != 'Name' && keyc != 'total') {
+                                let count = parseInt($('#sampleNumberInput').val())
+                                for (let i = 1; i < 5; i++) {
+                                    if (showData[keyc][`count${i}`]) {
+                                        if (showData[keyc][`count${i}`].indexOf('+') >= 0) {
+                                            count = count + parseInt(showData[keyc][`count${i}`].replace('+', ''))
+                                        }
+                                        if (showData[keyc][`count${i}`].indexOf('*') >= 0) {
+                                            count = count * parseInt(showData[keyc][`count${i}`].replace('*', ''))
+                                        }
                                     }
                                 }
-                            }
 
-                            if (showData['Name'] == 'Fragmen-tation Mix') {
-                                appendText = appendText + (`
-                                    <tr>
-                                        <td class="text-start" style="font-size:18px;font-weight:bold;">${keyc}</td>
-                                        <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
-                                        <td class="text-end" style="font-size:18px;font-weight:bold;">${count.toString()}</td>
-                                        <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
-                                    </tr>
-                                `)
-                            } else {
-                                if (keyc == 'iNA_Leukemia_Primer_Pool') {
-                                    let tmp_keyc = null
-                                    tmp_keyc = keyc.replace('Leukemia', $('#currentlyModelName').text())
-                                    appendText = appendText + (`
-                                        <tr>
-                                            <td class="text-start" style="font-size:18px;font-weight:bold;">${tmp_keyc}</td>
-                                            <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
-                                            <td class="text-end" style="font-size:18px;font-weight:bold;">${count.toString()}</td>
-                                            <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
-                                        </tr>
-                                    `)
-                                } else {
+                                if (showData['Name'] == 'Fragmen-tation Mix') {
                                     appendText = appendText + (`
                                         <tr>
                                             <td class="text-start" style="font-size:18px;font-weight:bold;">${keyc}</td>
@@ -129,62 +111,83 @@ let countPopBtnEvent = function () {
                                             <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
                                         </tr>
                                     `)
-                                }
+                                } else {
+                                    if (keyc == 'iNA_Leukemia_Primer_Pool') {
+                                        let tmp_keyc = null
+                                        tmp_keyc = keyc.replace('Leukemia', $('#currentlyModelName').text())
+                                        appendText = appendText + (`
+                                            <tr>
+                                                <td class="text-start" style="font-size:18px;font-weight:bold;">${tmp_keyc}</td>
+                                                <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
+                                                <td class="text-end" style="font-size:18px;font-weight:bold;">${count.toString()}</td>
+                                                <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
+                                            </tr>
+                                        `)
+                                    } else {
+                                        appendText = appendText + (`
+                                            <tr>
+                                                <td class="text-start" style="font-size:18px;font-weight:bold;">${keyc}</td>
+                                                <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
+                                                <td class="text-end" style="font-size:18px;font-weight:bold;">${count.toString()}</td>
+                                                <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
+                                            </tr>
+                                        `)
+                                    }
 
+                                }
+                                total = total + count
                             }
-                            total = total + count
+                            if (keyc == 'total') {
+                                appendText = appendText + (`
+                                    <tr><td colspan="4"><hr class="my-4"></td></tr>
+                                    <tr>
+                                        <td class="text-start" style="font-size:18px;font-weight:bold;">Total</td>
+                                        <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
+                                        <td class="text-end" style="font-size:18px;font-weight:bold;">${total}</td>
+                                        <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
+                                    </tr>
+                                `)
+                            }
                         }
-                        if (keyc == 'total') {
-                            appendText = appendText + (`
-                                <tr><td colspan="4"><hr class="my-4"></td></tr>
-                                <tr>
-                                    <td class="text-start" style="font-size:18px;font-weight:bold;">Total</td>
-                                    <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
-                                    <td class="text-end" style="font-size:18px;font-weight:bold;">${total}</td>
-                                    <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
-                                </tr>
-                            `)
-                        }
-                    }
-                    appendText = appendText + '</tbody></table></div>'
-                    $('.contentInner').append(appendText)
-                } else {
-                    console.log($('#currentlyModelName').text())
-                    let appendText = ''
-                    appendText = appendText + '<div class="row"><table style="height:60px" class="mb-5"><tbody>'
-                    for (const keyc in showData) {
-                        if (keyc != 'Name' && keyc != 'total') {
-                            let count = parseInt($('#sampleNumberInput').val())
-                            for (let i = 1; i < 5; i++) {
-                                if (showData[keyc][`count${i}`]) {
-                                    if (showData[keyc][`count${i}`].indexOf('+') >= 0) {
-                                        count = count + parseInt(showData[keyc][`count${i}`].replace('+', ''))
-                                    }
-                                    if (showData[keyc][`count${i}`].indexOf('*') >= 0) {
-                                        count = count * parseInt(showData[keyc][`count${i}`].replace('*', ''))
+                        appendText = appendText + '</tbody></table></div>'
+                        $('.contentInner').append(appendText)
+                    } else {
+                        console.log($('#currentlyModelName').text())
+                        let appendText = ''
+                        appendText = appendText + '<div class="row"><table style="height:60px" class="mb-5"><tbody>'
+                        for (const keyc in showData) {
+                            if (keyc != 'Name' && keyc != 'total') {
+                                let count = parseInt($('#sampleNumberInput').val())
+                                for (let i = 1; i < 5; i++) {
+                                    if (showData[keyc][`count${i}`]) {
+                                        if (showData[keyc][`count${i}`].indexOf('+') >= 0) {
+                                            count = count + parseInt(showData[keyc][`count${i}`].replace('+', ''))
+                                        }
+                                        if (showData[keyc][`count${i}`].indexOf('*') >= 0) {
+                                            count = count * parseInt(showData[keyc][`count${i}`].replace('*', ''))
+                                        }
                                     }
                                 }
+                                appendText = appendText + (`
+                                    <tr>
+                                        <td class="text-start" style="font-size:18px;font-weight:bold;">${keyc}</td>
+                                        <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
+                                        <td class="text-end" style="font-size:18px;font-weight:bold;">${count.toString()}</td>
+                                        <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
+                                    </tr>
+                                `)
                             }
-                            appendText = appendText + (`
-                                <tr>
-                                    <td class="text-start" style="font-size:18px;font-weight:bold;">${keyc}</td>
-                                    <td class="text-start" style="font-size:18px;font-weight:bold;">:</td>
-                                    <td class="text-end" style="font-size:18px;font-weight:bold;">${count.toString()}</td>
-                                    <td class="text-start" style="font-size:18px;font-weight:bold;">µl</td>
-                                </tr>
-                            `)
                         }
+                        appendText = appendText + '</tbody></table></div>'
+                        $('.contentInner').append(appendText)
                     }
-                    appendText = appendText + '</tbody></table></div>'
-                    $('.contentInner').append(appendText)
                 }
             }
+            $('#cancleChoose').attr('dataId', $(this).attr('id'))
+            $('#doneChoose').attr('dataId', $(this).attr('id'))
         }
-        $('#cancleChoose').attr('dataId', $(this).attr('id'))
-        $('#doneChoose').attr('dataId', $(this).attr('id'))
     })
 }
-
 // 檢查是否全部按鈕都Active
 let checkEvent = function () {
     let checkAllBtnActive = true
