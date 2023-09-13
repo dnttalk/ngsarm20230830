@@ -8,11 +8,18 @@ let pausedTime = null
 
 $(function () {
     // pauseEvent();
+    loading()
     poe();
     setupActionButtons(); // 設定開始和暫停按鈕的點擊事件
     startTimer();// 初始狀態下啟動計時器
     flashNumber();
 });
+let loading = function () {
+    setTimeout(() => {
+        $('.spinner-wrapper').fadeOut(500)
+    }, 3000)
+}
+
 let poe = function () {
     $('.btn-confirm').on('click', function () {
         var myModal = new bootstrap.Modal(document.getElementById('EOPModal'), {
@@ -22,6 +29,7 @@ let poe = function () {
     });
     $('.confirmPOE').on('click', async function () {
         console.log("初始化");
+        $('.spinner-wrapper').fadeIn(500)
         clearInterval(intervalId);
         setTimeout(function () {
             $.get("/api/start/M302", function (data) {
@@ -63,6 +71,7 @@ function setupActionButtons() {
     $('#start').click(function () {
         console.log("Pause button play");
         if ($('#start').hasClass('active')) {
+            $('.spinner-wrapper').fadeIn(500)
             // 其他操作，例如觸發開始 API 端點
             $('#start').removeClass('active')
             setTimeout(function () {
@@ -73,13 +82,16 @@ function setupActionButtons() {
                     startTimer();
                 });
             }, 1000);
-
+            setTimeout(() => {
+                $('.spinner-wrapper').fadeOut(500)
+            }, 1500)
         }
     });
 
     $('#pause').click(function () {
         console.log("Pause button clicked");
         if ($('#pause').hasClass('active')) {
+            $('.spinner-wrapper').fadeIn(500)
             // 從元素中移除 "active" 類別
             $('#pause').removeClass('active');
 
@@ -94,6 +106,9 @@ function setupActionButtons() {
                     $('#start').addClass('active');
                 });
             }, 4000); //延遲傳送(重要)
+            setTimeout(() => {
+                $('.spinner-wrapper').fadeOut(500)
+            }, 4500)
         }
     });
 }
