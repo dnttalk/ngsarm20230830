@@ -48,20 +48,20 @@ function openBrowser(url) {
     exec(command);
 }
 
-function handleWebSocketConnection(ws) {
-    console.log('WebSocket 连接已建立');
+// function handleWebSocketConnection(ws) {
+//     console.log('WebSocket 连接已建立');
 
-    ws.on('message', (message) => {
-        if (message === 'close') {
-            console.log('收到关闭消息，正在关闭服务器');
-            gracefulShutdown();
-        }
-    });
+//     ws.on('message', (message) => {
+//         if (message === 'close') {
+//             console.log('收到关闭消息，正在关闭服务器');
+//             gracefulShutdown();
+//         }
+//     });
 
-    ws.on('close', () => {
-        console.log('WebSocket 连接已关闭');
-    });
-}
+//     ws.on('close', () => {
+//         console.log('WebSocket 连接已关闭');
+//     });
+// }
 
 // async function gracefulShutdown() {
 //     console.log('收到退出信号，正在优雅地关闭。');
