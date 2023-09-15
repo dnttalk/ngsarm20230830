@@ -1,132 +1,136 @@
-let pauseStatus = 0;
-let intervalObj1 = null;
-let processStatus = 1;
-let timerPaused = false;  // 初始狀態為計時器運行
-let intervalId = null;    // 計時器間隔的 ID
-let startTime = Date.now();
-let pausedTime = null
+const app = {
+    pauseStatus: 0,
+    intervalObj1: null,
+    processStatus: 1,
+    timerPaused: false,
+    intervalId: null,
+    startTime: Date.now(),
+    pausedTime: null,
+};
 
-$(function () {
-    // pauseEvent();
-    loading()
-    poe();
-    setupActionButtons(); // 設定開始和暫停按鈕的點擊事件
-    startTimer();// 初始狀態下啟動計時器
-    flashNumber();
-});
-let loading = function () {
-    setTimeout(() => {
-        $('.spinner-wrapper').fadeOut(500)
-    }, 3000)
+function showSpinner() {
+    $('.spinner-wrapper').fadeIn(500);
 }
 
-let poe = function () {
-    $('.btn-confirm').on('click', function () {
-        var myModal = new bootstrap.Modal(document.getElementById('EOPModal'), {
-            keyboard: false
+function hideSpinner() {
+    $('.spinner-wrapper').fadeOut(500);
+}
+
+function loading() {
+    setTimeout(() => {
+        hideSpinner();
+    }, 3000);
+}
+
+function poe() {
+    $('.btn-confirm').on('click', () => {
+        const myModal = new bootstrap.Modal(document.getElementById('EOPModal'), {
+            keyboard: false,
         });
         myModal.show();
     });
-    $('.confirmPOE').on('click', async function () {
-        console.log("初始化");
-        $('.spinner-wrapper').fadeIn(500)
-        clearInterval(intervalId);
-        setTimeout(function () {
-            $.get("/api/start/M302", function (data) {
+
+    $('.confirmPOE').on('click', async () => {
+        console.log("Initializing");
+        showSpinner();
+        clearInterval(app.intervalId);
+
+        setTimeout(() => {
+            $.get("/api/start/M302", (data) => {
                 console.log(data);
             });
-        }, 2000); //延遲傳送(重要)
-        setTimeout(function () {
+        }, 2000);
+
+        setTimeout(() => {
             window.location.href = "/";
         }, 2500);
     });
-};
-let flashNumber = function () {
-    if (processStatus == 1) {
-        $('#step1').fadeOut(500).fadeIn(500)
-    } else if (processStatus == 2) {
-        $('#step2').fadeOut(500).fadeIn(500)
-    } else if (processStatus == 3) {
-        $('#step3').fadeOut(500).fadeIn(500)
-    } else if (processStatus == 4) {
-        $('#step4').fadeOut(500).fadeIn(500)
-    } else if (processStatus == 5) {
-        $('#step5').fadeOut(500).fadeIn(500)
-    } else if (processStatus == 6) {
-        $('#pcText').fadeOut(500).fadeIn(500)
+}
+
+function flashNumber() {
+    const elements = ['#step1', '#step2', '#step3', '#step4', '#step5', '#pcText'];
+
+    if (app.processStatus >= 1 && app.processStatus <= elements.length) {
+        const elementId = elements[app.processStatus - 1];
+        $(elementId).fadeOut(500).fadeIn(500);
     }
 }
 
-
-
 function performAction(apiEndpoint, requiredSections) {
     if (requiredSections.every(section => $(section).hasClass('active'))) {
-        $.get(apiEndpoint, function (data) {
+        $.get(apiEndpoint, (data) => {
             console.log(data);
         });
     }
 }
 
 function setupActionButtons() {
-    $('#start').click(function () {
-        console.log("Pause button play");
+    $('#start').click(() => {
+        console.log("Start button clicked");
         if ($('#start').hasClass('active')) {
-            $('.spinner-wrapper').fadeIn(500)
-            // 其他操作，例如觸發開始 API 端點
-            $('#start').removeClass('active')
-            setTimeout(function () {
-                $.get("/api/start/M300", function (data) {
+            showSpinner();
+            $('#start').removeClass('active');
+
+            setTimeout(() => {
+                $.get("/api/start/M300", (data) => {
                     console.log(data);
-                    $('#pause').addClass('active')
-                    timerPaused = false;
+                    $('#pause').addClass('active');
+                    app.timerPaused = false;
                     startTimer();
                 });
             }, 1000);
+
             setTimeout(() => {
-                $('.spinner-wrapper').fadeOut(500)
-            }, 1500)
+                hideSpinner();
+            }, 1500);
         }
     });
 
-    $('#pause').click(function () {
+    $('#pause').click(() => {
         console.log("Pause button clicked");
         if ($('#pause').hasClass('active')) {
-            $('.spinner-wrapper').fadeIn(500)
-            // 從元素中移除 "active" 類別
+            showSpinner();
             $('#pause').removeClass('active');
 
-            // 暫停計時器（如果適用）
-            timerPaused = true;
-            clearInterval(intervalId);
+            app.timerPaused = true;
+            clearInterval(app.intervalId);
 
-            // 使用 setTimeout 進行延遲的 API 請求
-            setTimeout(function () {
-                $.get("/api/start/M301", function (data) {
+            setTimeout(() => {
+                $.get("/api/start/M301", (data) => {
                     console.log(data);
                     $('#start').addClass('active');
                 });
-            }, 4000); //延遲傳送(重要)
+            }, 4000);
+
             setTimeout(() => {
-                $('.spinner-wrapper').fadeOut(500)
-            }, 4500)
+                hideSpinner();
+            }, 4500);
         }
     });
 }
 
 function startTimer() {
-    intervalId = setInterval(function () {
-        $.get("/api/start/process", function (data) {
+    app.intervalId = setInterval(() => {
+        $.get("/api/start/process", (data) => {
             if (data.status) {
-                processStatus = parseInt(data.status)
-                console.log(data)
+                app.processStatus = parseInt(data.status);
+                console.log(data);
             }
-            if (processStatus === 20) {
-                let id = getUrlParameter('id')
+            if (app.processStatus === 20) {
+                const id = getUrlParameter('id');
                 if (id) {
                     window.location.href = "/report?id=" + id;
                 }
             }
+            flashNumber();
         });
-        flashNumber();
     }, 1000);
 }
+
+$(function () {
+    loading();
+    poe();
+    setupActionButtons();
+    startTimer();
+    flashNumber();
+});

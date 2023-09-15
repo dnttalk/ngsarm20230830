@@ -28,7 +28,7 @@ client.on('error', (error) => {
 })
 
 client.on('end', () => {
-  client.end;
+  client.end();
   console.log('已与服务器断开连接');
 });
 
