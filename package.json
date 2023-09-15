@@ -1,9 +1,9 @@
 {
-  "name": "NGA_workstation",
+  "name": "NGAworkstation",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "npx nodemon ./bin/www",
+    "start": "npm start ./bin/www",
     "dist": "electron-builder",
     "build": "pkg -t win ./package.json"
   },
