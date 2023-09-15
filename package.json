@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "npx nodemon ./bin/www",
     "dist": "electron-builder",
     "build": "pkg -t win ./package.json"
   },
