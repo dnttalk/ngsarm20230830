@@ -109,9 +109,9 @@ function onListening() {
     exec(command);
 }
 
-process.on('exit', (code) => {
-    console.log(`进程即将退出，退出码: ${code}`);
-    gracefulShutdown();
+// process.on('exit', (code) => {
+//     console.log(`进程即将退出，退出码: ${code}`);
+//     gracefulShutdown();
 
-});
+// });
 
