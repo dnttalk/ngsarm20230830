@@ -1,9 +1,9 @@
 {
-  "name": "NGAworkstation",
+  "name": "NGA_workstation",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "npm start ./bin/www",
+    "start": "node ./bin/www",
     "dist": "electron-builder",
     "build": "pkg -t win ./package.json"
   },
