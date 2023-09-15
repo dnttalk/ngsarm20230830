@@ -63,13 +63,13 @@ function handleWebSocketConnection(ws) {
     });
 }
 
-async function gracefulShutdown() {
-    console.log('收到退出信号，正在优雅地关闭。');
-    // await closeWebSocketServer();
-    await closeHttpServer();
-    console.log('已成功关闭。');
-    process.exit(0);
-}
+// async function gracefulShutdown() {
+//     console.log('收到退出信号，正在优雅地关闭。');
+//     // await closeWebSocketServer();
+//     await closeHttpServer();
+//     console.log('已成功关闭。');
+//     process.exit(0);
+// }
 
 async function closeWebSocketServer() {
     return new Promise((resolve) => {
