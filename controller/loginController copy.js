@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const dataPath = path.join(__dirname, '../public/assets/data/user.json');
+const dataPath = 'C:/NGA_workstation/user.json';
 let login = async (req, res) => {
     try {
         const { user, pwd } = req.body;
